@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,6 @@ use App\Http\Controllers\WelcomeController;
 
 Route::get('/', [WelcomeController::class, 'show']);
 Route::get('/survey', [SurveyController::class, 'show']);
+Route::controller(DashboardController::class)->group(function() {
+    Route::get('/dashboard', 'index');
+});
