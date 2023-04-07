@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <header>
-    <h1>VVW Schelde Flushing</h1>
+    <h1>VVW Schelde Vlissingen</h1>
     <nav class="topnav">
         <ul>
 
