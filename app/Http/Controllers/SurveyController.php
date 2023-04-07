@@ -28,19 +28,24 @@ class SurveyController extends Controller
         }
     }
 
-    public function store()
+    public function store(Request $request, $language)
     {
-        $survey = new survey();
+        $survey = new Survey();
 
-        $survey->PeopleOnBoard = request('PeopleOnBoard');
-        $survey->AdultsOnBoard = request('AdultsOnBoard');
-        $survey->AgeOfChildren = request('AgeOfChildren');
-        $survey->TypeOfVessel = request('TypeOfVessel');
-        $survey->FirstVisit = request('FirstVisit');
-        $survey->HearAboutHarbour = request('HearAboutHarbour');
+        $survey->PeopleOnBoard = $request->input('PeopleOnBoard');
+        $survey->AdultsOnBoard = $request->input('AdultsOnBoard');
+        $survey->AgeOfChildren = $request->input('AgeOfChildren');
+        $survey->TypeOfVessel = $request->input('TypeOfVessel');
+        $survey->FirstVisit = $request->input('FirstVisit');
+        $survey->HearAboutHarbour = $request->input('HearAboutHarbour');
 
         $survey->save();
 
-        return redirect()->route('survey.choosesurvey')->with('success', 'Thank you! The survey is send to oure secratary!');
-    }
-}
+        if ($language === 'survey-eng') {
+            return view('survey.thanks-eng');
+        } elseif ($language === 'survey-nl') {
+            return view('survey.thanks-nl');
+        } else {
+            abort(404);
+        }
+    }}
