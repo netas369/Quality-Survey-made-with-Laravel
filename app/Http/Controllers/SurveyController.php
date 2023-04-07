@@ -16,8 +16,19 @@ class SurveyController extends Controller
         return view('survey.show');
     }
 
-    public function Create()
+    public function create()
     {
-        return view('survey.show');
+        return view('survey.create');
+    }
+
+    public function store()
+    {
+        $survey = new Survey();
+
+        $survey->name = request('name');
+        $survey->gender = request('gender');
+        $survey->country = request('country');
+
+        $survey->save();
     }
 }

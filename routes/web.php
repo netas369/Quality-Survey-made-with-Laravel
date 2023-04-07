@@ -17,7 +17,16 @@ use App\Http\Controllers\WelcomeController;
 */
 
 Route::get('/', [WelcomeController::class, 'show']);
+Route::post('/survey', [SurveyController::class, 'store']);
+Route::get('/survey/create', [SurveyController::class, 'create']);
 Route::get('/survey', [SurveyController::class, 'show']);
+
+
+
+
+
+
+
 Route::controller(DashboardController::class)->group(function() {
     Route::get('/dashboard', 'index');
 });
