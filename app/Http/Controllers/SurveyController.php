@@ -17,6 +17,10 @@ class SurveyController extends Controller
         return view('survey.index');
     }
 
+    public function showSurvey()
+    {
+        return view('survey.survey');
+    }
     public function create($language)
     {
         if ($language === 'survey-eng') {

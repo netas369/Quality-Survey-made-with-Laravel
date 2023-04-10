@@ -23,7 +23,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');;
 //Route::get('/survey/{language}', [SurveyController::class, 'create']);
 
 Route::get('/survey', [SurveyController::class, 'index']);
-
+Route::get('/survey/submition', [SurveyController::class, 'showSurvey']);
 //Route::get('/survey/thanks-eng', function () {
 //    return view('survey.thanks-eng');
 //})->name('survey.thanks-eng');
