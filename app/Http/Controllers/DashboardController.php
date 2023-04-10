@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +13,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
+        return view('dashboard.index', compact('latestAnswers'));
     }
 
     /**
