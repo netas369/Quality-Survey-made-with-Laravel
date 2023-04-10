@@ -24,7 +24,7 @@
     <label>Username</label>
     <input type="text"><br><br>
     <label>Password</label>
-    <input type="text">
+    <input type="password">
 </form>
 <button onclick="window.location.href='/dashboard'">Login</button>
 </body>
