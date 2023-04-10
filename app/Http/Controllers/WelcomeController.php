@@ -11,7 +11,7 @@ class WelcomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function index()
     {
         return view('welcome');
     }
