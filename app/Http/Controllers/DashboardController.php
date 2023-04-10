@@ -16,6 +16,10 @@ class DashboardController extends Controller
         $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
         return view('dashboard.index', compact('latestAnswers'));
     }
+    public function login()
+    {
+        return view('dashboard.login');
+    }
 
     /**
      * Show the form for creating a new resource.
