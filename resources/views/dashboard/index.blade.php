@@ -3,41 +3,8 @@
 <head>
     <title>VVW Schelde Flushing</title>
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        td:first-child {
-            font-weight: bold;
-        }
-
-        td:last-child {
-            text-align: right;
-        }
-
-        @media only screen and (max-width: 600px) {
-            table {
-                font-size: 14px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
 </head>
 <body>
 <header>

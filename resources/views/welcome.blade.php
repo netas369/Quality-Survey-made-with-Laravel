@@ -3,6 +3,7 @@
 <head>
     <title>VVW Schelde Flushing</title>
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
+    <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
 </head>
 <body>
 <header>
