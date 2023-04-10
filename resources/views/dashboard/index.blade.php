@@ -38,7 +38,7 @@
         <ul>
 
             <li><a class="{{ Request::path() === '/' ? 'active' : '' }}" href="{{ url('/') }}">Home</a></li>
-            <li><a class="{{ Request::path() === 'survey' ? 'active' : '' }}" href="{{ url('survey') }}">Survey</a></li>
+            <li><a class="{{ Request::path() === 'choosesurvey' ? 'active' : '' }}" href="{{ url('choosesurvey') }}">Survey</a></li>
             <li><a class="{{ Request::path() === 'dashboard' ? 'active' : '' }}" href="{{ url('dashboard') }}">Dashboard</a></li>
         </ul>
     </nav>
