@@ -21,7 +21,7 @@
 </header>
 <body>
 
-<form method="POST" action="/survey">
+<form method="POST" action="/survey/survey-nl">
     @csrf
 
     <label for="PeopleOnBoard">Met hoeveel personen bent u totaal aan boord?</label>

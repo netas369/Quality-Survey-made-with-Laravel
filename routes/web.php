@@ -18,9 +18,14 @@ use App\Http\Controllers\WelcomeController;
 
 Route::get('/', [WelcomeController::class, 'show']);
 
-Route::post('/survey', [SurveyController::class, 'store']);
+Route::post('/survey/{language}', [SurveyController::class, 'store']);
 Route::get('/choosesurvey', [SurveyController::class, 'show'])->name('survey.choosesurvey');
 Route::get('/choosesurvey/{language}', [SurveyController::class, 'create']);
-Route::controller(DashboardController::class)->group(function() {
-    Route::get('/dashboard', 'index');
-});
+Route::get('/survey/thanks-eng', function () {
+    return view('survey.thanks-eng');
+})->name('survey.thanks-eng');
+Route::get('/survey/thanks-nl', function () {
+    return view('survey.thanks-nl');
+})->name('survey.thanks-nl');
+
+Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
