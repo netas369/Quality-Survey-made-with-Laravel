@@ -21,7 +21,7 @@
 </header>
 <body>
 
-<form method="POST" action="/survey/survey-eng">
+<form method="POST" action="/survey/submition">
     @csrf
 
     <label for="PeopleOnBoard">How many people do/did you have on board?</label>

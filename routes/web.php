@@ -24,6 +24,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');;
 
 Route::get('/survey', [SurveyController::class, 'index']);
 Route::get('/survey/submition', [SurveyController::class, 'showSurvey']);
+Route::post('/survey/submition', [SurveyController::class, 'store']);
 //Route::get('/survey/thanks-eng', function () {
 //    return view('survey.thanks-eng');
 //})->name('survey.thanks-eng');
