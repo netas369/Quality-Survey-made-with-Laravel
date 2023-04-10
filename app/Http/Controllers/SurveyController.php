@@ -12,9 +12,9 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function index()
     {
-        return view('survey.choosesurvey');
+        return view('survey.index');
     }
 
     public function create($language)

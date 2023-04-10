@@ -16,16 +16,21 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'show']);
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');;
 
-Route::post('/survey/{language}', [SurveyController::class, 'store']);
-Route::get('/choosesurvey', [SurveyController::class, 'show'])->name('survey.choosesurvey');
-Route::get('/choosesurvey/{language}', [SurveyController::class, 'create']);
-Route::get('/survey/thanks-eng', function () {
-    return view('survey.thanks-eng');
-})->name('survey.thanks-eng');
-Route::get('/survey/thanks-nl', function () {
-    return view('survey.thanks-nl');
-})->name('survey.thanks-nl');
+// Routes for Survey page
+//Route::post('/survey/{language}', [SurveyController::class, 'store']);
+//Route::get('/survey/{language}', [SurveyController::class, 'create']);
 
+Route::get('/survey', [SurveyController::class, 'index']);
+
+//Route::get('/survey/thanks-eng', function () {
+//    return view('survey.thanks-eng');
+//})->name('survey.thanks-eng');
+//Route::get('/survey/thanks-nl', function () {
+//    return view('survey.thanks-nl');
+//})->name('survey.thanks-nl');
+
+
+// Routes for dashboard page
 Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
