@@ -32,7 +32,7 @@ class SurveyController extends Controller
         }
     }
 
-    public function store(Request $request, $language)
+    public function store(Request $request)
     {
         $survey = new Survey();
 
@@ -44,12 +44,5 @@ class SurveyController extends Controller
         $survey->HearAboutHarbour = $request->input('HearAboutHarbour');
 
         $survey->save();
-
-        if ($language === 'survey-eng') {
-            return view('survey.thanks-eng');
-        } elseif ($language === 'survey-nl') {
-            return view('survey.thanks-nl');
-        } else {
-            abort(404);
-        }
+        return view('survey.thanks-eng');
     }}
