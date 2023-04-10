@@ -70,12 +70,12 @@
         @foreach ($latestAnswers as $surveyAnswer)
             <tr>
                 <td>{{ $surveyAnswer->id }}</td>
-                <td>{{ $surveyAnswer->people_on_board }}</td>
-                <td>{{ $surveyAnswer->adults_on_board }}</td>
-                <td>{{ $surveyAnswer->age_of_children }}</td>
-                <td>{{ $surveyAnswer->vessel_type }}</td>
-                <td>{{ $surveyAnswer->is_first_visit ? 'Yes' : 'No' }}</td>
-                <td>{{ $surveyAnswer->how_did_you_hear }}</td>
+                <td>{{ $surveyAnswer->PeopleOnBoard }}</td>
+                <td>{{ $surveyAnswer->AdultsOnBoard }} </td>
+                <td>{{ $surveyAnswer->AgeOfChildren }}</td>
+                <td>{{ $surveyAnswer->TypeOfVessel }}</td>
+                <td>{{ $surveyAnswer->FirstVisit ? 'Yes' : 'No' }}</td>
+                <td>{{ $surveyAnswer->HearAboutHarbour }}</td>
                 <td>{{ $surveyAnswer->created_at->format('Y-m-d H:i:s') }}</td>
             </tr>
         @endforeach
