@@ -26,7 +26,8 @@
 </nav>
 <main>
 
-    {{ $bar->labels(['One', 'Two', 'Three']) }}
+{{--    {{ $bar->labels(['One', 'Two', 'Three']) }}--}}
+
     <div class="pagination">
         {{ $survey->links() }}
     </div>
