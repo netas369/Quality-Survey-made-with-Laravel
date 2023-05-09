@@ -39,6 +39,7 @@ class SurveyController extends Controller
         $survey->PeopleOnBoard = $request->input('PeopleOnBoard');
         $survey->TypeOfVessel = $request->input('TypeOfVessel');
         $survey->FirstVisit = $request->input('FirstVisit');
+        $survey->WhichHarbour = $request->input('WhichHarbour');
         $survey->HearAboutHarbour = $request->input('HearAboutHarbour');
         $survey->OverallCleanliness = $request->input('OverallCleanliness');
         $survey->StaffFriendlyAndHelpful = $request->input('StaffFriendlyAndHelpful');
