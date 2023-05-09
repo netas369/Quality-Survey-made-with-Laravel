@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\HappinessBar;
 use App\Models\Dashboard;
 use App\Models\Survey;
 use Illuminate\Http\Request;
@@ -26,8 +27,11 @@ class DashboardController extends Controller
      */
     public function reviews(Dashboard $dashboard)
     {
+
         $survey = Survey::paginate(20);
-        return view('dashboard.reviews', compact('survey'));
+        $bar = new HappinessBar();
+
+        return view('dashboard.reviews', compact('survey', 'bar'));
     }
 
     /**

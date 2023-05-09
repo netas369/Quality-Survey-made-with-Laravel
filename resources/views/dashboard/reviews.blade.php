@@ -8,7 +8,6 @@
 </head>
 <body>
 <header>
-    <h1>VVW Schelde Flushing</h1>
     <h1>Control Dashboard</h1>
     <nav class="topnav">
         <ul>
@@ -27,6 +26,11 @@
 </nav>
 <main>
 
+    {{ $bar->labels(['One', 'Two', 'Three']) }}
+    <div class="pagination">
+        {{ $survey->links() }}
+    </div>
+
     <table class="table">
         <thead>
         <tr>
@@ -40,6 +44,7 @@
             <th>Safety at the Harbour</th>
             <th>How Would You Recommend to Others</th>
             <th>Quality for Money</th>
+            <th>Rating</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -56,6 +61,7 @@
                 <td>{{ $review->SafetyAtTheHarbour }}</td>
                 <td>{{ $review->HowWouldYouRecommendToOthers }}</td>
                 <td>{{ $review->QualityForMoney }}</td>
+                <td>{{ $review->rating() }}</td>
                 <td><a href="{{ route('dashboard.show', $review->id) }}" class="btn btn-primary">View</a></td>
             </tr>
         @endforeach
