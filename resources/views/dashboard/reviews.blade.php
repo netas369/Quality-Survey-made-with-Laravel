@@ -27,29 +27,45 @@
 </nav>
 <main>
 
-    <table>
+    <table class="table">
         <thead>
-            <tr>
-                <th>REVIEW ID</th>
-                <th>DATE</th>
-                <th>HARBOUR</th>
-                <th>RATING</th>
-                <th>STATUS</th>
-            </tr>
+        <tr>
+            <th>Review ID</th>
+            <th>People On Board</th>
+            <th>Type of Vessel</th>
+            <th>First Visit</th>
+            <th>Hear About Harbour</th>
+            <th>Overall Cleanliness</th>
+            <th>Staff Friendly and Helpful</th>
+            <th>Safety at the Harbour</th>
+            <th>How Would You Recommend to Others</th>
+            <th>Quality for Money</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach($survey as $review)
-                <tr>
-                    <td>{{ $review->id }}</td>
-                    <td>{{ $review->created_at }}</td>
-                    <td>{{ $review->WhichHarbour }}</td>
-                    <td>1</td>
-                    <td>status</td>
-                </tr>
-
-            @endforeach
+        @foreach($survey as $review)
+            <tr>
+                <td>{{ $review->id }}</td>
+                <td>{{ $review->PeopleOnBoard }}</td>
+                <td>{{ $review->TypeOfVessel }}</td>
+                <td>{{ $review->FirstVisit }}</td>
+                <td>{{ $review->HearAboutHarbour }}</td>
+                <td>{{ $review->OverallCleanliness }}</td>
+                <td>{{ $review->StaffFriendlyAndHelpful }}</td>
+                <td>{{ $review->SafetyAtTheHarbour }}</td>
+                <td>{{ $review->HowWouldYouRecommendToOthers }}</td>
+                <td>{{ $review->QualityForMoney }}</td>
+                <td><a href="{{ route('dashboard.show', $review->id) }}" class="btn btn-primary">View</a></td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
+    <div class="pagination">
+        {{ $survey->links() }}
+    </div>
+
+
 
 </main>
 </body>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('PeopleOnBoard');
             $table->string('TypeOfVessel');
             $table->boolean('FirstVisit');
+            $table->string('WhichHarbour');
             $table->string('HearAboutHarbour');
             $table->integer('OverallCleanliness');
             $table->integer('StaffFriendlyAndHelpful');

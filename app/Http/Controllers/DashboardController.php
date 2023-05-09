@@ -11,12 +11,12 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Dashboard $dashboard)
     {
         $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
         return view('dashboard.index', compact('latestAnswers'));
     }
-    public function login()
+    public function login(Dashboard $dashboard)
     {
         return view('dashboard.login');
     }
@@ -24,9 +24,9 @@ class DashboardController extends Controller
     /**
      * Display a page filled with reviews
      */
-    public function reviews()
+    public function reviews(Dashboard $dashboard)
     {
-        $survey = Survey::all();
+        $survey = Survey::paginate(20);
         return view('dashboard.reviews', compact('survey'));
     }
 
@@ -49,9 +49,15 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dashboard $dashboard)
+    public function show(Dashboard $dashboard, Survey $survey)
     {
-        //
+        // Retrieve the id of the Dashboard object
+        $survey_id = $survey->id;
+
+        // Retrieve the Survey object that corresponds to the given Dashboard id
+        $review = Survey::Find($survey_id);
+
+        return view('dashboard.show', compact('review'));
     }
 
     /**
