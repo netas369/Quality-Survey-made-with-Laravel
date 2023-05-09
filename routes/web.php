@@ -36,3 +36,4 @@ Route::post('/survey/submition', [SurveyController::class, 'store']);
 // Routes for dashboard page
 Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
 Route::controller(DashboardController::class)->group(function() {Route::get('/login', 'login');});
+Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});

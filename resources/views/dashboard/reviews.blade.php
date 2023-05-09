@@ -26,7 +26,31 @@
     </div>
 </nav>
 <main>
-<h1> Here will be the status dashboard</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>REVIEW ID</th>
+                <th>DATE</th>
+                <th>HARBOUR</th>
+                <th>RATING</th>
+                <th>STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($survey as $review)
+                <tr>
+                    <td>{{ $review->id }}</td>
+                    <td>{{ $review->created_at }}</td>
+                    <td>{{ $review->WhichHarbour }}</td>
+                    <td>1</td>
+                    <td>status</td>
+                </tr>
+
+            @endforeach
+        </tbody>
+    </table>
+
 </main>
 </body>
 </html>
