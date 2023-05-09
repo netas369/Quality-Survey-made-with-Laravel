@@ -98,7 +98,8 @@ table tbody tr:nth-child(even) {
 
 /* Pagination styling */
 .pagination a, .pagination span {
-    font-size: 14px; /* adjust the size as needed */
+    font-size: 16px; /* adjust the size as needed */
+    color:black;
 }
 
 .pagination .next, .pagination .prev {
