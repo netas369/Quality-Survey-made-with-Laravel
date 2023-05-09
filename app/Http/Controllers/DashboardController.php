@@ -22,6 +22,15 @@ class DashboardController extends Controller
     }
 
     /**
+     * Display a page filled with reviews
+     */
+    public function reviews()
+    {
+        $survey = Survey::all();
+        return view('dashboard.reviews', compact('survey'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

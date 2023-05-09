@@ -31,3 +31,39 @@ td:last-child {
         font-size: 14px;
     }
 }
+
+/* Style the sidenav */
+.sidenav {
+    height: 100%; /* Set full height */
+    width: 200px; /* Set width */
+    position: fixed; /* Fixed position */
+    z-index: 1; /* Make sure it overlaps other elements */
+    top: 50; /* Set to top */
+    left: 0; /* Set to left */
+    background-color: #f1f1f1; /* Set background color */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    padding-top: 20px; /* Add top padding */
+}
+
+/* Style the links inside the sidenav */
+.sidenav a {
+    padding: 6px 8px 25px 16px; /* Add padding */
+    text-decoration: none; /* Remove text decoration */
+    font-size: 30px; /* Set font size */
+    color: #818181; /* Set text color */
+    display: block; /* Set display to block */
+}
+
+/* Change the color of the links on hover */
+.sidenav a:hover {
+    background-color: #ddd; /* Change background color on hover */
+    color: black; /* Change text color on hover */
+}
+
+.sidenav h2 {
+    padding: 6px 8px 6px 16px; /* Add padding */
+    text-decoration: none; /* Remove text decoration */
+    font-size: 38px; /* Set font size */
+    color: darkred; /* Set text color */
+    display: block; /* Set display to block */
+}
