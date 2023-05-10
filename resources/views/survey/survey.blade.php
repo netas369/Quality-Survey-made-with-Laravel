@@ -69,15 +69,15 @@
     <label for="OverallCleanliness">Overall cleanliness:</label>
     <div class="rating">
         <input type="radio" id="ocStar5" name="OverallCleanliness" value="5" required/><label for="ocStar5" title="5 stars"></label>
-        <input type="radio" id="ocStar4" name="OverallCleanliness" value="4" required/><label for="ocStar4" title="4 stars"></label>
-        <input type="radio" id="ocStar3" name="OverallCleanliness" value="3" required/><label for="ocStar3" title="3 stars"></label>
-        <input type="radio" id="ocStar2" name="OverallCleanliness" value="2" required/><label for="ocStar2" title="2 stars"></label>
-        <input type="radio" id="ocStar1" name="OverallCleanliness" value="1" required/><label for="ocStar1" title="1 star"></label>
+        <input type="radio" id="ocStar4" name="OverallCleanliness" value="4" /><label for="ocStar4" title="4 stars"></label>
+        <input type="radio" id="ocStar3" name="OverallCleanliness" value="3" /><label for="ocStar3" title="3 stars"></label>
+        <input type="radio" id="ocStar2" name="OverallCleanliness" value="2" /><label for="ocStar2" title="2 stars"></label>
+        <input type="radio" id="ocStar1" name="OverallCleanliness" value="1" /><label for="ocStar1" title="1 star"></label>
     </div>
 
     <label for="StaffFriendlyAndHelpful">Staff friendly and helpfulness:</label>
     <div class="rating">
-        <input type="radio" id="staffStar5" name="StaffFriendlyAndHelpful" value="5" /><label for="staffStar5" title="5 stars"></label>
+        <input type="radio" id="staffStar5" name="StaffFriendlyAndHelpful" value="5" required/><label for="staffStar5" title="5 stars"></label>
         <input type="radio" id="staffStar4" name="StaffFriendlyAndHelpful" value="4" /><label for="staffStar4" title="4 stars"></label>
         <input type="radio" id="staffStar3" name="StaffFriendlyAndHelpful" value="3" /><label for="staffStar3" title="3 stars"></label>
         <input type="radio" id="staffStar2" name="StaffFriendlyAndHelpful" value="2" /><label for="staffStar2" title="2 stars"></label>
@@ -86,7 +86,7 @@
 
     <label for="SafetyAtTheHarbour">Safety at the harbour:</label>
     <div class="rating">
-        <input type="radio" id="star5-safety" name="SafetyAtTheHarbour" value="5" /><label for="star5-safety" title="5 stars"></label>
+        <input type="radio" id="star5-safety" name="SafetyAtTheHarbour" value="5" required/><label for="star5-safety" title="5 stars"></label>
         <input type="radio" id="star4-safety" name="SafetyAtTheHarbour" value="4" /><label for="star4-safety" title="4 stars"></label>
         <input type="radio" id="star3-safety" name="SafetyAtTheHarbour" value="3" /><label for="star3-safety" title="3 stars"></label>
         <input type="radio" id="star2-safety" name="SafetyAtTheHarbour" value="2" /><label for="star2-safety" title="2 stars"></label>
@@ -95,7 +95,7 @@
 
     <label for="HowWouldYouRecommendToOthers">How would you recommend to others?:</label>
     <div class="rating">
-        <input type="radio" id="star5-recommend" name="HowWouldYouRecommendToOthers" value="5" /><label for="star5-recommend" title="5 stars"></label>
+        <input type="radio" id="star5-recommend" name="HowWouldYouRecommendToOthers" value="5" required/><label for="star5-recommend" title="5 stars"></label>
         <input type="radio" id="star4-recommend" name="HowWouldYouRecommendToOthers" value="4" /><label for="star4-recommend" title="4 stars"></label>
         <input type="radio" id="star3-recommend" name="HowWouldYouRecommendToOthers" value="3" /><label for="star3-recommend" title="3 stars"></label>
         <input type="radio" id="star2-recommend" name="HowWouldYouRecommendToOthers" value="2" /><label for="star2-recommend" title="2 stars"></label>
@@ -104,7 +104,7 @@
 
     <label for="QualityForMoney">Quality for money:</label>
     <div class="rating">
-        <input type="radio" id="star5-money" name="QualityForMoney" value="5" /><label for="star5-money" title="5 stars"></label>
+        <input type="radio" id="star5-money" name="QualityForMoney" value="5" required/><label for="star5-money" title="5 stars"></label>
         <input type="radio" id="star4-money" name="QualityForMoney" value="4" /><label for="star4-money" title="4 stars"></label>
         <input type="radio" id="star3-money" name="QualityForMoney" value="3" /><label for="star3-money" title="3 stars"></label>
         <input type="radio" id="star2-money" name="QualityForMoney" value="2" /><label for="star2-money" title="2 stars"></label>
@@ -112,23 +112,21 @@
     </div>
 
     <label for="anyAdditionalAmenities">Any additional amenities you would like to see:</label>
-    <input type="text" id="anyAdditionalAmenities" name="AnyAdditionalAmenitiesYouWouldLikeToSee">
+    <input type="text" id="anyAdditionalAmenities" name="AnyAdditionalAmenitiesYouWouldLikeToSee" required>
 
     <label for="DidYouHadAnyIssuesWithTheDocking">Would you consider returning to the harbour?</label>
-    <select name="DidYouHadAnyIssuesWithTheDocking" id="DidYouHadAnyIssuesWithTheDocking">
+    <select name="DidYouHadAnyIssuesWithTheDocking" id="DidYouHadAnyIssuesWithTheDocking" required>
         <option value="1">Yes</option>
         <option value="0">No</option>
     </select>
 
     <label for="WouldYouConsiderReturningToHarbour">Would you consider returning to the harbour?</label>
-    <select name="WouldYouConsiderReturningToHarbour" id="WouldYouConsiderReturningToHarbour">
+    <select name="WouldYouConsiderReturningToHarbour" id="WouldYouConsiderReturningToHarbour" required>
         <option value="1">Yes</option>
         <option value="0">No</option>
     </select>
 
     <br><br> <input type="submit" value="Submit">
 </form>
-
-
 </body>
 </html>
