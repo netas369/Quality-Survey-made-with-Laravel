@@ -1,14 +1,14 @@
-/* Hide the default radio inputs */
-.rating input[type="radio"] {
-    display: none;
-}
-
 /* Style the labels to show the star icons */
 .rating label:before {
     content: "\2605";
     margin-right: 5px;
     font-size: 20px;
     color: #ccc;
+}
+
+/* Hide the default radio inputs */
+.rating input[type="radio"] {
+    display: none;
 }
 
 /* Style the labels of selected inputs to show yellow stars */

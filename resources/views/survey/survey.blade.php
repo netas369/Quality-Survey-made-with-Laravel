@@ -29,7 +29,7 @@
     @csrf
 
     <label for="PeopleOnBoard">How many people do/did you have on board?</label>
-    <select id="PeopleOnBoard" name="PeopleOnBoard">
+    <select id="PeopleOnBoard" name="PeopleOnBoard" required>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -52,13 +52,13 @@
     </select><br><br>
 
     <label for="WhichHarbour">In which harbour did you stay?</label>
-    <select id="WhichHarbour" name="WhichHarbour">
+    <select id="WhichHarbour" name="WhichHarbour" required>
         <option value="V.V.W Schelde">V.V.W Schelde</option>
         <option value="Stadshaven Scheldekwartier">Stadshaven Scheldekwartier</option>
     </select><br><br>
 
     <label for="HearAboutHarbour">How did you hear of our harbour?</label>
-    <select id="HearAboutHarbour" name="HearAboutHarbour">
+    <select id="HearAboutHarbour" name="HearAboutHarbour" required>
         <option value="internet">internet</option>
         <option value="almanac">almanac</option>
         <option value="recommended by others">recommended by others</option>
@@ -68,11 +68,11 @@
 
     <label for="OverallCleanliness">Overall cleanliness:</label>
     <div class="rating">
-        <input type="radio" id="ocStar5" name="OverallCleanliness" value="5" /><label for="ocStar5" title="5 stars"></label>
-        <input type="radio" id="ocStar4" name="OverallCleanliness" value="4" /><label for="ocStar4" title="4 stars"></label>
-        <input type="radio" id="ocStar3" name="OverallCleanliness" value="3" /><label for="ocStar3" title="3 stars"></label>
-        <input type="radio" id="ocStar2" name="OverallCleanliness" value="2" /><label for="ocStar2" title="2 stars"></label>
-        <input type="radio" id="ocStar1" name="OverallCleanliness" value="1" /><label for="ocStar1" title="1 star"></label>
+        <input type="radio" id="ocStar5" name="OverallCleanliness" value="5" required/><label for="ocStar5" title="5 stars"></label>
+        <input type="radio" id="ocStar4" name="OverallCleanliness" value="4" required/><label for="ocStar4" title="4 stars"></label>
+        <input type="radio" id="ocStar3" name="OverallCleanliness" value="3" required/><label for="ocStar3" title="3 stars"></label>
+        <input type="radio" id="ocStar2" name="OverallCleanliness" value="2" required/><label for="ocStar2" title="2 stars"></label>
+        <input type="radio" id="ocStar1" name="OverallCleanliness" value="1" required/><label for="ocStar1" title="1 star"></label>
     </div>
 
     <label for="StaffFriendlyAndHelpful">Staff friendly and helpfulness:</label>
