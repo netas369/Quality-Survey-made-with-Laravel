@@ -61,7 +61,7 @@ class SurveyController extends Controller
         return $request->validate([
             'PeopleOnBoard' => 'required|integer',
             'TypeOfVessel' => 'required|string',
-            'FirstVisit' => 'required|boolean',
+            'FirstVisit' => 'required|string',
             'WhichHarbour' => 'required|string',
             'HearAboutHarbour' => 'required|string',
             'OverallCleanliness' => 'required|integer|min:1|max:5',
@@ -69,9 +69,9 @@ class SurveyController extends Controller
             'SafetyAtTheHarbour' => 'required|integer|min:1|max:5',
             'HowWouldYouRecommendToOthers' => 'required|integer|min:1|max:5',
             'QualityForMoney' => 'required|integer|min:1|max:5',
-            'AnyAdditionalAmenitiesYouWouldLikeToSee' => 'nullable|string',
-            'DidYouHadAnyIssuesWithTheDocking' => 'nullable|string',
-            'WouldYouConsiderReturningToHarbour' => 'required|boolean',
+            'AnyAdditionalAmenitiesYouWouldLikeToSee' => 'required|string',
+            'DidYouHadAnyIssuesWithTheDocking' => 'required|string',
+            'WouldYouConsiderReturningToHarbour' => 'required|string',
         ]);
     }
 }
