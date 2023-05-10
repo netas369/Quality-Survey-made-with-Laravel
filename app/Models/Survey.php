@@ -15,7 +15,7 @@ class Survey extends Model
                         $this->HowWouldYouRecommendToOthers + $this->QualityForMoney) / 5;
         if ($ratingAverage > 3.7) {
             return $ratingAverage.'😀';
-        } else if($ratingAverage < 2.5) {
+        } else if($ratingAverage < 2.6) {
             return $ratingAverage.'😥';
         } else {
             return $ratingAverage.'🙂';
