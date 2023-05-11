@@ -14,9 +14,9 @@ class DashboardController extends Controller
      */
     public function index(Dashboard $dashboard)
     {
-        $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
-        return view('dashboard.index', compact('latestAnswers'));
+        return view('dashboard.index');
     }
+
     public function login(Dashboard $dashboard)
     {
         return view('dashboard.login');
@@ -29,9 +29,8 @@ class DashboardController extends Controller
     {
 
         $survey = Survey::paginate(20);
-        $bar = new HappinessBar();
 
-        return view('dashboard.reviews', compact('survey', 'bar'));
+        return view('dashboard.reviews', compact('survey'));
     }
 
     /**
