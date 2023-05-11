@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>VVW Schelde Flushing</title>
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
     <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
     <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <title>Login to dashboard</title>
 </head>
-<body>
 <header>
     <h1>VVW Schelde Flushing</h1>
     <h1>Control Dashboard</h1>
@@ -18,15 +18,14 @@
         </ul>
     </nav>
 </header>
-<nav>
-    <div class="sidenav">
-        <h2>MENU</h2>
-        <a href={{ url('/dashboard') }}>Status</a>
-        <a href={{ url('/reviews') }}>Reviews</a>
-    </div>
-</nav>
-<main>
-<h1> Here will be the status dashboard</h1>
-</main>
+<body>
+<h1>Login to see dashboard</h1>
+<form>
+    <label>Username</label>
+    <input type="text"><br><br>
+    <label>Password</label>
+    <input type="password">
+</form>
+<button onclick="window.location.href='/dashboard'">Login</button>
 </body>
 </html>

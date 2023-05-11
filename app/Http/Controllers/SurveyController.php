@@ -12,11 +12,15 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function index()
     {
-        return view('survey.choosesurvey');
+        return view('survey.index');
     }
 
+    public function showSurvey()
+    {
+        return view('survey.survey');
+    }
     public function create($language)
     {
         if ($language === 'survey-eng') {
@@ -28,24 +32,24 @@ class SurveyController extends Controller
         }
     }
 
-    public function store(Request $request, $language)
+    public function store(Request $request)
     {
         $survey = new Survey();
 
         $survey->PeopleOnBoard = $request->input('PeopleOnBoard');
-        $survey->AdultsOnBoard = $request->input('AdultsOnBoard');
-        $survey->AgeOfChildren = $request->input('AgeOfChildren');
         $survey->TypeOfVessel = $request->input('TypeOfVessel');
         $survey->FirstVisit = $request->input('FirstVisit');
         $survey->HearAboutHarbour = $request->input('HearAboutHarbour');
+        $survey->OverallCleanliness = $request->input('OverallCleanliness');
+        $survey->StaffFriendlyAndHelpful = $request->input('StaffFriendlyAndHelpful');
+        $survey->SafetyAtTheHarbour = $request->input('SafetyAtTheHarbour');
+        $survey->HowWouldYouRecommendToOthers = $request->input('HowWouldYouRecommendToOthers');
+        $survey->QualityForMoney = $request->input('QualityForMoney');
+        $survey->AnyAdditionalAmenitiesYouWouldLikeToSee = $request->input('AnyAdditionalAmenitiesYouWouldLikeToSee');
+        $survey->DidYouHadAnyIssuesWithTheDocking = $request->input('DidYouHadAnyIssuesWithTheDocking');
+        $survey->WouldYouConsiderReturningToHarbour = $request->input('WouldYouConsiderReturningToHarbour');
+
 
         $survey->save();
-
-        if ($language === 'survey-eng') {
-            return view('survey.thanks-eng');
-        } elseif ($language === 'survey-nl') {
-            return view('survey.thanks-nl');
-        } else {
-            abort(404);
-        }
+        return view('survey.thanks-eng');
     }}

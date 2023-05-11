@@ -26,7 +26,9 @@
     </div>
 </nav>
 <main>
-<h1> Here will be the status dashboard</h1>
+            <p>Question nr...</p>
+            <p>{{ $review->id }}</p>
+
 </main>
 </body>
 </html>

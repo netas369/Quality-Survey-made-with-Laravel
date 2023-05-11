@@ -1,0 +1,108 @@
+
+@media only screen and (max-width: 600px) {
+    table {
+        font-size: 14px;
+    }
+}
+
+/* Style the sidenav */
+.sidenav {
+    height: 100%; /* Set full height */
+    width: 200px; /* Set width */
+    position: fixed; /* Fixed position */
+    z-index: 0; /* Make sure it overlaps other elements */
+    top: 0; /* Set to top */
+    left: 0; /* Set to left */
+    background-color: #333; /* Set background color */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    padding-top: 20px; /* Add top padding */
+}
+
+/* Style the links inside the sidenav */
+.sidenav a {
+    padding: 6px 8px 25px 16px; /* Add padding */
+    text-decoration: none; /* Remove text decoration */
+    font-size: 30px; /* Set font size */
+    color: #818181; /* Set text color */
+    display: block; /* Set display to block */
+}
+
+/* Change the color of the links on hover */
+.sidenav a:hover {
+    background-color: #ddd; /* Change background color on hover */
+    color: black; /* Change text color on hover */
+}
+
+.sidenav h2 {
+    padding: 6px 8px 6px 16px; /* Add padding */
+    text-decoration: none; /* Remove text decoration */
+    font-size: 38px; /* Set font size */
+    color: darkred; /* Set text color */
+    display: block; /* Set display to block */
+}
+/* Table styling */
+table {
+    width: 60%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 40px;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+table th {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #f5f5f5;
+}
+
+table td {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+}
+
+table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* Button styling */
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #349e72;
+}
+
+/* Pagination styling */
+.pagination a, .pagination span {
+    font-size: 16px; /* adjust the size as needed */
+    color:black;
+}
+
+.pagination .next, .pagination .prev {
+    font-size: 14px; /* adjust the size as needed */
+    padding: 5px 10px; /* adjust the padding as needed */
+}

@@ -14,11 +14,18 @@ return new class extends Migration
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
             $table->integer('PeopleOnBoard');
-            $table->integer('AdultsOnBoard');
-            $table->string('AgeOfChildren');
             $table->string('TypeOfVessel');
-            $table->string('FirstVisit');
+            $table->boolean('FirstVisit');
+            $table->string('WhichHarbour');
             $table->string('HearAboutHarbour');
+            $table->integer('OverallCleanliness');
+            $table->integer('StaffFriendlyAndHelpful');
+            $table->integer('SafetyAtTheHarbour');
+            $table->integer('HowWouldYouRecommendToOthers');
+            $table->integer('QualityForMoney');
+            $table->string('AnyAdditionalAmenitiesYouWouldLikeToSee');
+            $table->integer('DidYouHadAnyIssuesWithTheDocking');
+            $table->integer('WouldYouConsiderReturningToHarbour');
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@
         <ul>
 
             <li><a class="{{ Request::path() === '/' ? 'active' : '' }}" href="{{ url('/') }}">Home</a></li>
-            <li><a class="{{ Request::path() === 'choosesurvey' ? 'active' : '' }}" href="{{ url('choosesurvey') }}">Survey</a></li>
-            <li><a class="{{ Request::path() === 'dashboard' ? 'active' : '' }}" href="{{ url('dashboard') }}">Dashboard</a></li>
+            <li><a class="{{ Request::path() === 'survey' ? 'active' : '' }}" href="{{ url('/survey') }}">Survey</a></li>
+            <li><a class="{{ Request::path() === 'dashboard' ? 'active' : '' }}" href="{{ url('/login') }}">Dashboard</a></li>
         </ul>
     </nav>
 </header>
@@ -27,7 +27,7 @@
         <h2>Survey Language Options</h2>
         <p>Choose your survey language:</p>
         <ul>
-            <li><a href="{{ url(request()->path() . '/survey-eng') }}">English</a></li>
+            <li><a href="{{ url(request()->path() . '/submition') }}">English</a></li>
             <li><a href="{{ url(request()->path() . '/survey-nl') }}">Dutch (Nederlands)</a></li>
         </ul>
     </section>
