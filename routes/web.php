@@ -34,7 +34,39 @@ Route::post('/survey/submition', [SurveyController::class, 'store']);
 
 
 // Routes for dashboard page
-Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
-Route::controller(DashboardController::class)->group(function() {Route::get('/login', 'login');});
-Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});
-Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+//Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
+//Route::controller(DashboardController::class)->group(function() {Route::get('/login', 'login');});
+//Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});
+//Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+Route::group(['namespace' => 'App\Http\Controllers'], function()
+{
+    /**
+     * Home Routes
+     */
+    Route::get('/', 'WelcomeController@index')->name('welcome.index');
+
+    Route::group(['middleware' => ['guest']], function() {
+        /**
+         * Register Routes
+         */
+        Route::get('/register', 'RegisterController@show')->name('register.show');
+        Route::post('/register', 'RegisterController@register')->name('register.perform');
+
+        /**
+         * Login Routes
+         */
+        Route::get('/login', 'LoginController@show')->name('login.show');
+        Route::post('/login', 'LoginController@login')->name('login.perform');
+
+    });
+
+    Route::group(['middleware' => ['auth']], function() {
+        /**
+         * Logout Routes
+         */
+        Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
+        Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});
+        Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+        Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+    });
+});
