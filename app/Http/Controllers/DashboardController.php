@@ -28,7 +28,7 @@ class DashboardController extends Controller
     public function reviews(Dashboard $dashboard)
     {
 
-        $survey = Survey::paginate(20);
+        $survey = Survey::orderBy('created_at', 'desc')->paginate(20);
 
         return view('dashboard.reviews', compact('survey'));
     }
