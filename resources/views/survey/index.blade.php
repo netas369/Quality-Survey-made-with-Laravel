@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
     <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
+    <link rel="stylesheet" href="/css/WelcomePage.css">
 </head>
 <body>
 <header>

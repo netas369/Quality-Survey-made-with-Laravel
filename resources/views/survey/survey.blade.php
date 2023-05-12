@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/stylingsurveys.css">
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
     <link rel="stylesheet" type="text/css" href="/css/surveystars.css">
+    <link rel="stylesheet" href="/css/WelcomePage.css">
     <script src="/js/surveyscript.js"></script>
 
 
