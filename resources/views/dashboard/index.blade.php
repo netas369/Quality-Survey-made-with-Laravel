@@ -17,19 +17,16 @@
 <body class="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
 
 <header>
-    <!--Nav-->
+    <!-- Nav -->
     <nav aria-label="menu nav" class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
-
         <div class="flex flex-wrap items-center">
-            <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
+            <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start">
                 <a href="#" aria-label="Home">
-                    <span class="text-xl pl-2"><i class="em em-grinning"></i></span>
+                    <span class="text-4xl text-white"><i class="em em-grinning"></i></span>
                 </a>
             </div>
-
-         <h1 class="mb-4 text-3xl font-bold text-white-900 dark:text-white md:text-5xl lg:text-5xl">Analytics Dashboard</h1>
+            <h1 class="mb-4 text-3xl font-bold text-white md:text-6xl lg:text-5xl">Analytics Dashboard</h1>
         </div>
-
     </nav>
 </header>
 
@@ -44,12 +41,17 @@
                     <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
                         <li class="mr-3 flex-1">
                             <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
-                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Analytics</span>
+                                    <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Analytics</span>
                             </a>
                         </li>
                         <li class="mr-3 flex-1">
                             <a href="{{ url('/reviews') }}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                                 <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">All reviews</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="{{ url('/logout') }}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-sign-out-alt pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-red-600 md:text-red-400 block md:inline-block">Logout</span>
                             </a>
                         </li>
                     </ul>
