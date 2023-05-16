@@ -34,6 +34,22 @@ class DashboardController extends Controller
         return view('dashboard.reviews', compact('survey', 'bar'));
     }
 
+    public function login(Dashboard $dashboard)
+    {
+        return view('dashboard.login');
+    }
+
+    /**
+     * Display a page filled with reviews
+     */
+    public function reviews(Dashboard $dashboard)
+    {
+
+        $survey = Survey::orderBy('created_at', 'desc')->paginate(20);
+
+        return view('dashboard.reviews', compact('survey'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
