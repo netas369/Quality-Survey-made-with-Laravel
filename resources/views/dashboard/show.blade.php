@@ -1,18 +1,17 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Thank You</title>
-    <link rel="stylesheet" type="text/css" href="/css/thanksstyling.css">
+    <title>VVW Schelde Flushing</title>
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
-    <link rel="stylesheet" href="/css/WelcomePage.css">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
 </head>
+<body>
 <header>
     <h1>VVW Schelde Flushing</h1>
+    <h1>Control Dashboard</h1>
     <nav class="topnav">
         <ul>
-
             <li><a class="{{ Request::path() === '/' ? 'active' : '' }}" href="{{ url('/') }}">Home</a></li>
             <li><a class="{{ Request::path() === 'survey' ? 'active' : '' }}" href="{{ url('/survey') }}">Survey</a></li>
             @guest
@@ -24,10 +23,18 @@
         </ul>
     </nav>
 </header>
-<body>
-<div class="container">
-    <h1>Thank You</h1>
-    <p>Thank you for filling out the survey. We will send the answers to the secretary.</p>
-</div>
+<nav>
+    <div class="sidenav">
+        <h2>MENU</h2>
+        <a href={{ url('/dashboard') }}>Status</a>
+        <a href={{ url('/reviews') }}>Reviews</a>
+        <a href={{ url('/logout') }}>Logout</a>
+    </div>
+</nav>
+<main>
+            <p>Question nr...</p>
+            <p>{{ $review->id }}</p>
+
+</main>
 </body>
 </html>

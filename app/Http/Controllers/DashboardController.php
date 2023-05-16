@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\HappinessBar;
 use App\Models\Dashboard;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -10,9 +12,25 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Dashboard $dashboard)
     {
         return view('dashboard.index');
+    }
+
+    public function login(Dashboard $dashboard)
+    {
+        return view('dashboard.login');
+    }
+
+    /**
+     * Display a page filled with reviews
+     */
+    public function reviews(Dashboard $dashboard)
+    {
+
+        $survey = Survey::orderBy('created_at', 'desc')->paginate(20);
+
+        return view('dashboard.reviews', compact('survey'));
     }
 
     /**
@@ -34,9 +52,15 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dashboard $dashboard)
+    public function show(Dashboard $dashboard, Survey $survey)
     {
-        //
+        // Retrieve the id of the Dashboard object
+        $survey_id = $survey->id;
+
+        // Retrieve the Survey object that corresponds to the given Dashboard id
+        $review = Survey::Find($survey_id);
+
+        return view('dashboard.show', compact('review'));
     }
 
     /**

@@ -12,11 +12,15 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function index()
     {
-        return view('survey.choosesurvey');
+        return view('survey.index');
     }
 
+    public function showSurvey()
+    {
+        return view('survey.survey');
+    }
     public function create($language)
     {
         if ($language === 'survey-eng') {
@@ -28,24 +32,46 @@ class SurveyController extends Controller
         }
     }
 
-    public function store(Request $request, $language)
+    public function store(Request $request)
     {
+        $validatedData = $this->validateSurveyData($request);
+
         $survey = new Survey();
 
-        $survey->PeopleOnBoard = $request->input('PeopleOnBoard');
-        $survey->AdultsOnBoard = $request->input('AdultsOnBoard');
-        $survey->AgeOfChildren = $request->input('AgeOfChildren');
-        $survey->TypeOfVessel = $request->input('TypeOfVessel');
-        $survey->FirstVisit = $request->input('FirstVisit');
-        $survey->HearAboutHarbour = $request->input('HearAboutHarbour');
+        $survey->PeopleOnBoard = $validatedData['PeopleOnBoard'];
+        $survey->TypeOfVessel = $validatedData['TypeOfVessel'];
+        $survey->FirstVisit = $validatedData['FirstVisit'];
+        $survey->WhichHarbour = $validatedData['WhichHarbour'];
+        $survey->HearAboutHarbour = $validatedData['HearAboutHarbour'];
+        $survey->OverallCleanliness = $validatedData['OverallCleanliness'];
+        $survey->StaffFriendlyAndHelpful = $validatedData['StaffFriendlyAndHelpful'];
+        $survey->SafetyAtTheHarbour = $validatedData['SafetyAtTheHarbour'];
+        $survey->HowWouldYouRecommendToOthers = $validatedData['HowWouldYouRecommendToOthers'];
+        $survey->QualityForMoney = $validatedData['QualityForMoney'];
+        $survey->AnyAdditionalAmenitiesYouWouldLikeToSee = $validatedData['AnyAdditionalAmenitiesYouWouldLikeToSee'];
+        $survey->DidYouHadAnyIssuesWithTheDocking = $validatedData['DidYouHadAnyIssuesWithTheDocking'];
+        $survey->WouldYouConsiderReturningToHarbour = $validatedData['WouldYouConsiderReturningToHarbour'];
 
         $survey->save();
+        return view('survey.thanks-eng');
+    }
 
-        if ($language === 'survey-eng') {
-            return view('survey.thanks-eng');
-        } elseif ($language === 'survey-nl') {
-            return view('survey.thanks-nl');
-        } else {
-            abort(404);
-        }
-    }}
+    public function validateSurveyData(Request $request)
+    {
+        return $request->validate([
+            'PeopleOnBoard' => 'required|integer',
+            'TypeOfVessel' => 'required|string',
+            'FirstVisit' => 'required|string',
+            'WhichHarbour' => 'required|string',
+            'HearAboutHarbour' => 'required|string',
+            'OverallCleanliness' => 'required|integer|min:1|max:5',
+            'StaffFriendlyAndHelpful' => 'required|integer|min:1|max:5',
+            'SafetyAtTheHarbour' => 'required|integer|min:1|max:5',
+            'HowWouldYouRecommendToOthers' => 'required|integer|min:1|max:5',
+            'QualityForMoney' => 'required|integer|min:1|max:5',
+            'AnyAdditionalAmenitiesYouWouldLikeToSee' => 'required|string',
+            'DidYouHadAnyIssuesWithTheDocking' => 'required|string',
+            'WouldYouConsiderReturningToHarbour' => 'required|string',
+        ]);
+    }
+}
