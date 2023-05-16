@@ -11,6 +11,7 @@
 
 
 
+
 </head>
 
 <header>
@@ -36,6 +37,7 @@
 
     <label for="PeopleOnBoard">How many people do/did you have on board?</label>
     <select id="PeopleOnBoard" name="PeopleOnBoard" required>
+
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -47,6 +49,7 @@
         <option value="9">9</option>
         <option value="10">10</option>
     </select><br><br>
+
 
     <label for="TypeOfVessel">What type of vessel are you on?</label>
     <input type="text" id="TypeOfVessel" name="TypeOfVessel" required><br><br>
@@ -65,12 +68,12 @@
 
     <label for="HearAboutHarbour">How did you hear of our harbour?</label>
     <select id="HearAboutHarbour" name="HearAboutHarbour" required>
+
         <option value="internet">internet</option>
         <option value="almanac">almanac</option>
         <option value="recommended by others">recommended by others</option>
         <option value="different">different</option>
     </select><br><br>
-
 
     <label for="OverallCleanliness">Overall cleanliness:</label>
     <div class="rating">
@@ -134,5 +137,6 @@
 
     <br><br> <input type="submit" value="Submit">
 </form>
+
 </body>
 </html>

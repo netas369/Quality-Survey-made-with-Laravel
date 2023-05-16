@@ -22,6 +22,7 @@ class SurveyFactory extends Factory
             'FirstVisit' => $this->faker->boolean,
             'WhichHarbour' =>$this->faker->randomElement(['V.V.W Schelde', 'Stadshaven Scheldekwartier']),
             'HearAboutHarbour' => $this->faker->randomElement(['Internet', 'Almanac', 'Recommended by others', 'Different']),
+
             'OverallCleanliness' => $this->faker->numberBetween(1, 5),
             'StaffFriendlyAndHelpful' => $this->faker->numberBetween(1, 5),
             'SafetyAtTheHarbour' => $this->faker->numberBetween(1, 5),
