@@ -91,8 +91,8 @@
                                             class="fa fa-wallet fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Total Revenue</h2>
-                                    <p class="font-bold text-3xl">$3248 <span class="text-green-500"><i
+                                    <h2 class="font-bold uppercase text-gray-600">Data 1</h2>
+                                    <p class="font-bold text-3xl">Data 1.1 <span class="text-green-500"><i
                                                 class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
@@ -109,8 +109,8 @@
                                             class="fas fa-users fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Total Users</h2>
-                                    <p class="font-bold text-3xl">249 <span class="text-pink-500"><i
+                                    <h2 class="font-bold uppercase text-gray-600">Data 2</h2>
+                                    <p class="font-bold text-3xl">Data 2.1 <span class="text-pink-500"><i
                                                 class="fas fa-exchange-alt"></i></span></p>
                                 </div>
                             </div>
@@ -127,8 +127,8 @@
                                             class="fas fa-user-plus fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">New Users</h2>
-                                    <p class="font-bold text-3xl">2 <span class="text-yellow-600"><i
+                                    <h2 class="font-bold uppercase text-gray-600">Data 3</h2>
+                                    <p class="font-bold text-3xl">Data 3.1 <span class="text-yellow-600"><i
                                                 class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
@@ -145,8 +145,8 @@
                                             class="fas fa-server fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Server Uptime</h2>
-                                    <p class="font-bold text-3xl">152 days</p>
+                                    <h2 class="font-bold uppercase text-gray-600">Data 4</h2>
+                                    <p class="font-bold text-3xl">Data 4.1</p>
                                 </div>
                             </div>
                         </div>
@@ -162,8 +162,8 @@
                                             class="fas fa-tasks fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">To Do List</h2>
-                                    <p class="font-bold text-3xl">7 tasks</p>
+                                    <h2 class="font-bold uppercase text-gray-600">Data 5</h2>
+                                    <p class="font-bold text-3xl">Data 5.1</p>
                                 </div>
                             </div>
                         </div>
@@ -179,8 +179,8 @@
                                             class="fas fa-inbox fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Issues</h2>
-                                    <p class="font-bold text-3xl">3 <span class="text-red-500"><i
+                                    <h2 class="font-bold uppercase text-gray-600">Data 6</h2>
+                                    <p class="font-bold text-3xl">Data 6.1 <span class="text-red-500"><i
                                                 class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
@@ -335,38 +335,10 @@
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
                             <div
                                 class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">Graph</h2>
+                                <h2 class="font-bold uppercase text-gray-600">extra graph</h2>
                             </div>
                             <div class="p-5">
-                                <table class="w-full p-5 text-gray-700">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-left text-blue-900">Name</th>
-                                        <th class="text-left text-blue-900">Side</th>
-                                        <th class="text-left text-blue-900">Role</th>
-                                    </tr>
-                                    </thead>
 
-                                    <tbody>
-                                    <tr>
-                                        <td>Obi Wan Kenobi</td>
-                                        <td>Light</td>
-                                        <td>Jedi</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Greedo</td>
-                                        <td>South</td>
-                                        <td>Scumbag</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Darth Vader</td>
-                                        <td>Dark</td>
-                                        <td>Sith</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                                <p class="py-2"><a href="#">See More issues...</a></p>
 
                             </div>
                         </div>
@@ -377,14 +349,11 @@
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
                             <div
                                 class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">Advert</h2>
+                                <h2 class="font-bold uppercase text-gray-600">extra</h2>
                             </div>
                             <div class="p-5 text-center">
 
 
-                                <script async type="text/javascript"
-                                        src="//cdn.carbonads.com/carbon.js?serve=CK7D52JJ&placement=wwwtailwindtoolboxcom"
-                                        id="_carbonads_js"></script>
                             </div>
                         </div>
                         <!--/Advert Card-->
