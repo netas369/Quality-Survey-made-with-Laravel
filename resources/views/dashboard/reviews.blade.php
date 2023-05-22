@@ -2,6 +2,24 @@
 <html>
 <head>
     <title>VVW Schelde Flushing</title>
+    <style>
+        .progress-bar {
+            width: 1043px;
+            height: 20px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            border-radius: 4px;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
     <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
     <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
@@ -30,6 +48,10 @@
 
     <div class="pagination">
         {{ $survey->links() }}
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress" style="width: {{ $averageSatisfaction }}%"></div>
     </div>
 
     <table class="table">
