@@ -23,6 +23,6 @@ class SatisfactionController extends Controller
         $averageSatisfaction = $averageValues->avg();
 
         // Pass the average satisfaction to the view
-        return view('dashboard.show', ['averageSatisfaction' => $averageSatisfaction]);
+        return view('dashboard.reviews', ['averageSatisfaction' => $averageSatisfaction]);
     }
 }
