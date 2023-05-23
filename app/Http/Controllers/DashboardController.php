@@ -4,20 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Charts\HappinessBar;
 use App\Models\Dashboard;
-use App\Models\Survey;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Survey;
 class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Dashboard $dashboard)
+    public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
         return view('dashboard.index', compact('latestAnswers'));
     }
-    public function login(Dashboard $dashboard)
+    public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('dashboard.login');
     }
@@ -27,11 +30,23 @@ class DashboardController extends Controller
      */
     public function reviews(Dashboard $dashboard)
     {
-
         $survey = Survey::paginate(20);
         $bar = new HappinessBar();
 
-        return view('dashboard.reviews', compact('survey', 'bar'));
+        // Fetch specific data using query builder
+        $data = DB::table('surveys')
+            ->select('OverallCleanliness', 'StaffFriendlyAndHelpful', 'SafetyAtTheHarbour', 'HowWouldYouRecommendToOthers', 'QualityForMoney')
+            ->get();
+
+        // Calculate the average of the five columns
+        $averageValues = $data->map(function ($row) {
+            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->HowWouldYouRecommendToOthers + $row->QualityForMoney) / 5;
+        });
+
+        // Calculate the overall average
+        $averageSatisfaction = $averageValues->avg();
+
+        return view('dashboard.reviews', compact('survey', 'bar', 'averageSatisfaction'));
     }
 
     /**

@@ -34,9 +34,9 @@ Route::post('/survey/submition', [SurveyController::class, 'store']);
 
 
 // Routes for dashboard page
-Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
-Route::controller(DashboardController::class)->group(function() {Route::get('/login', 'login');});
-Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});
-Route::get('/reviews', [\App\Http\Controllers\SatisfactionController::class, 'showSatisfaction'])->name('reviews');
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/login', [DashboardController::class, 'login']);
+Route::get('/reviews', [DashboardController::class, 'reviews']);
 Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
 

@@ -9,6 +9,12 @@
             background-color: #f2f2f2;
             border-radius: 4px;
             margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .progress-bar span{
+            position: absolute;
+            text-align: center;
         }
 
         .progress {
@@ -17,6 +23,8 @@
             background-color: #4caf50;
             border-radius: 4px;
             transition: width 0.3s ease-in-out;
+            text-align: center;
+            color: white;
         }
     </style>
 
@@ -44,14 +52,17 @@
 </nav>
 <main>
 
-{{--    {{ $bar->labels(['One', 'Two', 'Three']) }}--}}
+{{--    {{ $bar->labels(['One', 'Two', 'Three']) }} --}}
+
 
     <div class="pagination">
         {{ $survey->links() }}
     </div>
 
+
     <div class="progress-bar">
-        <div class="progress" style="width: {{ $averageSatisfaction }}%"></div>
+        <span> {{ round($averageSatisfaction * 20, 2) }}% </span>
+        <div class="progress" style="width: {{ $averageSatisfaction * 20 }}%"> </div>
     </div>
 
     <table class="table">
