@@ -33,8 +33,10 @@
         <h2>Survey Language Options</h2>
         <p>Choose your survey language:</p>
         <ul>
-            <li><a href="{{ url(request()->path() . '/submition') }}">English</a></li>
-            <li><a href="{{ url(request()->path() . '/survey-nl') }}">Dutch (Nederlands)</a></li>
+            <li><a href="{{ url(request()->path() . '/submition/en') }}">English</a></li>
+            <li><a href="{{ url(request()->path() . '/submition/nl') }}">Dutch (Nederlands)</a></li>
+            <li><a href="{{ url(request()->path() . '/submition/de') }}">German (Deutsch)</a></li>
+            <li><a href="{{ url(request()->path() . '/submition/fr') }}">French (Français)</a></li>
         </ul>
     </section>
 

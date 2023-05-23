@@ -135,4 +135,7 @@
     <br><br> <input type="submit" value="Submit">
 </form>
 </body>
+<script>
+    console.log('Current Locale:', '{{ app()->getLocale() }}');
+</script>
 </html>
