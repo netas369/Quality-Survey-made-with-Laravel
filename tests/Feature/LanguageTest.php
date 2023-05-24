@@ -63,4 +63,18 @@ class LanguageTest extends TestCase
         $response->assertStatus(200)
             ->assertSeeText('Wie viele Leute sind/hatten Sie an Bord?');
     }
+
+    public function testLocaleFallback()
+    {
+        // Arrange
+        $incorrectLocale = 'us';
+
+        // Act
+        $response = $this->get('/survey/submition/' . $incorrectLocale);
+
+        // Incorrect locale should load in default locale en
+        $response->assertStatus(200)
+            ->assertViewIs('survey.survey')
+            ->assertSeeText('how many people do/did you have onboard');
+    }
 }
