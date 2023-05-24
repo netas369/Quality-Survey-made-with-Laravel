@@ -6,6 +6,7 @@ use App\Charts\HappinessBar;
 use App\Models\Dashboard;
 use App\Models\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
@@ -14,7 +15,31 @@ class DashboardController extends Controller
      */
     public function index(Dashboard $dashboard)
     {
-        return view('dashboard.index');
+        // how many surveys have been completed this month
+        $currentMonthSurveyCount = Survey::whereMonth('created_at', Carbon::now()->month)
+            ->whereYear('created_at', Carbon::now()->year)
+            ->count();
+
+        // Total surveys in the database
+        $totalSurveyCount = Survey::count();
+
+        // Graph 3 to retrieve for the last 7 months how many surveys have been completed
+        $currentMonth = Carbon::now();
+        $labels = [];
+        $data = [];
+
+        for ($i = 6; $i >= 0; $i--) {
+            $currentMonth = Carbon::now(); // Reset $currentMonth in each iteration
+            $month = $currentMonth->subMonths($i);
+            $labels[] = $month->format('F');
+
+            $surveyCount = Survey::whereMonth('created_at', $month->month)
+                ->whereYear('created_at', $month->year)
+                ->count();
+
+            $data[] = $surveyCount;
+        }
+        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data'));
     }
 
     public function login(Dashboard $dashboard)
