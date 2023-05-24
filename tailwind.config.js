@@ -5,6 +5,7 @@ module.exports = {
       "./resources/views/dashboard/reviews.blade.php",
       "./resources/views/dashboard/show.blade.php"
   ],
+
   theme: {
     extend: {},
   },
