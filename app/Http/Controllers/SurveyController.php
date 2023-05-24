@@ -17,8 +17,14 @@ class SurveyController extends Controller
         return view('survey.index');
     }
 
-    public function showSurvey()
+    public function showSurvey($locale = null)
     {
+        if (!in_array($locale, array_keys(config('app.supported_locales')))) {
+            $locale = config('app.locale');
+        }
+
+        app()->setLocale($locale);
+
         return view('survey.survey');
     }
     public function create($language)
