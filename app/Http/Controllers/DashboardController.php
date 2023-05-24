@@ -15,7 +15,6 @@ class DashboardController extends Controller
      */
     public function index(Dashboard $dashboard)
     {
-<<<<<<< HEAD
         // how many surveys have been completed this month
         $currentMonthSurveyCount = Survey::whereMonth('created_at', Carbon::now()->month)
             ->whereYear('created_at', Carbon::now()->year)
@@ -41,10 +40,7 @@ class DashboardController extends Controller
             $data[] = $surveyCount;
         }
         return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data'));
-=======
-        $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
-        return view('dashboard.index', compact('latestAnswers'));
->>>>>>> 571515e5c453769c2c4bddbb9c529ce70c869f26
+
     }
     public function login(Dashboard $dashboard)
     {
@@ -104,7 +100,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dashboard $dashboard)
+     function update(Request $request, Dashboard $dashboard)
     {
         //
     }
