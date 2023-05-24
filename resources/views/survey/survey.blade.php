@@ -11,6 +11,7 @@
 
 
 
+
 </head>
 
 <header>
@@ -36,6 +37,7 @@
 
     <label for="PeopleOnBoard">{{ trans('messages.question1') }}</label>
     <select id="PeopleOnBoard" name="PeopleOnBoard" required>
+
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -65,6 +67,7 @@
 
     <label for="HearAboutHarbour">{{ trans('messages.question5') }}</label>
     <select id="HearAboutHarbour" name="HearAboutHarbour" required>
+
         <option value="internet">internet</option>
         <option value="almanac">almanac</option>
         <option value="recommended by others">recommended by others</option>
@@ -134,6 +137,7 @@
 
     <br><br> <input type="submit" value="Submit">
 </form>
+
 </body>
 <script>
     console.log('Current Locale:', '{{ app()->getLocale() }}');

@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Survey::factory(100)->create();
 
+
     }
 }
