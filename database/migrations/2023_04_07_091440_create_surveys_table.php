@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('Nationality');
             $table->integer('AgeOfVisitor');
             $table->string('TypeOfVessel');
-            $table->string('PeopleOnBoard');
+            $table->integer('PeopleOnBoard');
             $table->string('WhichSeason');
             $table->string('HearAboutHarbour');
             $table->string('WhichHarbour');
