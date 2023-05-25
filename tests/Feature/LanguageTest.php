@@ -19,7 +19,7 @@ class LanguageTest extends TestCase
 
         // Assert
         $response->assertStatus(200)
-            ->assertSeeText('how many people do/did you have onboard');
+            ->assertSeeText('What is your nationality');
     }
 
     public function testSurveyPageInDutch()
@@ -33,7 +33,7 @@ class LanguageTest extends TestCase
 
         // Assert
         $response->assertStatus(200)
-            ->assertSeeText('hoeveel mensen heb/had je aan boord');
+            ->assertSeeText('Wat is uw nationaliteit?');
     }
 
     public function testSurveyPageInFrench()
@@ -47,7 +47,7 @@ class LanguageTest extends TestCase
 
         // Assert
         $response->assertStatus(200)
-            ->assertSeeText('combien de personnes avez-vous/aviez-vous à bord');
+            ->assertSeeText('Quelle est ta nationalité ?');
     }
 
     public function testSurveyPageInGerman()
@@ -61,7 +61,7 @@ class LanguageTest extends TestCase
 
         // Assert
         $response->assertStatus(200)
-            ->assertSeeText('Wie viele Leute sind/hatten Sie an Bord?');
+            ->assertSeeText('Was ist deine Nationalität?');
     }
 
     public function testLocaleFallback()
@@ -75,6 +75,6 @@ class LanguageTest extends TestCase
         // Incorrect locale should load in default locale en
         $response->assertStatus(200)
             ->assertViewIs('survey.survey')
-            ->assertSeeText('how many people do/did you have onboard');
+            ->assertSeeText('What is your nationality');
     }
 }
