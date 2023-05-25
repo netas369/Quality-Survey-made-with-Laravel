@@ -17,7 +17,7 @@ return [
     'answerB10' => 'The marina was average for me the experience was alright',
     'answerC10' => 'I had an unsatisfactory experience and did not enjoy my stay?',
     'multiquestion3' => 'How would you describe our website?',
-    'answerA11' => 'It is a good-designed website?',
+    'answerA11' => 'It is a good-designed website',
     'answerB11' => 'The website could use some improvements?',
     'answerC11' => 'I did not like the website',
     'multiquestion4' => 'Would you consider visiting us again?',
