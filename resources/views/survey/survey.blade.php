@@ -57,7 +57,7 @@
     </div>
 
     <div id="page1">
-        <label for="PeopleOnBoard">{{ trans('messages.question1') }}</label>
+        <label for="PeopleOnBoard">{{ trans('messages.demoquestion1') }}</label>
         <select id="PeopleOnBoard" name="PeopleOnBoard" required>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -71,10 +71,10 @@
             <option value="10">10</option>
         </select><br><br>
 
-        <label for="TypeOfVessel">{{ trans('messages.question2') }}</label>
+        <label for="TypeOfVessel">{{ trans('messages.demoquestion2') }}</label>
         <input type="text" id="TypeOfVessel" name="TypeOfVessel" required><br><br>
 
-        <label for="FirstVisit">{{ trans('messages.question3') }}</label>
+        <label for="FirstVisit">{{ trans('messages.demoquestion3') }}</label>
         <select id="FirstVisit" name="FirstVisit" required>
             <option value="1">{{ trans('messages.yes') }}</option>
             <option value="0">{{ trans('messages.no') }}</option>
@@ -82,13 +82,13 @@
     </div>
 
     <div id="page2" class="hidden">
-        <label for="WhichHarbour">{{ trans('messages.question4') }}</label>
+        <label for="WhichHarbour">{{ trans('messages.demoquestion4') }}</label>
         <select id="WhichHarbour" name="WhichHarbour" required>
             <option value="V.V.W Schelde">V.V.W Schelde</option>
             <option value="Stadshaven Scheldekwartier">Stadshaven Scheldekwartier</option>
         </select><br><br>
 
-        <label for="HearAboutHarbour">{{ trans('messages.question5') }}</label>
+        <label for="HearAboutHarbour">{{ trans('messages.demoquestion5') }}</label>
         <select id="HearAboutHarbour" name="HearAboutHarbour" required>
 
             <option value="internet">internet</option>
@@ -98,7 +98,7 @@
         </select><br><br>
 
 
-        <label for="OverallCleanliness">{{ trans('messages.question6') }}</label>
+        <label for="OverallCleanliness">{{ trans('messages.demoquestion6') }}</label>
         <div class="rating">
             <input type="radio" id="ocStar5" name="OverallCleanliness" value="5" required/><label for="ocStar5" title="5 stars"></label>
             <input type="radio" id="ocStar4" name="OverallCleanliness" value="4" /><label for="ocStar4" title="4 stars"></label>
@@ -109,7 +109,7 @@
     </div>
 
     <div id="page3" class="hidden">
-        <label for="StaffFriendlyAndHelpful">{{ trans('messages.question7') }}</label>
+        <label for="StaffFriendlyAndHelpful">{{ trans('messages.demoquestion7') }}</label>
         <div class="rating">
             <input type="radio" id="staffStar5" name="StaffFriendlyAndHelpful" value="5" required/><label for="staffStar5" title="5 stars"></label>
             <input type="radio" id="staffStar4" name="StaffFriendlyAndHelpful" value="4" /><label for="staffStar4" title="4 stars"></label>
@@ -118,7 +118,7 @@
             <input type="radio" id="staffStar1" name="StaffFriendlyAndHelpful" value="1" /><label for="staffStar1" title="1 star"></label>
         </div>
 
-        <label for="SafetyAtTheHarbour">{{ trans('messages.question8') }}</label>
+        <label for="SafetyAtTheHarbour">{{ trans('messages.demoquestion8') }}</label>
         <div class="rating">
             <input type="radio" id="star5-safety" name="SafetyAtTheHarbour" value="5" required/><label for="star5-safety" title="5 stars"></label>
             <input type="radio" id="star4-safety" name="SafetyAtTheHarbour" value="4" /><label for="star4-safety" title="4 stars"></label>
@@ -127,7 +127,7 @@
             <input type="radio" id="star1-safety" name="SafetyAtTheHarbour" value="1" /><label for="star1-safety" title="1 star"></label>
         </div>
 
-        <label for="HowWouldYouRecommendToOthers">{{ trans('messages.question9') }}</label>
+        <label for="HowWouldYouRecommendToOthers">{{ trans('messages.multiquestion1') }}</label>
         <div class="rating">
             <input type="radio" id="star5-recommend" name="HowWouldYouRecommendToOthers" value="5" required/><label for="star5-recommend" title="5 stars"></label>
             <input type="radio" id="star4-recommend" name="HowWouldYouRecommendToOthers" value="4" /><label for="star4-recommend" title="4 stars"></label>
@@ -138,7 +138,7 @@
     </div>
 
     <div id="page4" class="hidden">
-        <label for="QualityForMoney">{{ trans('messages.question9') }}</label>
+        <label for="QualityForMoney">{{ trans('messages.multiquestion1') }}</label>
         <div class="rating">
             <input type="radio" id="star5-money" name="QualityForMoney" value="5" required/><label for="star5-money" title="5 stars"></label>
             <input type="radio" id="star4-money" name="QualityForMoney" value="4" /><label for="star4-money" title="4 stars"></label>
@@ -147,16 +147,16 @@
             <input type="radio" id="star1-money" name="QualityForMoney" value="1" /><label for="star1-money" title="1 star"></label>
         </div>
 
-        <label for="anyAdditionalAmenities">{{ trans('messages.question10') }}</label>
+        <label for="anyAdditionalAmenities">{{ trans('messages.multiquestion2') }}</label>
         <input type="text" id="anyAdditionalAmenities" name="AnyAdditionalAmenitiesYouWouldLikeToSee" required>
 
-        <label for="DidYouHadAnyIssuesWithTheDocking">{{ trans('messages.question11') }}</label>
+        <label for="DidYouHadAnyIssuesWithTheDocking">{{ trans('messages.multiquestion3') }}</label>
         <select name="DidYouHadAnyIssuesWithTheDocking" id="DidYouHadAnyIssuesWithTheDocking" required>
             <option value="1">{{ trans('messages.yes') }}</option>
             <option value="0">{{ trans('messages.no') }}</option>
         </select>
 
-        <label for="WouldYouConsiderReturningToHarbour">{{ trans('messages.question12') }}</label>
+        <label for="WouldYouConsiderReturningToHarbour">{{ trans('messages.multiquestion4') }}</label>
         <select name="WouldYouConsiderReturningToHarbour" id="WouldYouConsiderReturningToHarbour" required>
             <option value="1">{{ trans('messages.yes') }}</option>
             <option value="0">{{ trans('messages.no') }}</option>
