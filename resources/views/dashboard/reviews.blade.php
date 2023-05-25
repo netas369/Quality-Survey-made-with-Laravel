@@ -2,6 +2,37 @@
 <html lang="en">
 
 <head>
+    <title>VVW Schelde Flushing</title>
+    <style>
+        .progress-bar {
+            width: 1043px;
+            height: 20px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .progress-bar span{
+            position: absolute;
+            text-align: center;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            border-radius: 4px;
+            transition: width 0.3s ease-in-out;
+            text-align: center;
+            color: white;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/css/styling.css">
+    <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -34,10 +65,10 @@
 
 <main>
 
+
     <div class="flex flex-col md:flex-row">
         <nav aria-label="alternative nav">
-            <div
-                class="bg-gray-800 shadow-xl h-20 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
+
 
                 <div
                     class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
@@ -67,9 +98,6 @@
 
                     </ul>
                 </div>
-
-
-            </div>
         </nav>
 
         <section>
@@ -85,6 +113,11 @@
 
                 <div class="flex justify-center items-center my-4">
                     {{ $survey->links('pagination::tailwind') }}
+                </div>
+
+                <div class="progress-bar">
+                    <span> {{ round($averageSatisfaction, 2) }}  </span>
+                    <div class="progress" style="width: {{ $averageSatisfaction * 20 }}%"> </div>
                 </div>
 
                 <div class="overflow-x-auto">

@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Charts\HappinessBar;
 use App\Models\Dashboard;
-use App\Models\Survey;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Survey;
 use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
@@ -13,9 +17,9 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Dashboard $dashboard)
+    public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-<<<<<<< HEAD
+
         // how many surveys have been completed this month
         $currentMonthSurveyCount = Survey::whereMonth('created_at', Carbon::now()->month)
             ->whereYear('created_at', Carbon::now()->year)
@@ -41,12 +45,11 @@ class DashboardController extends Controller
             $data[] = $surveyCount;
         }
         return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data'));
-=======
+
         $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
         return view('dashboard.index', compact('latestAnswers'));
->>>>>>> 571515e5c453769c2c4bddbb9c529ce70c869f26
     }
-    public function login(Dashboard $dashboard)
+    public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('dashboard.login');
     }
@@ -56,11 +59,23 @@ class DashboardController extends Controller
      */
     public function reviews(Dashboard $dashboard)
     {
-
         $survey = Survey::paginate(20);
         $bar = new HappinessBar();
 
-        return view('dashboard.reviews', compact('survey', 'bar'));
+        // Fetch specific data using query builder
+        $data = DB::table('surveys')
+            ->select('OverallCleanliness', 'StaffFriendlyAndHelpful', 'SafetyAtTheHarbour', 'HowWouldYouRecommendToOthers', 'QualityForMoney')
+            ->get();
+
+        // Calculate the average of the five columns
+        $averageValues = $data->map(function ($row) {
+            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->HowWouldYouRecommendToOthers + $row->QualityForMoney) / 5;
+        });
+
+        // Calculate the overall average
+        $averageSatisfaction = $averageValues->avg();
+
+        return view('dashboard.reviews', compact('survey', 'bar', 'averageSatisfaction'));
     }
 
     /**
@@ -93,6 +108,7 @@ class DashboardController extends Controller
         return view('dashboard.show', compact('review'));
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -104,7 +120,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dashboard $dashboard)
+     function update(Request $request, Dashboard $dashboard)
     {
         //
     }

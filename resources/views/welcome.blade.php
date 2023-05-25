@@ -157,7 +157,7 @@
 <body>
 <nav class="topnav">
     <ul>
-        <a class="button" href="{{ url('dashboard') }}">Dashboard</a>
+        <a class="button" href="{{ url('login') }}">Login</a>
     </ul>
 </nav>
 <div class="container">

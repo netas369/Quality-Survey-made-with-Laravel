@@ -15,6 +15,7 @@ class SurveyController extends Controller
     public function index()
     {
         return view('survey.index');
+
     }
 
     public function showSurvey($locale = null)
@@ -59,6 +60,20 @@ class SurveyController extends Controller
         $survey->WouldYouConsiderReturningToHarbour = $validatedData['WouldYouConsiderReturningToHarbour'];
 
         $survey->save();
+
+        $answers = $request->input('answers', []);
+
+        // Process and store the answers in your desired way
+
+        $start = $request->session()->get('start', 0);
+        $start += 4;
+
+        if ($request->has('prev')) {
+            $start -= 8; // Jump back two pages if "Previous" button clicked
+        }
+
+        $request->session()->put('start', $start);
+
         return view('survey.thanks-eng');
     }
 
@@ -80,5 +95,12 @@ class SurveyController extends Controller
             'WouldYouConsiderReturningToHarbour' => 'required|string',
         ]);
     }
+
+    private $questions = [
+        'Question 1',
+        'Question 2',
+        // Add all your survey questions here...
+        'Question 20',
+    ];
 }
 
