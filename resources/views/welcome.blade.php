@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Survey Homepage</title>
@@ -151,11 +151,13 @@
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
+
 <body>
 <nav class="topnav">
     <ul>
-        <a class="button" href="{{ url('dashboard') }}">Dashboard</a>
+        <a class="button" href="{{ url('login') }}">Login</a>
     </ul>
 </nav>
 <div class="container">
@@ -191,5 +193,9 @@
         <p>&copy; 2023 VVW Schelde. All rights reserved.</p>
     </footer>
 </div>
+
 </body>
 </html>
+
+
+

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('PeopleOnBoard');
             $table->string('TypeOfVessel');
-            $table->boolean('FirstVisit');
+            $table->string('FirstVisit');
             $table->string('WhichHarbour');
             $table->string('HearAboutHarbour');
             $table->integer('OverallCleanliness');
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->integer('HowWouldYouRecommendToOthers');
             $table->integer('QualityForMoney');
             $table->string('AnyAdditionalAmenitiesYouWouldLikeToSee');
-            $table->integer('DidYouHadAnyIssuesWithTheDocking');
-            $table->integer('WouldYouConsiderReturningToHarbour');
+            $table->string('DidYouHadAnyIssuesWithTheDocking');
+            $table->string('WouldYouConsiderReturningToHarbour');
             $table->timestamps();
         });
     }

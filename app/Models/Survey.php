@@ -11,7 +11,9 @@ class Survey extends Model
 
     public function rating()
     {
-        $ratingAverage = ($this->OverallCleanliness + $this->StaffFriendlyAndHelpful + $this->SafetyAtHarbour +
+
+        $ratingAverage = ($this->OverallCleanliness + $this->StaffFriendlyAndHelpful + $this->SafetyAtTheHarbour +
+
                         $this->HowWouldYouRecommendToOthers + $this->QualityForMoney) / 5;
         if ($ratingAverage > 3.7) {
             return $ratingAverage.'😀';
@@ -22,5 +24,6 @@ class Survey extends Model
         }
         return null;
     }
+
 
 }

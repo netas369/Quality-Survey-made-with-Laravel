@@ -15,10 +15,17 @@ class SurveyController extends Controller
     public function index()
     {
         return view('survey.index');
+
     }
 
-    public function showSurvey()
+    public function showSurvey($locale = null)
     {
+        if (!in_array($locale, array_keys(config('app.supported_locales')))) {
+            $locale = config('app.locale');
+        }
+
+        app()->setLocale($locale);
+
         return view('survey.survey');
     }
     public function create($language)
@@ -34,22 +41,66 @@ class SurveyController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $this->validateSurveyData($request);
+
         $survey = new Survey();
 
-        $survey->PeopleOnBoard = $request->input('PeopleOnBoard');
-        $survey->TypeOfVessel = $request->input('TypeOfVessel');
-        $survey->FirstVisit = $request->input('FirstVisit');
-        $survey->HearAboutHarbour = $request->input('HearAboutHarbour');
-        $survey->OverallCleanliness = $request->input('OverallCleanliness');
-        $survey->StaffFriendlyAndHelpful = $request->input('StaffFriendlyAndHelpful');
-        $survey->SafetyAtTheHarbour = $request->input('SafetyAtTheHarbour');
-        $survey->HowWouldYouRecommendToOthers = $request->input('HowWouldYouRecommendToOthers');
-        $survey->QualityForMoney = $request->input('QualityForMoney');
-        $survey->AnyAdditionalAmenitiesYouWouldLikeToSee = $request->input('AnyAdditionalAmenitiesYouWouldLikeToSee');
-        $survey->DidYouHadAnyIssuesWithTheDocking = $request->input('DidYouHadAnyIssuesWithTheDocking');
-        $survey->WouldYouConsiderReturningToHarbour = $request->input('WouldYouConsiderReturningToHarbour');
-
+        $survey->PeopleOnBoard = $validatedData['PeopleOnBoard'];
+        $survey->TypeOfVessel = $validatedData['TypeOfVessel'];
+        $survey->FirstVisit = $validatedData['FirstVisit'];
+        $survey->WhichHarbour = $validatedData['WhichHarbour'];
+        $survey->HearAboutHarbour = $validatedData['HearAboutHarbour'];
+        $survey->OverallCleanliness = $validatedData['OverallCleanliness'];
+        $survey->StaffFriendlyAndHelpful = $validatedData['StaffFriendlyAndHelpful'];
+        $survey->SafetyAtTheHarbour = $validatedData['SafetyAtTheHarbour'];
+        $survey->HowWouldYouRecommendToOthers = $validatedData['HowWouldYouRecommendToOthers'];
+        $survey->QualityForMoney = $validatedData['QualityForMoney'];
+        $survey->AnyAdditionalAmenitiesYouWouldLikeToSee = $validatedData['AnyAdditionalAmenitiesYouWouldLikeToSee'];
+        $survey->DidYouHadAnyIssuesWithTheDocking = $validatedData['DidYouHadAnyIssuesWithTheDocking'];
+        $survey->WouldYouConsiderReturningToHarbour = $validatedData['WouldYouConsiderReturningToHarbour'];
 
         $survey->save();
+
+        $answers = $request->input('answers', []);
+
+        // Process and store the answers in your desired way
+
+        $start = $request->session()->get('start', 0);
+        $start += 4;
+
+        if ($request->has('prev')) {
+            $start -= 8; // Jump back two pages if "Previous" button clicked
+        }
+
+        $request->session()->put('start', $start);
+
         return view('survey.thanks-eng');
-    }}
+    }
+
+    public function validateSurveyData(Request $request)
+    {
+        return $request->validate([
+            'PeopleOnBoard' => 'required|integer',
+            'TypeOfVessel' => 'required|string',
+            'FirstVisit' => 'required|string',
+            'WhichHarbour' => 'required|string',
+            'HearAboutHarbour' => 'required|string',
+            'OverallCleanliness' => 'required|integer|min:1|max:5',
+            'StaffFriendlyAndHelpful' => 'required|integer|min:1|max:5',
+            'SafetyAtTheHarbour' => 'required|integer|min:1|max:5',
+            'HowWouldYouRecommendToOthers' => 'required|integer|min:1|max:5',
+            'QualityForMoney' => 'required|integer|min:1|max:5',
+            'AnyAdditionalAmenitiesYouWouldLikeToSee' => 'required|string',
+            'DidYouHadAnyIssuesWithTheDocking' => 'required|string',
+            'WouldYouConsiderReturningToHarbour' => 'required|string',
+        ]);
+    }
+
+    private $questions = [
+        'Question 1',
+        'Question 2',
+        // Add all your survey questions here...
+        'Question 20',
+    ];
+}
+
