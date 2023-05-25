@@ -19,6 +19,7 @@ class DashboardController extends Controller
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
+
         // how many surveys have been completed this month
         $currentMonthSurveyCount = Survey::whereMonth('created_at', Carbon::now()->month)
             ->whereYear('created_at', Carbon::now()->year)
@@ -45,6 +46,8 @@ class DashboardController extends Controller
         }
         return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data'));
 
+        $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
+        return view('dashboard.index', compact('latestAnswers'));
     }
     public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
