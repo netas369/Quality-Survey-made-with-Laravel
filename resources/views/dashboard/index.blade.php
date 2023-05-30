@@ -88,11 +88,11 @@
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
                                     <div class="rounded-full p-5 bg-green-600"><i
-                                            class="fa fa-wallet fa-2x fa-inverse"></i></div>
+                                            class="fas fa-user-plus fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 1</h2>
-                                    <p class="font-bold text-3xl">Data 1.1 <span class="text-green-500"><i
+                                    <h2 class="font-bold uppercase text-gray-600">This month</h2>
+                                    <p class="font-bold text-3xl">{{ $currentMonthSurveyCount }} <span class="text-green-500"><i
                                                 class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
@@ -109,9 +109,9 @@
                                             class="fas fa-users fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 2</h2>
-                                    <p class="font-bold text-3xl">Data 2.1 <span class="text-pink-500"><i
-                                                class="fas fa-exchange-alt"></i></span></p>
+                                    <h2 class="font-bold uppercase text-gray-600">Total surveys</h2>
+                                    <p class="font-bold text-3xl">{{ $totalSurveyCount }} <span class="text-green-500"><i
+                                                class="fas fa-caret-up"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +270,7 @@
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
                             <div
                                 class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">Graph</h2>
+                                <h2 class="font-bold uppercase text-gray-600">Surveys By Month</h2>
                             </div>
                             <div class="p-5">
                                 <canvas id="chartjs-1" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -278,13 +278,13 @@
                                     new Chart(document.getElementById("chartjs-1"), {
                                         "type": "bar",
                                         "data": {
-                                            "labels": ["January", "February", "March", "April", "May", "June", "July"],
+                                            "labels": {!! json_encode($labels) !!},
                                             "datasets": [{
-                                                "label": "Likes",
-                                                "data": [65, 59, 80, 81, 56, 55, 40],
+                                                "label": "Surveys",
+                                                "data": {!! json_encode($data) !!},
                                                 "fill": false,
-                                                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
-                                                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+                                                "backgroundColor": "rgba(75, 192, 192, 0.2)",
+                                                "borderColor": "rgb(75, 192, 192)",
                                                 "borderWidth": 1
                                             }]
                                         },

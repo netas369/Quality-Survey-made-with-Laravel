@@ -15,10 +15,17 @@ class SurveyController extends Controller
     public function index()
     {
         return view('survey.index');
+
     }
 
-    public function showSurvey()
+    public function showSurvey($locale = null)
     {
+        if (!in_array($locale, array_keys(config('app.supported_locales')))) {
+            $locale = config('app.locale');
+        }
+
+        app()->setLocale($locale);
+
         return view('survey.survey');
     }
     public function create($language)
@@ -38,40 +45,85 @@ class SurveyController extends Controller
 
         $survey = new Survey();
 
-        $survey->PeopleOnBoard = $validatedData['PeopleOnBoard'];
+        $survey->Nationality = $validatedData['Nationality'];
+        $survey->AgeOfVisitor = $validatedData['AgeOfVisitor'];
         $survey->TypeOfVessel = $validatedData['TypeOfVessel'];
-        $survey->FirstVisit = $validatedData['FirstVisit'];
-        $survey->WhichHarbour = $validatedData['WhichHarbour'];
+        $survey->PeopleOnBoard = $validatedData['PeopleOnBoard'];
+        $survey->WhichSeason = $validatedData['WhichSeason'];
         $survey->HearAboutHarbour = $validatedData['HearAboutHarbour'];
+        $survey->WhichHarbour = $validatedData['WhichHarbour'];
+        $survey->FirstVisit = $validatedData['FirstVisit'];
+        $survey->CompletePurpose = $validatedData['CompletePurpose'];
+        $survey->DescribeExperience = $validatedData['DescribeExperience'];
+        $survey->DescribeWebsite = $validatedData['DescribeWebsite'];
+        $survey->ConsiderAgain = $validatedData['ConsiderAgain'];
         $survey->OverallCleanliness = $validatedData['OverallCleanliness'];
         $survey->StaffFriendlyAndHelpful = $validatedData['StaffFriendlyAndHelpful'];
         $survey->SafetyAtTheHarbour = $validatedData['SafetyAtTheHarbour'];
-        $survey->HowWouldYouRecommendToOthers = $validatedData['HowWouldYouRecommendToOthers'];
+        $survey->OurFacilities = $validatedData['OurFacilities'];
+        $survey->RateOverallExperience = $validatedData['RateOverallExperience'];
+        $survey->RecommendToOthers = $validatedData['RecommendToOthers'];
         $survey->QualityForMoney = $validatedData['QualityForMoney'];
-        $survey->AnyAdditionalAmenitiesYouWouldLikeToSee = $validatedData['AnyAdditionalAmenitiesYouWouldLikeToSee'];
-        $survey->DidYouHadAnyIssuesWithTheDocking = $validatedData['DidYouHadAnyIssuesWithTheDocking'];
-        $survey->WouldYouConsiderReturningToHarbour = $validatedData['WouldYouConsiderReturningToHarbour'];
+        $survey->AnythingToImprove = $validatedData['AnythingToImprove'];
+        $survey->anyAdditionalAmenities = $validatedData['anyAdditionalAmenities'];
+        $survey->SomethingToChangeWebsite = $validatedData['SomethingToChangeWebsite'];
+        $survey->AnythingLeft = $validatedData['AnythingLeft'];
 
         $survey->save();
+
+        $answers = $request->input('answers', []);
+
+        // Process and store the answers in your desired way
+
+        $start = $request->session()->get('start', 0);
+        $start += 4;
+
+        if ($request->has('prev')) {
+            $start -= 8; // Jump back two pages if "Previous" button clicked
+        }
+
+        $request->session()->put('start', $start);
+
         return view('survey.thanks-eng');
     }
 
     public function validateSurveyData(Request $request)
     {
         return $request->validate([
-            'PeopleOnBoard' => 'required|integer',
+
+
+
+            'Nationality' => 'required|string',
+            'AgeOfVisitor' => 'required|integer|min:1|max:500',
             'TypeOfVessel' => 'required|string',
-            'FirstVisit' => 'required|string',
-            'WhichHarbour' => 'required|string',
+            'PeopleOnBoard' => 'required|integer|min:1|max:10',
+            'WhichSeason' => 'required|string',
             'HearAboutHarbour' => 'required|string',
+            'WhichHarbour' => 'required|string',
+            'FirstVisit' => 'required|integer',
+            'CompletePurpose' => 'required|integer',
+            'DescribeExperience' => 'required|string',
+            'DescribeWebsite' => 'required|string',
+            'ConsiderAgain' => 'required|integer',
             'OverallCleanliness' => 'required|integer|min:1|max:5',
             'StaffFriendlyAndHelpful' => 'required|integer|min:1|max:5',
             'SafetyAtTheHarbour' => 'required|integer|min:1|max:5',
-            'HowWouldYouRecommendToOthers' => 'required|integer|min:1|max:5',
+            'OurFacilities' => 'required|integer|min:1|max:5',
+            'RateOverallExperience' => 'required|integer|min:1|max:5',
+            'RecommendToOthers' => 'required|integer|min:1|max:5',
             'QualityForMoney' => 'required|integer|min:1|max:5',
-            'AnyAdditionalAmenitiesYouWouldLikeToSee' => 'required|string',
-            'DidYouHadAnyIssuesWithTheDocking' => 'required|string',
-            'WouldYouConsiderReturningToHarbour' => 'required|string',
+            'AnythingToImprove' => 'string',
+            'anyAdditionalAmenities' => 'string',
+            'SomethingToChangeWebsite' => 'string',
+            'AnythingLeft' => 'string',
         ]);
     }
+
+    private $questions = [
+        'Question 1',
+        'Question 2',
+        // Add all your survey questions here...
+        'Question 20',
+    ];
 }
+
