@@ -32,7 +32,7 @@
         }
 
         .topnav ul a {
-            color: #333;
+            color: #fff;
             text-decoration: none;
             margin-right: 10px;
         }
@@ -157,7 +157,12 @@
 <body>
 <nav class="topnav">
     <ul>
-        <a class="button" href="{{ url('dashboard') }}">Dashboard</a>
+        @guest
+            <li><a class="button" href="{{ url('login') }}">Login</a></li>
+        @endguest
+        @auth
+            <li><a class="button" href="{{ url('dashboard') }}">Dashboard</a></li>
+        @endauth
     </ul>
 </nav>
 <div class="container">

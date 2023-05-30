@@ -58,16 +58,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
+        /**
+         * Dashboard Routes
+         */
+//        Route::get('/dashboard', function (){return redirect('login');});
     });
 
     Route::group(['middleware' => ['auth']], function() {
-        /**
-         * Logout Routes
-         */
         Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
         Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});
         Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+//        login if logged in
     });
 });
 
