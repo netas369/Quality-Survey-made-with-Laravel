@@ -16,14 +16,14 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');;
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 // Routes for Survey page
 //Route::post('/survey/{language}', [SurveyController::class, 'store']);
 //Route::get('/survey/{language}', [SurveyController::class, 'create']);
 
 Route::get('/survey', [SurveyController::class, 'index']);
-Route::get('/survey/submition', [SurveyController::class, 'showSurvey']);
+Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
 Route::post('/survey/submition', [SurveyController::class, 'store']);
 //Route::get('/survey/thanks-eng', function () {
 //    return view('survey.thanks-eng');
@@ -34,12 +34,15 @@ Route::post('/survey/submition', [SurveyController::class, 'store']);
 
 
 // Routes for dashboard page
-//Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
-//Route::controller(DashboardController::class)->group(function() {Route::get('/login', 'login');});
-//Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});
-//Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/login', [DashboardController::class, 'login']);
+Route::get('/reviews', [DashboardController::class, 'reviews']);
+Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
+
     /**
      * Home Routes
      */

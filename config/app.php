@@ -84,6 +84,13 @@ return [
 
     'locale' => 'en',
 
+    'supported_locales' => [
+        'en' => ['name' => 'English'],
+        'fr' => ['name' => 'French'],
+        'de' => ['name' => 'German'],
+        'nl' => ['name' => 'Dutch'],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

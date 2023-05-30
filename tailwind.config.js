@@ -6,9 +6,19 @@ module.exports = {
       "./resources/views/dashboard/show.blade.php"
   ],
 
-  theme: {
+    theme: {
     extend: {},
   },
   plugins: [],
+}
+// tailwind.config.js
+module.exports = {
+    theme: {
+        // ...
+    },
+    plugins: [
+        require('@tailwindcss/forms'),
+        // ...
+    ],
 }
 
