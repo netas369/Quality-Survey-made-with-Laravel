@@ -3,32 +3,6 @@
 
 <head>
     <title>VVW Schelde Flushing</title>
-    <style>
-        .progress-bar {
-            width: 1043px;
-            height: 20px;
-            background-color: #f2f2f2;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .progress-bar span{
-            position: absolute;
-            text-align: center;
-        }
-
-        .progress {
-            height: 100%;
-            width: 0;
-            background-color: #4caf50;
-            border-radius: 4px;
-            transition: width 0.3s ease-in-out;
-            text-align: center;
-            color: white;
-        }
-    </style>
-
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
     <link rel="stylesheet" type="text/css" href="/css/stylingsurvey.css">
     <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
@@ -65,11 +39,8 @@
 
 <main>
 
-
     <div class="flex flex-col md:flex-row">
         <nav aria-label="alternative nav">
-
-
                 <div
                     class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
                     <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
@@ -100,10 +71,7 @@
                 </div>
         </nav>
 
-        <section>
-
             <div id="main" class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
-
                 <div class="bg-gray-800 pt-3">
                     <div
                         class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
@@ -113,11 +81,6 @@
 
                 <div class="flex justify-center items-center my-4">
                     {{ $survey->links('pagination::tailwind') }}
-                </div>
-
-                <div class="progress-bar">
-                    <span> {{ round($averageSatisfaction, 2) }}  </span>
-                    <div class="progress" style="width: {{ $averageSatisfaction * 20 }}%"> </div>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -165,7 +128,6 @@
                     {{ $survey->links('pagination::tailwind') }}
                 </div>
             </div>
-        </section>
     </div>
 </main>
 </body>
