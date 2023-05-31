@@ -112,7 +112,7 @@
                                 <td class="px-4 py-2">{{ $review->OverallCleanliness }}</td>
                                 <td class="px-4 py-2">{{ $review->StaffFriendlyAndHelpful }}</td>
                                 <td class="px-4 py-2">{{ $review->SafetyAtTheHarbour }}</td>
-                                <td class="px-4 py-2">{{ $review->HowWouldYouRecommendToOthers }}</td>
+                                <td class="px-4 py-2">{{ $review->RecommendToOthers  }}</td>
                                 <td class="px-4 py-2">{{ $review->QualityForMoney }}</td>
                                 <td class="px-4 py-2">{{ $review->rating() }}</td>
                                 <td class="px-4 py-2">
