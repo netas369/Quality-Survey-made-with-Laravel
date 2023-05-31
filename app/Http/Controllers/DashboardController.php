@@ -64,12 +64,12 @@ class DashboardController extends Controller
 
         // Fetch specific data using query builder
         $data = DB::table('surveys')
-            ->select('OverallCleanliness', 'StaffFriendlyAndHelpful', 'SafetyAtTheHarbour', 'RecommendToOthers', 'QualityForMoney')
+            ->select('OverallCleanliness', 'StaffFriendlyAndHelpful', 'SafetyAtTheHarbour', 'HowWouldYouRecommendToOthers', 'QualityForMoney')
             ->get();
 
         // Calculate the average of the five columns
         $averageValues = $data->map(function ($row) {
-            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers + $row->QualityForMoney) / 5;
+            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->HowWouldYouRecommendToOthers + $row->QualityForMoney) / 5;
         });
 
         // Calculate the overall average
