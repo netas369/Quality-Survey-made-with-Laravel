@@ -112,10 +112,10 @@ class SurveyController extends Controller
             'RateOverallExperience' => 'required|integer|min:1|max:5',
             'RecommendToOthers' => 'required|integer|min:1|max:5',
             'QualityForMoney' => 'required|integer|min:1|max:5',
-            'AnythingToImprove' => 'string',
-            'anyAdditionalAmenities' => 'string',
-            'SomethingToChangeWebsite' => 'string',
-            'AnythingLeft' => 'string',
+            'AnythingToImprove' => 'nullable|string',
+            'anyAdditionalAmenities' => 'nullable|string',
+            'SomethingToChangeWebsite' => 'nullable|string',
+            'AnythingLeft' => 'nullable|string',
         ]);
     }
 
