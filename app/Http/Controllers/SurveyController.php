@@ -118,12 +118,5 @@ class SurveyController extends Controller
             'AnythingLeft' => 'string',
         ]);
     }
-
-    private $questions = [
-        'Question 1',
-        'Question 2',
-        // Add all your survey questions here...
-        'Question 20',
-    ];
 }
 
