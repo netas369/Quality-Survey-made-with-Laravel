@@ -38,7 +38,6 @@ Route::post('/survey/submition', [SurveyController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/login', [DashboardController::class, 'login']);
 Route::get('/reviews', [DashboardController::class, 'reviews']);
-Route::post('/survey/submission', 'SurveyController@submit')->name('survey.submit');
 Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()

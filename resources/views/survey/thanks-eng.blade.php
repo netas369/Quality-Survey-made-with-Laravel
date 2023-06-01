@@ -1,43 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <title>thanks-eng</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/css/stylingsurveys.css">
+    <title>Thank You</title>
+    <link rel="stylesheet" type="text/css" href="/css/thanksstyling.css">
     <link rel="stylesheet" type="text/css" href="/css/styling.css">
-    <link rel="stylesheet" type="text/css" href="/css/surveystars.css">
     <link rel="stylesheet" href="/css/WelcomePage.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<header>
+    <h1>VVW Schelde Flushing</h1>
+    <nav class="topnav">
+        <ul>
 
-<body class="bg-gray-100">
-
-<header class="bg-blue-500 py-8">
-    <div class="container mx-auto">
-        <h1 class="text-white text-4xl font-bold text-center">VVW Schelde Flushing</h1>
-        <nav class="mt-6">
-            <ul class="flex justify-center space-x-6">
-                <li><a class="text-white hover:text-gray-200" href="{{ url('/') }}">Home</a></li>
-                <li><a class="text-white hover:text-gray-200" href="{{ url('/survey') }}">Survey</a></li>
-                @guest
-                    <li><a class="text-white hover:text-gray-200" href="{{ url('/login') }}">Dashboard</a></li>
-                @endguest
-                @auth
-                    <li><a class="text-white hover:text-gray-200" href="{{ url('/dashboard') }}">Dashboard</a></li>
-                @endauth
-            </ul>
-        </nav>
-    </div>
+            <li><a class="{{ Request::path() === '/' ? 'active' : '' }}" href="{{ url('/') }}">Home</a></li>
+            <li><a class="{{ Request::path() === 'survey' ? 'active' : '' }}" href="{{ url('/survey') }}">Survey</a></li>
+            @guest
+                <li><a class="{{ Request::path() === 'dashboard' ? 'active' : '' }}" href="{{ url('/login') }}">Dashboard</a></li>
+            @endguest
+            @auth
+                <li><a class="{{ Request::path() === 'dashboard' ? 'active' : '' }}" href="{{ url('/dashboard') }}">Dashboard</a></li>
+            @endauth
+        </ul>
+    </nav>
 </header>
-<div class="container mx-auto mt-8 px-4">
-    <h1 class="text-3xl font-bold">Thank You</h1>
-    <p class="text-gray-800 mt-4">Thank you for filling out the survey. We will send the answers to the secretary.</p>
-
-    <div class="flex items-center justify-center mt-8">
-        <a href="{{ url('/') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 ease-in-out">Back to Home</a>
-    </div>
+<body>
+<div class="container">
+    <h1>Thank You</h1>
+    <p>Thank you for filling out the survey. We will send the answers to the secretary.</p>
 </div>
 </body>
 </html>
