@@ -1,201 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Survey Homepage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.seame.com%2Fapi%2Fassets%2F3lgueieymhes88oc%3Fw%3D1200%26h%3D850%26f%3Dcrop%26q%3D60&f=1&nofb=1&ipt=206024c087c6064cbe8ffcbcd45975253031d3502d1d24bb7e1c2f51f6aa4bb1&ipo=images);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .topnav {
-            position: fixed;
-            top: 0;
-            right: 0;
-            padding: 10px 20px;
-            background-color: transparent;
-        }
-
-        .topnav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .topnav ul a {
-            color: #333;
-            text-decoration: none;
-            margin-right: 10px;
-        }
-
-        .container {
-            max-width: 800px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .hero h2 {
-            font-size: 28px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .features {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .feature {
-            text-align: center;
-            flex-basis: 30%;
-        }
-
-        .feature i {
-            font-size: 40px;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .feature h3 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-            margin-top: 30px;
-            padding: 10px 0;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #f9f9f9;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-            margin-top: 30px;
-            padding: 10px 0;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #f9f9f9;
-        }
-    </style>
+    <title>Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
 
-<body>
-<nav class="topnav">
-    <ul>
-        <a class="button" href="{{ url('login') }}">Login</a>
-    </ul>
+<body class="bg-gradient-to-r from-blue-500 to-indigo-500 text-gray-900">
+
+<nav class="flex justify-end py-4 pr-8">
+    <a href="{{ url('login') }}" class="text-white font-medium hover:text-gray-200">Login</a>
 </nav>
-<div class="container">
-    <header>
-        <h1>Welcome to Our Survey!</h1>
-        <p>We value your opinion. Take part in our survey and help us improve.</p>
+
+<div class="container mx-auto px-8 py-16">
+    <header class="text-center">
+        <h1 class="text-4xl font-bold text-white mb-6">Welcome to Our Survey!</h1>
+        <p class="text-lg text-gray-200 mb-12">We value your opinion. Take part in our survey and help us improve.</p>
     </header>
+
     <main>
-        <section class="hero">
-            <h2>Share Your Thoughts</h2>
-            <p>Take a few minutes to complete our survey and make a difference.</p>
-            <a class="button" href="{{ url('/survey') }}">Start Survey</a>
+        <section class="text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Share Your Thoughts</h2>
+            <p class="text-lg text-gray-200 mb-8">Take a few minutes to complete our survey and make a difference.</p>
+            <a href="{{ url('/survey') }}" class="inline-block px-8 py-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors duration-300 ease-in-out">Start Survey</a>
         </section>
-        <section class="features">
-            <div class="feature">
-                <i class="fas fa-check-circle"></i>
-                <h3>Easy to Use</h3>
-                <p>Our user-friendly survey platform ensures a seamless experience.</p>
+
+        <section class="flex flex-wrap justify-center mt-16">
+            <div class="max-w-sm rounded-lg overflow-hidden bg-white shadow-lg mx-4 my-8">
+                <div class="p-8">
+                    <i class="fas fa-check-circle text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Easy to Use</h3>
+                    <p class="text-gray-700">Our user-friendly survey platform ensures a seamless experience.</p>
+                </div>
             </div>
-            <div class="feature">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Secure and Confidential</h3>
-                <p>Your responses are protected and handled with utmost confidentiality.</p>
+
+            <div class="max-w-sm rounded-lg overflow-hidden bg-white shadow-lg mx-4 my-8">
+                <div class="p-8">
+                    <i class="fas fa-shield-alt text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Secure and Confidential</h3>
+                    <p class="text-gray-700">Your responses are protected and handled with utmost confidentiality.</p>
+                </div>
             </div>
-            <div class="feature">
-                <i class="fas fa-chart-bar"></i>
-                <h3>Help us improve</h3>
-                <p>Your detailed insights and meaningful feedback will help us to change for better.</p>
+
+            <div class="max-w-sm rounded-lg overflow-hidden bg-white shadow-lg mx-4 my-8">
+                <div class="p-8">
+                    <i class="fas fa-chart-bar text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Help us Improve</h3>
+                    <p class="text-gray-700">Your detailed insights and meaningful feedback will help us to change for the better.</p>
+                </div>
             </div>
         </section>
     </main>
-    <footer>
+
+    <footer class="text-center text-gray-600 text-sm mt-8 py-4 bg-gray-200 fixed left-0 bottom-0 w-full">
         <p>&copy; 2023 VVW Schelde. All rights reserved.</p>
     </footer>
 </div>
 
 </body>
+
 </html>
-
-
-
