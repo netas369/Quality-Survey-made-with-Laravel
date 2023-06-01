@@ -66,7 +66,7 @@
         </select><br><br>
 
         <label for="AgeOfVisitor">{{ trans('messages.demoquestion2') }}</label>
-        <input type="text" id="AgeOfVisitor" name="AgeOfVisitor" required>
+        <input type="number" id="AgeOfVisitor" name="AgeOfVisitor" required>
         <br><br>
 
         <label for="TypeOfVessel">{{ trans('messages.demoquestion3') }}</label>
