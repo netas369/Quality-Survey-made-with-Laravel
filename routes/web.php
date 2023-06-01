@@ -18,10 +18,11 @@ use App\Http\Controllers\WelcomeController;
 
 // Routes for dashboard page
 
-//Route::get('/dashboard', [DashboardController::class, 'index']);
-//Route::get('/login', [DashboardController::class, 'login']);
-//Route::get('/reviews', [DashboardController::class, 'reviews']);
-//Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/login', [DashboardController::class, 'login']);
+Route::get('/reviews', [DashboardController::class, 'reviews']);
+Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
