@@ -30,6 +30,7 @@
             </ul>
         </nav>
     </div>
+
 </header>
 <div class="container mx-auto mt-8 px-4">
     <h1 class="text-3xl font-bold">Thank You</h1>

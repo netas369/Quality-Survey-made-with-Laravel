@@ -69,7 +69,7 @@ class DashboardController extends Controller
 
         // Calculate the average of the five columns
         $averageValues = $data->map(function ($row) {
-            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers + $row->QualityForMoney) / 5;
+            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers  + $row->QualityForMoney) / 5;
         });
 
         // Calculate the overall average

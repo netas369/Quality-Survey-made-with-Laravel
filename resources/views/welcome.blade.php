@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
@@ -12,6 +13,7 @@
 
 <nav class="flex justify-end py-4 pr-8">
     <a href="{{ url('login') }}" class="text-white font-medium hover:text-gray-200">Login</a>
+
 </nav>
 
 <div class="container mx-auto px-8 py-16">

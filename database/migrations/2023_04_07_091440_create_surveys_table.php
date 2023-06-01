@@ -32,10 +32,11 @@ return new class extends Migration
             $table->integer('RateOverallExperience');
             $table->integer('RecommendToOthers');
             $table->integer('QualityForMoney');
-            $table->string('AnythingToImprove');
-            $table->string('anyAdditionalAmenities');
-            $table->string('SomethingToChangeWebsite');
-            $table->string('AnythingLeft');
+            $table->string('AnythingToImprove')->nullable()->default('-');
+            $table->string('anyAdditionalAmenities')->nullable()->default('-');
+            $table->string('SomethingToChangeWebsite')->nullable()->default('-');
+            $table->string('AnythingLeft')->nullable()->default('-');
+
             $table->timestamps();
         });
     }

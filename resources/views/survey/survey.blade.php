@@ -30,6 +30,7 @@
             </ul>
         </nav>
     </div>
+
 </header>
 <body>
 
@@ -51,6 +52,7 @@
 
         <label for="AgeOfVisitor" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion2') }}</label>
         <input type="text" id="AgeOfVisitor" name="AgeOfVisitor" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+
 
         <label for="TypeOfVessel" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion3') }}</label>
         <input type="text" id="TypeOfVessel" name="TypeOfVessel" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">

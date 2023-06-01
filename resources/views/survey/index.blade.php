@@ -24,6 +24,7 @@
             </ul>
         </nav>
     </div>
+
 </header>
 
 <main class="container mx-auto py-8">
