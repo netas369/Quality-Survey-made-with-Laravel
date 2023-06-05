@@ -33,8 +33,8 @@
 
 </header>
 <div class="container mx-auto mt-8 px-4">
-    <h1 class="text-3xl font-bold">Thank You</h1>
-    <p class="text-gray-800 mt-4">Thank you for filling out the survey. We will send the answers to the secretary.</p>
+    <h1 class="text-3xl font-bold">{{ trans('messages.Thanks') }}</h1>
+    <p class="text-gray-800 mt-4">{{ trans('messages.Thanksmessage') }}</p>
 
     <div class="flex items-center justify-center mt-8">
         <a href="{{ url('/') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 ease-in-out">Back to Home</a>

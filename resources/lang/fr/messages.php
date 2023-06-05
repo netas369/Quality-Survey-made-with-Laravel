@@ -3,11 +3,23 @@
 return [
     // Demographic questions
     'demoquestion1' => 'Quelle est ta nationalité ?',
+    'answerA1' => 'Néerlandais',
+    'answerB1' => 'Anglais',
+    'answerC1' => 'Français',
+    'answerD1' => 'Allemand',
     'demoquestion2' => 'Quel âge avez-vous ?',
     'demoquestion3' => 'Quel type de navire possédez-vous ?',
     'demoquestion4' => 'Avec combien de personnes à bord êtes-vous arrivé à notre marina ?',
     'demoquestion5' => 'À quelle saison avez-vous visité la marina ?',
+    'answerA5' => 'Printemps',
+    'answerB5' => 'Été',
+    'answerC5' => 'Automne',
+    'answerD5' => 'Hiver',
     'demoquestion6' => 'Comment avez-vous entendu parler de notre port ?',
+    'answerA6' => "l'Internet",
+    'answerB6' => 'Almanach',
+    'answerC6' => "Recommandé par d'autres",
+    'answerD6' => 'Différent',
     'demoquestion7' => 'Dans quel quai êtes-vous resté',
     'demoquestion8' => 'Est-ce votre première visite au port ?',
     // Multiple choice questions
@@ -34,6 +46,9 @@ return [
     'openquestion2' => "Des équipements supplémentaires que vous aimeriez voir? ",
     'openquestion3' => "Si vous pouviez changer quelque chose sur notre site Web, ce serait quoi ? ",
     'openquestion4' => "Avez-vous encore quelque chose à nous dire avant de divulguer l'enquête ? ",
+    // Thank you page
+    'Thanks' => "Merci pour votre temps et vos réponses",
+    'Thanksmessage' => "Merci d'avoir pris le temps de répondre à notre enquête. Vos commentaires sont inestimables pour nous aider à améliorer l'expérience des visiteurs",
     //Common words:
     'yes' => 'Oui',
     'no' => 'Non',

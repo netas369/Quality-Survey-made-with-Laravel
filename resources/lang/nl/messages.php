@@ -3,11 +3,23 @@
 return [
     // Demographic questions
     'demoquestion1' => 'Wat is uw nationaliteit?',
+    'answerA1' => 'Nederlands',
+    'answerB1' => 'Engels',
+    'answerC1' => 'Frans',
+    'answerD1' => 'Duits',
     'demoquestion2' => 'Hoe oud ben jij?',
     'demoquestion3' => 'Welk type schip bezit u?',
     'demoquestion4' => 'Met hoeveel mensen aan boord bent u aangekomen in onze jachthaven?',
     'demoquestion5' => 'In welk seizoen heeft u de jachthaven bezocht?',
+    'answerA5' => 'Lente',
+    'answerB5' => 'Zomer',
+    'answerC5' => 'Herfst',
+    'answerD5' => 'Winter',
     'demoquestion6' => 'Hoe heb je van onze haven gehoord?',
+    'answerA6' => 'Internet',
+    'answerB6' => 'Almanak',
+    'answerC6' => 'Aanbevolen door anderen',
+    'answerD6' => 'Anders',
     'demoquestion7' => 'In welk dok verbleef u ',
     'demoquestion8' => 'Is dit je eerste bezoek aan de haven?',
     // Multiple choice questions
@@ -34,6 +46,9 @@ return [
     'openquestion2' => 'Eventuele extra voorzieningen die u graag zou willen zien? ',
     'openquestion3' => 'Als je iets aan onze website zou mogen veranderen, wat zou dat dan zijn?',
     'openquestion4' => 'Is er nog iets dat u ons wilt vertellen voordat u de enquête openbaar maakt? ',
+    // Thank you page
+    'Thanks' => 'Bedankt voor uw tijd en uw antwoorden',
+    'Thanksmessage' => 'Bedankt dat u de tijd heeft genomen om onze enquête in te vullen. Uw feedback is van onschatbare waarde om ons te helpen de bezoekerservaring te verbeteren',
     //Common words:
     'yes' => 'Ja',
     'no' => 'Nee',

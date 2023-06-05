@@ -44,10 +44,10 @@
     <div id="page1" class="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
         <label for="Nationality" class="block mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion1') }}</label>
         <select id="Nationality" name="Nationality" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option value="Dutch">Dutch</option>
-            <option value="English">English</option>
-            <option value="French">French</option>
-            <option value="German">German</option>
+            <option value="Dutch">{{ trans('messages.answerA1') }}</option>
+            <option value="English">{{ trans('messages.answerB1') }}</option>
+            <option value="French">{{ trans('messages.answerC1') }}</option>
+            <option value="German">{{ trans('messages.answerD1') }}</option>
         </select>
 
         <label for="AgeOfVisitor" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion2') }}</label>
@@ -73,20 +73,20 @@
 
         <label for="WhichSeason" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion5') }}</label>
         <select id="WhichSeason" name="WhichSeason" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option value="Spring">Spring</option>
-            <option value="Summer">Summer</option>
-            <option value="Autumn">Autumn</option>
-            <option value="Winter">Winter</option>
+            <option value="Spring">{{ trans('messages.answerA5') }}</option>
+            <option value="Summer">{{ trans('messages.answerB5') }}</option>
+            <option value="Autumn">{{ trans('messages.answerC5') }}</option>
+            <option value="Winter">{{ trans('messages.answerD5') }}</option>
         </select>
     </div>
 
     <div id="page2" class="hidden max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
         <label for="HearAboutHarbour" class="block mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion6') }}</label>
         <select id="HearAboutHarbour" name="HearAboutHarbour" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option value="internet">internet</option>
-            <option value="almanac">almanac</option>
-            <option value="recommended by others">recommended by others</option>
-            <option value="different">different</option>
+            <option value="internet">{{ trans('messages.answerA6') }}</option>
+            <option value="almanac">{{ trans('messages.answerB6') }}</option>
+            <option value="recommended by others">{{ trans('messages.answerC6') }}</option>
+            <option value="different">{{ trans('messages.answerD6') }}</option>
         </select>
 
         <label for="WhichHarbour" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion7') }}</label>

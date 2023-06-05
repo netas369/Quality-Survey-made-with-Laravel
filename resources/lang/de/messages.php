@@ -3,11 +3,23 @@
 return [
     // Demographic questions
     'demoquestion1' => 'Was ist deine Nationalität?',
+    'answerA1' => 'Niederländisch',
+    'answerB1' => 'Englisch',
+    'answerC1' => 'Französisch',
+    'answerD1' => 'Deutsch',
     'demoquestion2' => 'Wie alt bist du?',
     'demoquestion3' => 'Welchen Schiffstyp besitzen Sie?',
     'demoquestion4' => 'Mit wie vielen Personen an Bord sind Sie in unserer Marina angekommen?',
     'demoquestion5' => 'Zu welcher Jahreszeit haben Sie den Yachthafen besucht?',
+    'answerA5' => 'Frühling',
+    'answerB5' => 'Sommer',
+    'answerC5' => 'Herbst',
+    'answerD5' => 'Winter',
     'demoquestion6' => 'Wie haben Sie von unserem Hafen erfahren?',
+    'answerA6' => 'Internet',
+    'answerB6' => 'Almanach',
+    'answerC6' => 'Von anderen empfohlen',
+    'answerD6' => 'Anders',
     'demoquestion7' => 'In welchem Dock haben Sie übernachtet?',
     'demoquestion8' => 'Ist das Ihr erster Besuch im Hafen?',
     // Multiple choice questions
@@ -34,6 +46,9 @@ return [
     'openquestion2' => 'Gibt es weitere Annehmlichkeiten, die Sie gerne sehen würden?',
     'openquestion3' => 'Wenn Sie etwas an unserer Website ändern könnten, was wäre das?',
     'openquestion4' => 'Gibt es noch etwas, das Sie uns mitteilen möchten, bevor Sie die Umfrage veröffentlichen?',
+    // Thank you page
+    'Thanks' => 'Vielen Dank für Ihre Zeit und Ihre Antworten',
+    'Thanksmessage' => 'Vielen Dank, dass Sie sich die Zeit genommen haben, an unserer Umfrage teilzunehmen. Ihr Feedback ist für uns von unschätzbarem Wert und hilft uns, das Besuchererlebnis zu verbessern',
     //Common words:
     'yes' => 'Ja',
     'no' => 'Nein',
