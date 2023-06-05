@@ -60,8 +60,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::group(['middleware' => ['auth']], function() {
         Route::controller(DashboardController::class)->group(function() {
             Route::get('/dashboard', 'index');
+            Route::get('/settings', 'settings');
             Route::get('/reviews', 'reviews');
             Route::get('/reviews/{survey}', 'show')->name('dashboard.show');
+            Route::post('/settings', 'change_password')->name('settings');
         });
 
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');

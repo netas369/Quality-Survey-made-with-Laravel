@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Charts\HappinessBar;
 use App\Models\Dashboard;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Survey;
+use App\Models\User;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
@@ -54,7 +60,25 @@ class DashboardController extends Controller
         return view('dashboard.login');
     }
 
-    /**
+    public function settings(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('dashboard.settings');
+    }
+
+    public function change_password(Request $request) {
+        $request->validate([
+            'password' => 'required|min:8|confirmed',
+        ]);
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $user->password = $request->password;
+        $user->save();
+
+
+        return redirect('dashboard');
+    }
+
+    /*
      * Display a page filled with reviews
      */
     public function reviews(Dashboard $dashboard)
