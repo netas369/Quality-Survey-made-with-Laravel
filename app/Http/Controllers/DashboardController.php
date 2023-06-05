@@ -50,10 +50,13 @@ class DashboardController extends Controller
 
             $data[] = $surveyCount;
         }
-        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data'));
 
-        $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
-        return view('dashboard.index', compact('latestAnswers'));
+        $averageRatings = Survey::getLastSixMonthsAverageRatings();
+        $lastMonthRating = Survey::getLastMonthRating();
+        $currentYearRating = Survey::getCurrentYearRating();
+
+        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating'));
+
     }
     public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
