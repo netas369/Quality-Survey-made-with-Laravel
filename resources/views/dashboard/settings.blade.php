@@ -76,32 +76,62 @@
                 </div>
             </div>
         </nav>
-           <section>
-               <form method="post" class="flex flex-col items-center mt-8" action="{{ route('settings') }}">
-                   <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                   <h1 class="text-2xl font-semibold mb-4 text-white">Change password</h1>
-                   @include('layouts.partials.messages')
-                   <div class="mb-4 flex flex-col items-center">
-                       <input type="text" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
-                       @if ($errors->has('username'))
-                           <span class="text-red-500">{{ $errors->first('username') }}</span>
-                       @endif
-                   </div>
-                   <div class="mb-4 flex flex-col items-center">
-                       <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password" value="{{ old('password') }}" placeholder="New Password" required>
-                       @if ($errors->has('password'))
-                           <span class="text-red-500">{{ $errors->first('password') }}</span>
-                       @endif
-                   </div>
-                   <div class="mb-4 flex flex-col items-center">
-                       <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm New Password" required>
-                       @if ($errors->has('password_confirmation'))
-                           <span class="text-red-500">{{ $errors->first('password_confirmation') }}</span>
-                       @endif
-                   </div>
-                   <button class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Login</button>
-               </form>
-           </section>
+        <form class="mt-8">
+            <input checked type="radio" name="radio" id="1" onchange="(()=>{document.querySelector('.form-register').classList.toggle('hidden'); document.querySelector('.form-password').classList.toggle('hidden')})()">
+            <input type="radio" name="radio" id="2" onchange="(()=>{document.querySelector('.form-password').classList.toggle('hidden'); document.querySelector('.form-register').classList.toggle('hidden')})()">
+        </form>
+       <section>
+           <form method="post" class="form-password flex flex-col items-center mt-8" action="{{ route('settings') }}">
+               <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+               <h1 class="text-2xl font-semibold mb-4 text-white">Change password</h1>
+               @include('layouts.partials.messages')
+               <div class="mb-4 flex flex-col items-center">
+                   <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password" value="{{ old('password') }}" placeholder="New Password" required>
+                   @if ($errors->has('password'))
+                       <span class="text-red-500">{{ $errors->first('password') }}</span>
+                   @endif
+               </div>
+               <div class="mb-4 flex flex-col items-center">
+                   <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm New Password" required>
+                   @if ($errors->has('password_confirmation'))
+                       <span class="text-red-500">{{ $errors->first('password_confirmation') }}</span>
+                   @endif
+               </div>
+               <button class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Confirm</button>
+           </form>
+       </section>
+
+        <section>
+            <form method="post" class="hidden form-register flex items-center flex-col justify-center mt-8" action="{{ route('register.perform') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                <h1 class="text-2xl font-semibold mb-4 text-white">Register</h1>
+                <div class="mb-4 flex items-center flex-col">
+                    <input type="email" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
+                    @if ($errors->has('email'))
+                        <span class="text-red-500">{{ $errors->first('email') }}</span>
+                    @endif
+                </div>
+                <div class="mb-4 flex flex-col items-center">
+                    <input type="text" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
+                    @if ($errors->has('username'))
+                        <span class="text-red-500">{{ $errors->first('username') }}</span>
+                    @endif
+                </div>
+                <div class="mb-4 flex flex-col items-center">
+                    <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password" value="{{ old('password') }}" placeholder="Password" required>
+                    @if ($errors->has('password'))
+                        <span class="text-red-500">{{ $errors->first('password') }}</span>
+                    @endif
+                </div>
+                <div class="mb-4 flex flex-col items-center">
+                    <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" required>
+                    @if ($errors->has('password_confirmation'))
+                        <span class="text-red-500">{{ $errors->first('password_confirmation') }}</span>
+                    @endif
+                </div>
+                <button class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Register</button>
+            </form>
+        </section>
     </div>
 </main>
 </body>

@@ -12,7 +12,13 @@
 <body class="bg-gradient-to-r from-blue-500 to-indigo-500 text-gray-900">
 
 <nav class="flex justify-end py-4 pr-8">
-    <a href="{{ url('login') }}" class="text-white font-medium hover:text-gray-200">Login</a>
+    @auth
+        <a href="{{ url('dashboard') }}" class="text-white font-medium hover:text-gray-200">Dashboard</a>
+    @endauth
+
+    @guest
+        <a href="{{ url('login') }}" class="text-white font-medium hover:text-gray-200">Login</a>
+    @endguest
 
 </nav>
 
