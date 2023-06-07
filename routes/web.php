@@ -49,7 +49,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/survey', [SurveyController::class, 'index']);
         Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
-        Route::post('/survey/submition', [SurveyController::class, 'store']);
+        Route::post('/survey/submition/{locale?}', [SurveyController::class, 'store']);
+        Route::get('/thanks/{locale?}', function ($locale = null) {
+            if (!in_array($locale, array_keys(config('app.supported_locales')))) {
+                $locale = config('app.locale');
+            }
+
+            app()->setLocale($locale);
+
+            return view('survey.thanks-eng');
+        })->name('thanks');
 
         /**
          * Dashboard Routes

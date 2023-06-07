@@ -39,7 +39,7 @@ class SurveyController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $locale = null)
     {
         $validatedData = $this->validateSurveyData($request);
 
@@ -84,7 +84,11 @@ class SurveyController extends Controller
 
         $request->session()->put('start', $start);
 
-        return view('survey.thanks-eng');
+        // Get the currently set locale
+        $locale = $locale ?: app()->getLocale();
+
+        // Redirect to the thanks-eng route with the locale parameter
+        return redirect()->route('thanks', ['locale' => $locale]);
     }
 
     public function validateSurveyData(Request $request)

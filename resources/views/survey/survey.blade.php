@@ -34,7 +34,7 @@
 </header>
 <body>
 
-<form method="POST" action="/survey/submition">
+<form method="POST" action="/survey/submition/{{ app()->getLocale() }}">
     @csrf
 
     <div class="w-full h-2 bg-gray-300 rounded-full mb-4">
