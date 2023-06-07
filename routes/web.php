@@ -33,12 +33,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     Route::group(['middleware' => ['guest']], function() {
         /**
-         * Register Routes
-         */
-        Route::get('/register', 'RegisterController@show')->name('register.show');
-        Route::post('/register', 'RegisterController@register')->name('register.perform');
-
-        /**
          * Login Routes
          */
         Route::get('/login', 'LoginController@show')->name('login');
@@ -76,8 +70,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::post('/settings', 'change_password')->name('settings');
         });
 
+        Route::post('/register', 'RegisterController@register')->name('register.perform');
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
-//        login if logged in
     });
 });
 
