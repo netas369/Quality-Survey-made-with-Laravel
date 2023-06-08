@@ -78,4 +78,6 @@ class Survey extends Model
         return $averageRatingsCurrentYear;
     }
 
+
+
 }

@@ -34,6 +34,7 @@ class DashboardController extends Controller
         // Total surveys in the database
         $totalSurveyCount = Survey::count();
 
+
         // Graph 3 to retrieve for the last 7 months how many surveys have been completed
         $currentMonth = Carbon::now();
         $labels = [];
@@ -54,8 +55,14 @@ class DashboardController extends Controller
         $averageRatings = Survey::getLastSixMonthsAverageRatings();
         $lastMonthRating = Survey::getLastMonthRating();
         $currentYearRating = Survey::getCurrentYearRating();
+        $unreadCount = Survey::where('is_read', false)->count();
 
-        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating'));
+        $pieChart = [
+            'V.V.W Schelde' => Survey::where('WhichHarbour', 'V.V.W Schelde')->count(),
+            'Stadshaven Scheldekwartier' => Survey::where('WhichHarbour', 'Stadshaven Scheldekwartier')->count(),
+        ];
+
+        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating', 'pieChart', 'unreadCount'));
 
     }
     public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -166,7 +173,10 @@ class DashboardController extends Controller
         $survey_id = $survey->id;
 
         // Retrieve the Survey object that corresponds to the given Dashboard id
-        $review = Survey::Find($survey_id);
+        $review = Survey::findOrFail($survey_id);
+        $review->is_read = true;
+        $review->save();
+
 
         return view('dashboard.show', compact('review'));
     }

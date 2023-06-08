@@ -131,12 +131,12 @@
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
                                     <div class="rounded-full p-5 bg-yellow-600"><i
-                                            class="fas fa-user-plus fa-2x fa-inverse"></i></div>
+                                            class="fas fa-envelope fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 3</h2>
-                                    <p class="font-bold text-3xl">Data 3.1 <span class="text-yellow-600"><i
-                                                class="fas fa-caret-up"></i></span></p>
+                                    <h2 class="font-bold uppercase text-gray-600">Not Read Surveys</h2>
+                                    <p class="font-bold text-3xl">{{ $unreadCount }} <span class="text-yellow-600"><i
+                                                class="fas fa-"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -205,41 +205,73 @@
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
                             <div
                                 class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h class="font-bold uppercase text-gray-600">Graph</h>
+                                <h5 class="font-bold uppercase text-gray-600">Surveys By Harbour</h5>
                             </div>
                             <div class="p-5">
-                                <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
+                                <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
                                 <script>
-                                    new Chart(document.getElementById("chartjs-7"), {
-                                        "type": "bar",
-                                        "data": {
-                                            "labels": ["January", "February", "March", "April"],
-                                            "datasets": [{
-                                                "label": "Page Impressions",
-                                                "data": [10, 20, 30, 40],
-                                                "borderColor": "rgb(255, 99, 132)",
-                                                "backgroundColor": "rgba(255, 99, 132, 0.2)"
-                                            }, {
-                                                "label": "Adsense Clicks",
-                                                "data": [5, 15, 10, 30],
-                                                "type": "line",
-                                                "fill": false,
-                                                "borderColor": "rgb(54, 162, 235)"
+                                    const pieChart = {!! json_encode($pieChart) !!};
+
+                                    new Chart(document.getElementById("chartjs-4"), {
+                                        type: "doughnut",
+                                        data: {
+                                            labels: Object.keys(pieChart),
+                                            datasets: [{
+                                                label: "Issues",
+                                                data: Object.values(pieChart),
+                                                backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"]
                                             }]
                                         },
-                                        "options": {
-                                            "scales": {
-                                                "yAxes": [{
-                                                    "ticks": {
-                                                        "beginAtZero": true
-                                                    }
-                                                }]
+                                        options: {
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: "bottom"
+                                                }
                                             }
                                         }
                                     });
                                 </script>
                             </div>
                         </div>
+{{--                        <div class="bg-white border-transparent rounded-lg shadow-xl">--}}
+{{--                            <div--}}
+{{--                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">--}}
+{{--                                <h class="font-bold uppercase text-gray-600">Graph</h>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-5">--}}
+{{--                                <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>--}}
+{{--                                <script>--}}
+{{--                                    new Chart(document.getElementById("chartjs-7"), {--}}
+{{--                                        "type": "bar",--}}
+{{--                                        "data": {--}}
+{{--                                            "labels": ["January", "February", "March", "April"],--}}
+{{--                                            "datasets": [{--}}
+{{--                                                "label": "Page Impressions",--}}
+{{--                                                "data": [10, 20, 30, 40],--}}
+{{--                                                "borderColor": "rgb(255, 99, 132)",--}}
+{{--                                                "backgroundColor": "rgba(255, 99, 132, 0.2)"--}}
+{{--                                            }, {--}}
+{{--                                                "label": "Adsense Clicks",--}}
+{{--                                                "data": [5, 15, 10, 30],--}}
+{{--                                                "type": "line",--}}
+{{--                                                "fill": false,--}}
+{{--                                                "borderColor": "rgb(54, 162, 235)"--}}
+{{--                                            }]--}}
+{{--                                        },--}}
+{{--                                        "options": {--}}
+{{--                                            "scales": {--}}
+{{--                                                "yAxes": [{--}}
+{{--                                                    "ticks": {--}}
+{{--                                                        "beginAtZero": true--}}
+{{--                                                    }--}}
+{{--                                                }]--}}
+{{--                                            }--}}
+{{--                                        }--}}
+{{--                                    });--}}
+{{--                                </script>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <!--/Graph Card-->
                     </div>
 
@@ -319,28 +351,7 @@
 
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Graph Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div
-                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                            </div>
-                            <div class="p-5">
-                                <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
-                                <script>
-                                    new Chart(document.getElementById("chartjs-4"), {
-                                        "type": "doughnut",
-                                        "data": {
-                                            "labels": ["P1", "P2", "P3"],
-                                            "datasets": [{
-                                                "label": "Issues",
-                                                "data": [300, 50, 100],
-                                                "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
-                                            }]
-                                        }
-                                    });
-                                </script>
-                            </div>
-                        </div>
+
                         <!--/Graph Card-->
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">

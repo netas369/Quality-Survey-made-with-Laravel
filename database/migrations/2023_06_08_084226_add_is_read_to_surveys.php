@@ -9,17 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('surveys', function (Blueprint $table) {
-            $table->decimal('average_rating', 4, 2)->nullable();
+            $table->boolean('is_read')->default(false);
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::table('surveys', function (Blueprint $table) {
-            $table->dropColumn('average_rating');
+            $table->dropColumn('is_read');
         });
     }
 };
