@@ -84,9 +84,45 @@ class DashboardController extends Controller
     /*
      * Display a page filled with reviews
      */
-    public function reviews(Dashboard $dashboard)
+    public function reviews(Request $request)
     {
-        $survey = Survey::paginate(20);
+        // Retrieve the filter parameters from the request
+        $filter = $request->only(['cleanliness', 'friendly', 'safety', 'recommendation', 'quality']);
+
+        $filter = array_merge([
+            'cleanliness' => null,
+            'friendly' => null,
+            'safety' => null,
+            'recommendation' => null,
+            'quality' => null,
+        ], $filter);
+
+        // Apply the filters to the query
+        $query = Survey::query();
+
+        if ($filter['cleanliness']) {
+            $query->where('OverallCleanliness', $filter['cleanliness']);
+        }
+
+        if ($filter['friendly']) {
+            $query->where('StaffFriendlyAndHelpful', $filter['friendly']);
+        }
+
+        if ($filter['safety']) {
+            $query->where('SafetyAtTheHarbour', $filter['safety']);
+        }
+
+        if ($filter['recommendation']) {
+            $query->where('RecommendToOthers', $filter['recommendation']);
+        }
+
+        if ($filter['quality']) {
+            $query->where('QualityForMoney', $filter['quality']);
+        }
+
+        // Retrieve the paginated survey results with applied filters
+        $survey = $query->paginate(20);
+
         $bar = new HappinessBar();
 
         // Fetch specific data using query builder

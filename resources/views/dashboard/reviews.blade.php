@@ -72,17 +72,81 @@
                                     class="pb-1 md:pb-0 text-xs md:text-base text-red-600 md:text-red-400 block md:inline-block">Logout</span>
                             </a>
                         </li>
-
                     </ul>
                 </div>
         </nav>
 
             <div id="main" class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
                 <div class="bg-gray-800 pt-3">
-                    <div
-                        class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+                    <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
                         <h1 class="font-bold pl-2">Analytics</h1>
                     </div>
+                </div>
+
+                <div class="flex justify-center items-center my-4 text-left">
+                    <form action="{{ route('dashboard.reviews') }}" method="GET">
+                        <div class="flex flex-wrap justify-between mb-4">
+                            <div class="flex items-center mr-2 mb-2">
+                                <label for="cleanliness" class="mr-2">Cleanliness:</label>
+                                <select name="cleanliness" id="cleanliness" class="border border-gray-300 rounded px-2 py-1">
+                                    <option value="">All</option>
+                                    <option value="1">1 Star</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="5">5 Stars</option>
+                                </select>
+                            </div>
+                            <!-- Add more filter options here -->
+                            <div class="flex items-center mr-2 mb-2">
+                                <label for="friendly" class="mr-2">Friendly:</label>
+                                <select name="friendly" id="friendly" class="border border-gray-300 rounded px-2 py-1">
+                                    <option value="">All</option>
+                                    <option value="1">1 Star</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="5">5 Stars</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center mr-2 mb-2">
+                                <label for="safety" class="mr-2">Safety:</label>
+                                <select name="safety" id="safety" class="border border-gray-300 rounded px-2 py-1">
+                                    <option value="">All</option>
+                                    <option value="1">1 Star</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="5">5 Stars</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center mr-2 mb-2">
+                                <label for="recommendation" class="mr-2">Recommendation:</label>
+                                <select name="recommendation" id="recommendation" class="border border-gray-300 rounded px-2 py-1">
+                                    <option value="">All</option>
+                                    <option value="1">1 Star</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="5">5 Stars</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center mr-2 mb-2">
+                                <label for="quality" class="mr-2">Quality:</label>
+                                <select name="quality" id="quality" class="border border-gray-300 rounded px-2 py-1">
+                                    <option value="">All</option>
+                                    <option value="1">1 Star</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="5">5 Stars</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                            Apply Filters
+                        </button>
+                    </form>
                 </div>
 
                 <div class="flex justify-center items-center my-4">
@@ -137,4 +201,20 @@
     </div>
 </main>
 </body>
+<script>
+    document.getElementById('filter-rating').addEventListener('change', function () {
+        let selectedRating = this.value;
+
+        let reviews = document.querySelectorAll('#main table tbody tr');
+        reviews.forEach(function (review) {
+            let rating = review.querySelector('td:nth-child(11)').textContent;
+
+            if (selectedRating === '' || rating === selectedRating) {
+                review.style.display = '';
+            } else {
+                review.style.display = 'none';
+            }
+        });
+    });
+</script>
 </html>
