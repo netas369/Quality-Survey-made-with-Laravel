@@ -39,6 +39,11 @@
     <div class="flex items-center justify-center mt-8">
         <a href="{{ url('/') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 ease-in-out">Back to Home</a>
     </div>
+
+    <div class="flex items-center justify-center mt-8">
+        <img src="/images/thumb-up.gif" alt="Thumb Up">
+    </div>
 </div>
 </body>
 </html>
+
