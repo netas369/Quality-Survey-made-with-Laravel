@@ -49,6 +49,7 @@ return [
     // Thank you page
     'Thanks' => 'Bedankt voor uw tijd en uw antwoorden',
     'Thanksmessage' => 'Bedankt dat u de tijd heeft genomen om onze enquête in te vullen. Uw feedback is van onschatbare waarde om ons te helpen de bezoekerservaring te verbeteren',
+    'Returnhome' => 'Terug naar startpagina',
     //Common words:
     'yes' => 'Ja',
     'no' => 'Nee',

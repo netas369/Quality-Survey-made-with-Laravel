@@ -37,8 +37,13 @@
     <p class="text-gray-800 mt-4">{{ trans('messages.Thanksmessage') }}</p>
 
     <div class="flex items-center justify-center mt-8">
-        <a href="{{ url('/') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 ease-in-out">Back to Home</a>
+        <a href="{{ url('/') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 ease-in-out">{{ trans('messages.Returnhome') }}</a>
+    </div>
+
+    <div class="flex items-center justify-center mt-8">
+        <img src="/images/thumb-up.gif" alt="Thumb Up">
     </div>
 </div>
 </body>
 </html>
+

@@ -49,6 +49,7 @@ return [
     // Thank you page
     'Thanks' => 'Vielen Dank für Ihre Zeit und Ihre Antworten',
     'Thanksmessage' => 'Vielen Dank, dass Sie sich die Zeit genommen haben, an unserer Umfrage teilzunehmen. Ihr Feedback ist für uns von unschätzbarem Wert und hilft uns, das Besuchererlebnis zu verbessern',
+    'Returnhome' => 'Zurück zur Startseite',
     //Common words:
     'yes' => 'Ja',
     'no' => 'Nein',
