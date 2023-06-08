@@ -49,6 +49,7 @@ return [
     // Thank you page
     'Thanks' => 'Thank you for your time and your answers',
     'Thanksmessage' => 'Thank you for taking the time to complete our survey. Your feedback is invaluable in helping us enhance the visitor experience',
+    'Returnhome' => 'Return to homepage',
     //Common words:
     'yes' => 'Yes',
     'no' => 'No',
