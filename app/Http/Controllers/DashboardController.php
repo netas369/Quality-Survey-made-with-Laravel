@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Charts\HappinessBar;
 use App\Models\Dashboard;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Survey;
+use App\Models\User;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
@@ -28,6 +34,7 @@ class DashboardController extends Controller
         // Total surveys in the database
         $totalSurveyCount = Survey::count();
 
+
         // Graph 3 to retrieve for the last 7 months how many surveys have been completed
         $currentMonth = Carbon::now();
         $labels = [];
@@ -44,22 +51,85 @@ class DashboardController extends Controller
 
             $data[] = $surveyCount;
         }
-        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data'));
 
-        $latestAnswers = Survey::orderBy('created_at', 'desc')->take(10)->get();
-        return view('dashboard.index', compact('latestAnswers'));
+        $averageRatings = Survey::getLastSixMonthsAverageRatings();
+        $lastMonthRating = Survey::getLastMonthRating();
+        $currentYearRating = Survey::getCurrentYearRating();
+        $unreadCount = Survey::where('is_read', false)->count();
+
+        $pieChart = [
+            'V.V.W Schelde' => Survey::where('WhichHarbour', 'V.V.W Schelde')->count(),
+            'Stadshaven Scheldekwartier' => Survey::where('WhichHarbour', 'Stadshaven Scheldekwartier')->count(),
+        ];
+
+        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating', 'pieChart', 'unreadCount'));
+
     }
     public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('dashboard.login');
     }
 
-    /**
+    public function settings(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('dashboard.settings');
+    }
+
+    public function change_password(Request $request) {
+        $request->validate([
+            'password' => 'required|min:8|confirmed',
+        ]);
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $user->password = $request->password;
+        $user->save();
+
+
+        return redirect('dashboard');
+    }
+
+    /*
      * Display a page filled with reviews
      */
-    public function reviews(Dashboard $dashboard)
+    public function reviews(Request $request)
     {
-        $survey = Survey::paginate(20);
+        // Retrieve the filter parameters from the request
+        $filter = $request->only(['cleanliness', 'friendly', 'safety', 'recommendation', 'quality']);
+
+        $filter = array_merge([
+            'cleanliness' => null,
+            'friendly' => null,
+            'safety' => null,
+            'recommendation' => null,
+            'quality' => null,
+        ], $filter);
+
+        // Apply the filters to the query
+        $query = Survey::query();
+
+        if ($filter['cleanliness']) {
+            $query->where('OverallCleanliness', $filter['cleanliness']);
+        }
+
+        if ($filter['friendly']) {
+            $query->where('StaffFriendlyAndHelpful', $filter['friendly']);
+        }
+
+        if ($filter['safety']) {
+            $query->where('SafetyAtTheHarbour', $filter['safety']);
+        }
+
+        if ($filter['recommendation']) {
+            $query->where('RecommendToOthers', $filter['recommendation']);
+        }
+
+        if ($filter['quality']) {
+            $query->where('QualityForMoney', $filter['quality']);
+        }
+
+        // Retrieve the paginated survey results with applied filters
+        $survey = $query->paginate(20);
+
         $bar = new HappinessBar();
 
         // Fetch specific data using query builder
@@ -69,7 +139,7 @@ class DashboardController extends Controller
 
         // Calculate the average of the five columns
         $averageValues = $data->map(function ($row) {
-            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers + $row->QualityForMoney) / 5;
+            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers  + $row->QualityForMoney) / 5;
         });
 
         // Calculate the overall average
@@ -103,7 +173,10 @@ class DashboardController extends Controller
         $survey_id = $survey->id;
 
         // Retrieve the Survey object that corresponds to the given Dashboard id
-        $review = Survey::Find($survey_id);
+        $review = Survey::findOrFail($survey_id);
+        $review->is_read = true;
+        $review->save();
+
 
         return view('dashboard.show', compact('review'));
     }

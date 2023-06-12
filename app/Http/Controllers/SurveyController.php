@@ -39,7 +39,7 @@ class SurveyController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $locale = null)
     {
         $validatedData = $this->validateSurveyData($request);
 
@@ -84,7 +84,11 @@ class SurveyController extends Controller
 
         $request->session()->put('start', $start);
 
-        return view('survey.thanks-eng');
+        // Get the currently set locale
+        $locale = $locale ?: app()->getLocale();
+
+        // Redirect to the thanks-eng route with the locale parameter
+        return redirect()->route('thanks', ['locale' => $locale]);
     }
 
     public function validateSurveyData(Request $request)
@@ -112,18 +116,11 @@ class SurveyController extends Controller
             'RateOverallExperience' => 'required|integer|min:1|max:5',
             'RecommendToOthers' => 'required|integer|min:1|max:5',
             'QualityForMoney' => 'required|integer|min:1|max:5',
-            'AnythingToImprove' => 'string',
-            'anyAdditionalAmenities' => 'string',
-            'SomethingToChangeWebsite' => 'string',
-            'AnythingLeft' => 'string',
+            'AnythingToImprove' => 'nullable|string',
+            'anyAdditionalAmenities' => 'nullable|string',
+            'SomethingToChangeWebsite' => 'nullable|string',
+            'AnythingLeft' => 'nullable|string',
         ]);
     }
-
-    private $questions = [
-        'Question 1',
-        'Question 2',
-        // Add all your survey questions here...
-        'Question 20',
-    ];
 }
 

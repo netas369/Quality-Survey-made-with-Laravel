@@ -44,7 +44,7 @@
                     class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
                     <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
                         <li class="mr-3 flex-1">
-                            <a href="#"
+                            <a href="{{ url('/dashboard') }}"
                                class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
                                 <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span
                                     class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Analytics</span>
@@ -55,6 +55,13 @@
                                class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                                 <i class="fas fa-tasks pr-0 md:pr-3"></i><span
                                     class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">All reviews</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
+                            <a href="{{ url('/settings') }}"
+                               class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-cog pr-0 md:pr-3"></i><span
+                                    class="pb-1 md:pb-0 text-xs md:text-base text-red-600 md:text-gray-200 block md:inline-block">Settings</span>
                             </a>
                         </li>
                         <li class="mr-3 flex-1">
@@ -124,12 +131,12 @@
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
                                     <div class="rounded-full p-5 bg-yellow-600"><i
-                                            class="fas fa-user-plus fa-2x fa-inverse"></i></div>
+                                            class="fas fa-envelope fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 3</h2>
-                                    <p class="font-bold text-3xl">Data 3.1 <span class="text-yellow-600"><i
-                                                class="fas fa-caret-up"></i></span></p>
+                                    <h2 class="font-bold uppercase text-gray-600">Not Read Surveys</h2>
+                                    <p class="font-bold text-3xl">{{ $unreadCount }} <span class="text-yellow-600"><i
+                                                class="fas fa-"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -137,33 +144,34 @@
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Metric Card-->
-                        <div
-                            class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
+                        <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
-                                    <div class="rounded-full p-5 bg-blue-600"><i
-                                            class="fas fa-server fa-2x fa-inverse"></i></div>
+                                    <div class="rounded-full p-5 bg-blue-600">
+                                        <i class="fas fa-star fa-2x fa-inverse"></i>
+                                    </div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 4</h2>
-                                    <p class="font-bold text-3xl">Data 4.1</p>
+                                    <h2 class="font-bold uppercase text-gray-600">Rating Last 30 Days</h2>
+                                    <p class="font-bold text-3xl">{{ $lastMonthRating }}</p>
                                 </div>
                             </div>
                         </div>
+
                         <!--/Metric Card-->
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Metric Card-->
                         <div
-                            class="bg-gradient-to-b from-indigo-200 to-indigo-100 border-b-4 border-indigo-500 rounded-lg shadow-xl p-5">
+                            class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
-                                    <div class="rounded-full p-5 bg-indigo-600"><i
-                                            class="fas fa-tasks fa-2x fa-inverse"></i></div>
+                                    <div class="rounded-full p-5 bg-yellow-400"><i
+                                            class="fas fa-star fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 5</h2>
-                                    <p class="font-bold text-3xl">Data 5.1</p>
+                                    <h2 class="font-bold uppercase text-gray-600">Rating Current Year</h2>
+                                    <p class="font-bold text-3xl">{{ $currentYearRating }}</p>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +183,7 @@
                             class="bg-gradient-to-b from-red-200 to-red-100 border-b-4 border-red-500 rounded-lg shadow-xl p-5">
                             <div class="flex flex-row items-center">
                                 <div class="flex-shrink pr-4">
-                                    <div class="rounded-full p-5 bg-red-600"><i
+                                    <div class="rounded-full p-5 bg-yellow-600"><i
                                             class="fas fa-inbox fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
@@ -197,41 +205,73 @@
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
                             <div
                                 class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h class="font-bold uppercase text-gray-600">Graph</h>
+                                <h5 class="font-bold uppercase text-gray-600">Surveys By Harbour</h5>
                             </div>
                             <div class="p-5">
-                                <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
+                                <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
                                 <script>
-                                    new Chart(document.getElementById("chartjs-7"), {
-                                        "type": "bar",
-                                        "data": {
-                                            "labels": ["January", "February", "March", "April"],
-                                            "datasets": [{
-                                                "label": "Page Impressions",
-                                                "data": [10, 20, 30, 40],
-                                                "borderColor": "rgb(255, 99, 132)",
-                                                "backgroundColor": "rgba(255, 99, 132, 0.2)"
-                                            }, {
-                                                "label": "Adsense Clicks",
-                                                "data": [5, 15, 10, 30],
-                                                "type": "line",
-                                                "fill": false,
-                                                "borderColor": "rgb(54, 162, 235)"
+                                    const pieChart = {!! json_encode($pieChart) !!};
+
+                                    new Chart(document.getElementById("chartjs-4"), {
+                                        type: "doughnut",
+                                        data: {
+                                            labels: Object.keys(pieChart),
+                                            datasets: [{
+                                                label: "Issues",
+                                                data: Object.values(pieChart),
+                                                backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"]
                                             }]
                                         },
-                                        "options": {
-                                            "scales": {
-                                                "yAxes": [{
-                                                    "ticks": {
-                                                        "beginAtZero": true
-                                                    }
-                                                }]
+                                        options: {
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: "bottom"
+                                                }
                                             }
                                         }
                                     });
                                 </script>
                             </div>
                         </div>
+{{--                        <div class="bg-white border-transparent rounded-lg shadow-xl">--}}
+{{--                            <div--}}
+{{--                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">--}}
+{{--                                <h class="font-bold uppercase text-gray-600">Graph</h>--}}
+{{--                            </div>--}}
+{{--                            <div class="p-5">--}}
+{{--                                <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>--}}
+{{--                                <script>--}}
+{{--                                    new Chart(document.getElementById("chartjs-7"), {--}}
+{{--                                        "type": "bar",--}}
+{{--                                        "data": {--}}
+{{--                                            "labels": ["January", "February", "March", "April"],--}}
+{{--                                            "datasets": [{--}}
+{{--                                                "label": "Page Impressions",--}}
+{{--                                                "data": [10, 20, 30, 40],--}}
+{{--                                                "borderColor": "rgb(255, 99, 132)",--}}
+{{--                                                "backgroundColor": "rgba(255, 99, 132, 0.2)"--}}
+{{--                                            }, {--}}
+{{--                                                "label": "Adsense Clicks",--}}
+{{--                                                "data": [5, 15, 10, 30],--}}
+{{--                                                "type": "line",--}}
+{{--                                                "fill": false,--}}
+{{--                                                "borderColor": "rgb(54, 162, 235)"--}}
+{{--                                            }]--}}
+{{--                                        },--}}
+{{--                                        "options": {--}}
+{{--                                            "scales": {--}}
+{{--                                                "yAxes": [{--}}
+{{--                                                    "ticks": {--}}
+{{--                                                        "beginAtZero": true--}}
+{{--                                                    }--}}
+{{--                                                }]--}}
+{{--                                            }--}}
+{{--                                        }--}}
+{{--                                    });--}}
+{{--                                </script>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <!--/Graph Card-->
                     </div>
 
@@ -240,24 +280,29 @@
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
                             <div
                                 class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">Graph</h2>
+                                <h2 class="font-bold uppercase text-gray-600">Average Rating Last 6 Months</h2>
                             </div>
                             <div class="p-5">
                                 <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
                                 <script>
+                                    var averageRatings = @json($averageRatings);
+
+                                    var labels = Object.keys(averageRatings);
+                                    var data = Object.values(averageRatings);
+
                                     new Chart(document.getElementById("chartjs-0"), {
-                                        "type": "line",
-                                        "data": {
-                                            "labels": ["January", "February", "March", "April", "May", "June", "July"],
-                                            "datasets": [{
-                                                "label": "Views",
-                                                "data": [65, 59, 80, 81, 56, 55, 40],
-                                                "fill": false,
-                                                "borderColor": "rgb(75, 192, 192)",
-                                                "lineTension": 0.1
+                                        type: "line",
+                                        data: {
+                                            labels: labels,
+                                            datasets: [{
+                                                label: "Average Ratings",
+                                                data: data,
+                                                fill: false,
+                                                borderColor: "rgb(75, 192, 192)",
+                                                lineTension: 0.1
                                             }]
                                         },
-                                        "options": {}
+                                        options: {}
                                     });
                                 </script>
                             </div>
@@ -306,28 +351,7 @@
 
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Graph Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div
-                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                            </div>
-                            <div class="p-5">
-                                <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
-                                <script>
-                                    new Chart(document.getElementById("chartjs-4"), {
-                                        "type": "doughnut",
-                                        "data": {
-                                            "labels": ["P1", "P2", "P3"],
-                                            "datasets": [{
-                                                "label": "Issues",
-                                                "data": [300, 50, 100],
-                                                "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
-                                            }]
-                                        }
-                                    });
-                                </script>
-                            </div>
-                        </div>
+
                         <!--/Graph Card-->
                     </div>
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">

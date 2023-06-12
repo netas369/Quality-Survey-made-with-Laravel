@@ -5,72 +5,63 @@ use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\WelcomeController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
-
-// Routes for Survey page
-//Route::post('/survey/{language}', [SurveyController::class, 'store']);
-//Route::get('/survey/{language}', [SurveyController::class, 'create']);
-
-Route::get('/survey', [SurveyController::class, 'index']);
-Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
-Route::post('/survey/submition', [SurveyController::class, 'store']);
-//Route::get('/survey/thanks-eng', function () {
-//    return view('survey.thanks-eng');
-//})->name('survey.thanks-eng');
-//Route::get('/survey/thanks-nl', function () {
-//    return view('survey.thanks-nl');
-//})->name('survey.thanks-nl');
-
 
 // Routes for dashboard page
-
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/login', [DashboardController::class, 'login']);
-Route::get('/reviews', [DashboardController::class, 'reviews']);
+Route::get('/reviews', [DashboardController::class, 'reviews'])->name('dashboard.reviews');
 Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
 
-Route::group(['namespace' => 'App\Http\Controllers'], function()
-{
-
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
     Route::get('/', 'WelcomeController@index')->name('welcome.index');
 
-    Route::group(['middleware' => ['guest']], function() {
-        /**
-         * Register Routes
-         */
-        Route::get('/register', 'RegisterController@show')->name('register.show');
-        Route::post('/register', 'RegisterController@register')->name('register.perform');
-
+    Route::group(['middleware' => ['guest']], function () {
         /**
          * Login Routes
          */
-        Route::get('/login', 'LoginController@show')->name('login.show');
+        Route::get('/login', 'LoginController@show')->name('login');
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
+        /**
+         * Survey Routes
+         */
+        Route::get('/survey', [SurveyController::class, 'index']);
+        Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
+        Route::post('/survey/submition/{locale?}', [SurveyController::class, 'store']);
+        Route::get('/thanks/{locale?}', function ($locale = null) {
+            if (!in_array($locale, array_keys(config('app.supported_locales')))) {
+                $locale = config('app.locale');
+            }
+
+            app()->setLocale($locale);
+
+            return view('survey.thanks-eng');
+        })->name('thanks');
+
+        /**
+         * Dashboard Routes
+         */
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('/dashboard', function () {
+                return redirect('login');
+            });
+        });
     });
 
-    Route::group(['middleware' => ['auth']], function() {
-        /**
-         * Logout Routes
-         */
-        Route::controller(DashboardController::class)->group(function() {Route::get('/dashboard', 'index');});
-        Route::controller(DashboardController::class)->group(function() {Route::get('/reviews', 'reviews');});
-        Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+    Route::group(['middleware' => ['auth']], function () {
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('/dashboard', 'index');
+            Route::get('/settings', 'settings');
+            Route::get('/reviews/{survey}', 'show')->name('dashboard.show');
+            Route::post('/settings', 'change_password')->name('settings');
+        });
+
+        Route::post('/register', 'RegisterController@register')->name('register.perform');
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
+
 

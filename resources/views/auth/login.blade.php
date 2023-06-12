@@ -1,33 +1,23 @@
 @extends('layouts.auth-master')
 
 @section('content')
-    <form method="post" action="{{ route('login.perform') }}">
-
+    <form method="post" class="flex flex-col items-center justify-center h-screen" action="{{ route('login.perform') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <img class="mb-4" src="{!! url('images/schelde_logo.jpg') !!}" alt="" width="72" height="57">
-
-        <h1 class="h3 mb-3 fw-normal">Login</h1>
-
+        <h1 class="text-2xl font-semibold mb-4">Login</h1>
         @include('layouts.partials.messages')
-
-        <div class="form-group form-floating mb-3">
-            <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus>
-            <label for="floatingName">Email or Username</label>
+        <div class="mb-4 flex flex-col items-center">
+            <input type="text" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
             @if ($errors->has('username'))
-                <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+                <span class="text-red-500">{{ $errors->first('username') }}</span>
             @endif
         </div>
-
-        <div class="form-group form-floating mb-3">
-            <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
-            <label for="floatingPassword">Password</label>
+        <div class="mb-4 flex flex-col items-center">
+            <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password" value="{{ old('password') }}" placeholder="Password" required>
             @if ($errors->has('password'))
-                <span class="text-danger text-left">{{ $errors->first('password') }}</span>
+                <span class="text-red-500">{{ $errors->first('password') }}</span>
             @endif
         </div>
-
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-
-        @include('auth.partials.copy')
+        <button class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Login</button>
     </form>
 @endsection
