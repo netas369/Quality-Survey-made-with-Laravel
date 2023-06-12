@@ -24,4 +24,10 @@ class PageLoadingTest extends TestCase
 
         $response->assertStatus(200);
     }
+    public function dashboardPage(): void
+    {
+        $response = $this->get('/dashboard');
+
+        $response->assertStatus(200);
+    }
 }
