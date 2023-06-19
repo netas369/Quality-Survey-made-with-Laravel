@@ -32,7 +32,6 @@
     </div>
 
 </header>
-<body>
 
 <form method="POST" action="/survey/submition/{{ app()->getLocale() }}">
     @csrf

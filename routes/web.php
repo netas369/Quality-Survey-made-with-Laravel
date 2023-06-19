@@ -49,9 +49,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 return redirect('login');
             });
         });
+
+        Route::get('/register', function () {
+            abort(403);
+        });
+
     });
 
     Route::group(['middleware' => ['auth']], function () {
+        Route::get('/survey', [SurveyController::class, 'edit']);
+
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'index');
             Route::get('/settings', 'settings');
