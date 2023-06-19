@@ -32,8 +32,8 @@
         </div>
 
     </header>
-    // TODO
-    <form method="POST" action="{{ }}">
+{{--    TODO--}}
+    <form method="POST" action="">
         @csrf
 
         <div class="w-full h-2 bg-gray-300 rounded-full mb-4">
