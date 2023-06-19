@@ -134,6 +134,51 @@
             <p class="text-gray-600">{{ $review->ConsiderAgain }}</p>
         </div>
         <p class="font-bold">Rating:</p>
+        <p class="text-lg">Overall cleanliness:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->OverallCleanliness }}</p>
+        </div>
+        <p class="text-lg">Staff friendly and helpfulness:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->StaffFriendlyAndHelpful }}</p>
+        </div>
+        <p class="text-lg">Harbour safety:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->SafetyAtTheHarbour }}</p>
+        </div>
+        <p class="text-lg">Our facilities:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->OurFacilities }}</p>
+        </div>
+        <p class="text-lg">Visitor experience:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->RateOverallExperience }}</p>
+        </div>
+        <p class="text-lg">Recommend to others:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->RecommendToOthers }}</p>
+        </div>
+        <p class="text-lg">Quality for money:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->QualityForMoney }}</p>
+        </div>
+        <p class="font-bold">Open answers:</p>
+        <p class="text-lg">Anything you would like us to improve:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->AnythingToImprove }}</p>
+        </div>
+        <p class="text-lg">Any additional amenities:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->anyAdditionalAmenities }}</p>
+        </div>
+        <p class="text-lg">Something to change the website:</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->SomethingToChangeWebsite }}</p>
+        </div>
+        <p class="text-lg">Open remarks</p>
+        <div class="bg-white p-4 h-8 flex items-center">
+            <p class="text-gray-600">{{ $review->AnythingLeft }}</p>
+        </div>
     </div>
     </div>
 
