@@ -109,7 +109,7 @@
                                 <select name="marina" id="marina" class="border border-gray-300 rounded px-2 py-1">
                                     <option value="">All</option>
                                     <option value="V.V.W Schelde">V.V.W Schelde</option>
-                                    <option value="Stadshaven">Stadshaven</option>
+                                    <option value="Stadshaven Scheldekwartier">Stadshaven Scheldekwartier</option>
                                     <!-- Add more marina options here -->
                                 </select>
                             </div>
