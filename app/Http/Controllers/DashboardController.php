@@ -94,59 +94,46 @@ class DashboardController extends Controller
     public function reviews(Request $request)
     {
         // Retrieve the filter parameters from the request
-        $filter = $request->only(['cleanliness', 'friendly', 'safety', 'recommendation', 'quality']);
-
-        $filter = array_merge([
-            'cleanliness' => null,
-            'friendly' => null,
-            'safety' => null,
-            'recommendation' => null,
-            'quality' => null,
-        ], $filter);
+        $filter = $request->only(['start_date', 'end_date', 'typeOfVessel', 'marina', 'read']);
 
         // Apply the filters to the query
         $query = Survey::query();
 
-        if ($filter['cleanliness']) {
-            $query->where('OverallCleanliness', $filter['cleanliness']);
+        if (isset($filter['start_date']) && isset($filter['end_date'])) {
+            $startDate = $filter['start_date'];
+            $endDate = $filter['end_date'];
+
+            $query->whereBetween('created_at', [$startDate, $endDate]);
         }
 
-        if ($filter['friendly']) {
-            $query->where('StaffFriendlyAndHelpful', $filter['friendly']);
+        if (isset($filter['typeOfVessel']) && $filter['typeOfVessel']) {
+            $vesselTypes = explode(',', $filter['typeOfVessel']);
+            $query->whereIn('typeOfVessel', $vesselTypes);
         }
 
-        if ($filter['safety']) {
-            $query->where('SafetyAtTheHarbour', $filter['safety']);
+        if (isset($filter['marina']) && $filter['marina']) {
+            $marinas = explode(',', $filter['marina']);
+            $query->whereIn('WhichHarbour', $marinas);
         }
 
-        if ($filter['recommendation']) {
-            $query->where('RecommendToOthers', $filter['recommendation']);
-        }
-
-        if ($filter['quality']) {
-            $query->where('QualityForMoney', $filter['quality']);
+        if (isset($filter['read']) && $filter['read']) {
+            $query->where('is_read', $filter['read']);
         }
 
         // Retrieve the paginated survey results with applied filters
-        $survey = $query->paginate(20);
+        $survey = $query->paginate(20)->appends($filter);
 
-        $bar = new HappinessBar();
-
-        // Fetch specific data using query builder
-        $data = DB::table('surveys')
-            ->select('OverallCleanliness', 'StaffFriendlyAndHelpful', 'SafetyAtTheHarbour', 'RecommendToOthers', 'QualityForMoney')
-            ->get();
-
-        // Calculate the average of the five columns
-        $averageValues = $data->map(function ($row) {
-            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers  + $row->QualityForMoney) / 5;
-        });
-
-        // Calculate the overall average
-        $averageSatisfaction = $averageValues->avg();
-
-        return view('dashboard.reviews', compact('survey', 'bar', 'averageSatisfaction'));
+        return view('dashboard.reviews', compact('survey'));
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
