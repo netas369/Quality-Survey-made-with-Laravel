@@ -171,7 +171,6 @@ class DashboardController extends Controller
     {
         // Retrieve the id of the Dashboard object
         $survey_id = $survey->id;
-
         // Retrieve the Survey object that corresponds to the given Dashboard id
         $review = Survey::findOrFail($survey_id);
         $review->is_read = true;

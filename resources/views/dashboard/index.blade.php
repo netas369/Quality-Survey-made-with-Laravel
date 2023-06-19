@@ -26,9 +26,6 @@
                 <a href="#" aria-label="Home">
                     <span class="text-4xl text-white"><i class="em em-grinning"></i></span>
                 </a>
-            </div>
-            <h1 class="mb-4 text-3xl font-bold text-white md:text-6xl lg:text-5xl">Analytics Dashboard</h1>
-        </div>
     </nav>
 </header>
 
@@ -241,45 +238,6 @@
                                 </script>
                             </div>
                         </div>
-{{--                        <div class="bg-white border-transparent rounded-lg shadow-xl">--}}
-{{--                            <div--}}
-{{--                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">--}}
-{{--                                <h class="font-bold uppercase text-gray-600">Graph</h>--}}
-{{--                            </div>--}}
-{{--                            <div class="p-5">--}}
-{{--                                <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>--}}
-{{--                                <script>--}}
-{{--                                    new Chart(document.getElementById("chartjs-7"), {--}}
-{{--                                        "type": "bar",--}}
-{{--                                        "data": {--}}
-{{--                                            "labels": ["January", "February", "March", "April"],--}}
-{{--                                            "datasets": [{--}}
-{{--                                                "label": "Page Impressions",--}}
-{{--                                                "data": [10, 20, 30, 40],--}}
-{{--                                                "borderColor": "rgb(255, 99, 132)",--}}
-{{--                                                "backgroundColor": "rgba(255, 99, 132, 0.2)"--}}
-{{--                                            }, {--}}
-{{--                                                "label": "Adsense Clicks",--}}
-{{--                                                "data": [5, 15, 10, 30],--}}
-{{--                                                "type": "line",--}}
-{{--                                                "fill": false,--}}
-{{--                                                "borderColor": "rgb(54, 162, 235)"--}}
-{{--                                            }]--}}
-{{--                                        },--}}
-{{--                                        "options": {--}}
-{{--                                            "scales": {--}}
-{{--                                                "yAxes": [{--}}
-{{--                                                    "ticks": {--}}
-{{--                                                        "beginAtZero": true--}}
-{{--                                                    }--}}
-{{--                                                }]--}}
-{{--                                            }--}}
-{{--                                        }--}}
-{{--                                    });--}}
-{{--                                </script>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <!--/Graph Card-->
                     </div>
 
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
@@ -356,39 +314,6 @@
                         <!--/Graph Card-->
                     </div>
 
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Graph Card-->
-
-                        <!--/Graph Card-->
-                    </div>
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Table Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div
-                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">extra graph</h2>
-                            </div>
-                            <div class="p-5">
-
-
-                            </div>
-                        </div>
-                        <!--/table Card-->
-                    </div>
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Advert Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div
-                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">extra</h2>
-                            </div>
-                            <div class="p-5 text-center">
-
-
-                            </div>
-                        </div>
-                        <!--/Advert Card-->
-                    </div>
                 </div>
             </div>
         </section>
