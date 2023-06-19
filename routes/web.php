@@ -12,12 +12,17 @@ Route::get('/login', [DashboardController::class, 'login']);
 Route::get('/reviews', [DashboardController::class, 'reviews'])->name('dashboard.reviews');
 Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
 
+
+
+
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
     Route::get('/', 'WelcomeController@index')->name('welcome.index');
-
+    Route::get('/survey', [SurveyController::class, 'index']);
+    Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
+    Route::post('/survey/submition/{locale?}', [SurveyController::class, 'store']);
     Route::group(['middleware' => ['guest']], function () {
         /**
          * Login Routes
@@ -28,9 +33,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         /**
          * Survey Routes
          */
-        Route::get('/survey', [SurveyController::class, 'index']);
-        Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
-        Route::post('/survey/submition/{locale?}', [SurveyController::class, 'store']);
+
+
+
         Route::get('/thanks/{locale?}', function ($locale = null) {
             if (!in_array($locale, array_keys(config('app.supported_locales')))) {
                 $locale = config('app.locale');
@@ -52,6 +57,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     });
 
     Route::group(['middleware' => ['auth']], function () {
+        Route::get('/export-csv', [SurveyController::class, 'exportCSV'])->name('export.csv');
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'index');
             Route::get('/settings', 'settings');
