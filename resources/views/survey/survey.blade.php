@@ -42,13 +42,14 @@
     </div>
 
     <div id="page1" class="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
-        <label for="Nationality" class="block mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion1') }}</label>
-        <select id="Nationality" name="Nationality" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option value="Dutch">{{ trans('messages.answerA1') }}</option>
-            <option value="English">{{ trans('messages.answerB1') }}</option>
-            <option value="French">{{ trans('messages.answerC1') }}</option>
-            <option value="German">{{ trans('messages.answerD1') }}</option>
+        <label for="TypeOfVessel" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion3') }}</label>
+        <select id="TypeOfVessel" name="TypeOfVessel" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <option value="Cruise Ship">Cruise Ship</option>
+            <option value="Fishing Boat">Fishing Boat</option>
+            <option value="Sailboat">Sailboat</option>
+            <option value="Motorboat">Motorboat</option>
         </select>
+
 
         <label for="AgeOfVisitor" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion2') }}</label>
         <input type="text" id="AgeOfVisitor" name="AgeOfVisitor" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
@@ -268,5 +269,9 @@
         const progress = (currentPage / totalPages) * 100;
         document.getElementById('progress').style.width = `${progress}%`;
     }
+
+    window.addEventListener("load", (   ) => {
+        updateProgress();
+});
 </script>
 </html>
