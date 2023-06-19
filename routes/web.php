@@ -22,6 +22,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/login', [DashboardController::class, 'login']);
 Route::get('/reviews', [DashboardController::class, 'reviews']);
 Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+Route::get('/test-dashboard', 'TestDashboardController@index')->name('test.dashboard');
 
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
