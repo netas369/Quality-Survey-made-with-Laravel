@@ -34,6 +34,7 @@ class DashboardController extends Controller
         // Total surveys in the database
         $totalSurveyCount = Survey::count();
 
+
         // Graph 3 to retrieve for the last 7 months how many surveys have been completed
         $currentMonth = Carbon::now();
         $labels = [];
@@ -54,8 +55,14 @@ class DashboardController extends Controller
         $averageRatings = Survey::getLastSixMonthsAverageRatings();
         $lastMonthRating = Survey::getLastMonthRating();
         $currentYearRating = Survey::getCurrentYearRating();
+        $unreadCount = Survey::where('is_read', false)->count();
 
-        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating'));
+        $pieChart = [
+            'V.V.W Schelde' => Survey::where('WhichHarbour', 'V.V.W Schelde')->count(),
+            'Stadshaven Scheldekwartier' => Survey::where('WhichHarbour', 'Stadshaven Scheldekwartier')->count(),
+        ];
+
+        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating', 'pieChart', 'unreadCount'));
 
     }
     public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -84,26 +91,49 @@ class DashboardController extends Controller
     /*
      * Display a page filled with reviews
      */
-    public function reviews(Dashboard $dashboard)
+    public function reviews(Request $request)
     {
-        $survey = Survey::paginate(20);
-        $bar = new HappinessBar();
+        // Retrieve the filter parameters from the request
+        $filter = $request->only(['start_date', 'end_date', 'typeOfVessel', 'marina', 'read']);
 
-        // Fetch specific data using query builder
-        $data = DB::table('surveys')
-            ->select('OverallCleanliness', 'StaffFriendlyAndHelpful', 'SafetyAtTheHarbour', 'RecommendToOthers', 'QualityForMoney')
-            ->get();
+        // Apply the filters to the query
+        $query = Survey::query();
 
-        // Calculate the average of the five columns
-        $averageValues = $data->map(function ($row) {
-            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers  + $row->QualityForMoney) / 5;
-        });
+        if (isset($filter['start_date']) && isset($filter['end_date'])) {
+            $startDate = $filter['start_date'];
+            $endDate = $filter['end_date'];
 
-        // Calculate the overall average
-        $averageSatisfaction = $averageValues->avg();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
 
-        return view('dashboard.reviews', compact('survey', 'bar', 'averageSatisfaction'));
+        if (isset($filter['typeOfVessel']) && $filter['typeOfVessel']) {
+            $vesselTypes = explode(',', $filter['typeOfVessel']);
+            $query->whereIn('typeOfVessel', $vesselTypes);
+        }
+
+        if (isset($filter['marina']) && $filter['marina']) {
+            $marinas = explode(',', $filter['marina']);
+            $query->whereIn('WhichHarbour', $marinas);
+        }
+
+        if (isset($filter['read']) && $filter['read']) {
+            $query->where('is_read', $filter['read']);
+        }
+
+        // Retrieve the paginated survey results with applied filters
+        $survey = $query->paginate(20)->appends($filter);
+
+        return view('dashboard.reviews', compact('survey'));
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -128,9 +158,11 @@ class DashboardController extends Controller
     {
         // Retrieve the id of the Dashboard object
         $survey_id = $survey->id;
-
         // Retrieve the Survey object that corresponds to the given Dashboard id
-        $review = Survey::Find($survey_id);
+        $review = Survey::findOrFail($survey_id);
+        $review->is_read = true;
+        $review->save();
+
 
         return view('dashboard.show', compact('review'));
     }
