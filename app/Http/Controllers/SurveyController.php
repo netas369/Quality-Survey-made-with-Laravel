@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class SurveyController extends Controller
 {
@@ -125,6 +126,67 @@ class SurveyController extends Controller
             'SomethingToChangeWebsite' => 'nullable|string',
             'AnythingLeft' => 'nullable|string',
         ]);
+    }
+
+    public function exportCSV()
+    {
+        $surveys = Survey::all();
+
+        $csvFileName = 'All-Survey-Data.csv';
+
+        $headers = [
+            "Content-type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=$csvFileName",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0",
+        ];
+
+        $columns = [
+            'id',
+            'Nationality',
+            'AgeOfVisitor',
+            'TypeOfVessel',
+            'PeopleOnBoard',
+            'WhichSeason',
+            'HearAboutHarbour',
+            'WhichHarbour',
+            'FirstVisit',
+            'CompletePurpose',
+            'DescribeExperience',
+            'DescribeWebsite',
+            'ConsiderAgain',
+            'OverallCleanliness',
+            'StaffFriendlyAndHelpful',
+            'SafetyAtTheHarbour',
+            'OurFacilities',
+            'RateOverallExperience',
+            'RecommendToOthers',
+            'QualityForMoney',
+            'AnythingToImprove',
+            'anyAdditionalAmenities',
+            'SomethingToChangeWebsite',
+            'AnythingLeft',
+            'created_at',
+            'updated_at',
+        ];
+
+        $callback = function () use ($surveys, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($surveys as $survey) {
+                $row = [];
+                foreach ($columns as $column) {
+                    $row[] = $survey->{$column};
+                }
+                fputcsv($file, $row);
+            }
+
+            fclose($file);
+        };
+
+        return Response::stream($callback, 200, $headers);
     }
 }
 
