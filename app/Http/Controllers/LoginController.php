@@ -28,17 +28,21 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->getCredentials();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
-        if(!Auth::validate($credentials)):
-            return redirect()->to('login')
-                ->withErrors(trans('auth.failed'));
-        endif;
+            Auth::login($user, $remember = true);
 
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+            return $this->authenticated($request, $user);
+        }
 
-        Auth::login($user);
+        return redirect()->to('login')->withErrors(trans('auth.failed'));
 
-        return $this->authenticated($request, $user);
+//        if(!Auth::validate($credentials)):
+//            redirect()->to('login')->withErrors(trans('auth.failed'));
+//        endif;
+
+
     }
 
     /**
