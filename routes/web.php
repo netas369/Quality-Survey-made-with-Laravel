@@ -63,7 +63,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/export-csv', [SurveyController::class, 'exportCSV'])->name('export.csv');
-        Route::get('/survey', [SurveyController::class, 'edit']);
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'index');
             Route::get('/settings', 'settings');
