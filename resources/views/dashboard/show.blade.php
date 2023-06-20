@@ -83,7 +83,10 @@
 <main>
     <div class="overflow-x-auto">
     <div class="my-4">
-        <p class="font-bold">Demographic data of users:</p>
+        <div class="my-4">
+            <div class="bg-blue-900 px-4 py-2 rounded-md">
+                <p class="font-bold text-xl text-white">Demographic data of users:</p>
+            </div>
         <p class="text-lg">Nationality:</p>
         <div class="bg-white p-4 h-8 flex items-center">
             <p class="text-gray-600">{{ $review->Nationality }}</p>
@@ -100,7 +103,12 @@
         <div class="bg-white p-4 h-8 flex items-center">
             <p class="text-gray-600">{{ $review->PeopleOnBoard }}</p>
         </div>
-        <p class="font-bold">Multiple choice:</p>
+        </div>
+
+        <div class="my-4">
+            <div class="bg-blue-900 px-4 py-2 rounded-md">
+                <p class="font-bold text-xl text-white">Multiple choice:</p>
+            </div>
         <p class="text-lg">Season the ship visited:</p>
         <div class="bg-white p-4 h-8 flex items-center">
             <p class="text-gray-600">{{ $review->WhichSeason }}</p>
@@ -113,13 +121,19 @@
         <div class="bg-white p-4 h-8 flex items-center">
             <p class="text-gray-600">{{ $review->WhichHarbour }}</p>
         </div>
+        @php
+            $answers = [
+                1 => 'Yes',
+                0 => 'No',
+            ];
+        @endphp
         <p class="text-lg">First visit:</p>
         <div class="bg-white p-4 h-8 flex items-center">
-            <p class="text-gray-600">{{ $review->FirstVisit }}</p>
+            <p class="text-gray-600">{{ $answers[$review->FirstVisit] }}</p>
         </div>
         <p class="text-lg">Did they complete the purpose of their stay:</p>
         <div class="bg-white p-4 h-8 flex items-center">
-            <p class="text-gray-600">{{ $review->CompletePurpose }}</p>
+            <p class="text-gray-600">{{ $answers[$review->CompletePurpose] }}</p>
         </div>
         <p class="text-lg">Their experience at the marina:</p>
         <div class="bg-white p-4 h-8 flex items-center">
@@ -131,9 +145,14 @@
         </div>
         <p class="text-lg">Will they visit us again:</p>
         <div class="bg-white p-4 h-8 flex items-center">
-            <p class="text-gray-600">{{ $review->ConsiderAgain }}</p>
+            <p class="text-gray-600">{{ $answers[$review->ConsiderAgain] }}</p>
         </div>
-        <p class="font-bold">Rating:</p>
+        </div>
+
+        <div class="my-4">
+            <div class="bg-blue-900 px-4 py-2 rounded-md">
+                <p class="font-bold text-xl text-white">Rating:</p>
+            </div>
         <p class="text-lg">Overall cleanliness:</p>
         <div class="bg-white p-4 h-8 flex items-center">
             <p class="text-gray-600">{{ $review->OverallCleanliness }}</p>
@@ -162,22 +181,33 @@
         <div class="bg-white p-4 h-8 flex items-center">
             <p class="text-gray-600">{{ $review->QualityForMoney }}</p>
         </div>
-        <p class="font-bold">Open answers:</p>
-        <p class="text-lg">Anything you would like us to improve:</p>
-        <div class="bg-white p-4 h-8 flex items-center">
-            <p class="text-gray-600">{{ $review->AnythingToImprove }}</p>
         </div>
-        <p class="text-lg">Any additional amenities:</p>
-        <div class="bg-white p-4 h-8 flex items-center">
-            <p class="text-gray-600">{{ $review->anyAdditionalAmenities }}</p>
-        </div>
-        <p class="text-lg">Something to change the website:</p>
-        <div class="bg-white p-4 h-8 flex items-center">
-            <p class="text-gray-600">{{ $review->SomethingToChangeWebsite }}</p>
-        </div>
-        <p class="text-lg">Open remarks</p>
-        <div class="bg-white p-4 h-8 flex items-center">
-            <p class="text-gray-600">{{ $review->AnythingLeft }}</p>
+
+        <div class="overflow-x-auto">
+            <div class="my-4">
+                <div class="bg-blue-900 px-4 py-2 rounded-md">
+                    <p class="font-bold text-xl text-white">Open Answers:</p>
+                </div>
+                <p class="text-lg">Anything you would like us to improve:</p>
+                <div class="bg-white p-4">
+                    <textarea class="text-gray-600 resize-y h-32 w-full" readonly>{{ $review->AnythingToImprove }}</textarea>
+                </div>
+
+                <p class="text-lg">Any additional amenities:</p>
+                <div class="bg-white p-4">
+                    <textarea class="text-gray-600 resize-y h-32 w-full" readonly>{{ $review->anyAdditionalAmenities }}</textarea>
+                </div>
+
+                <p class="text-lg">Something to change on the website:</p>
+                <div class="bg-white p-4">
+                    <textarea class="text-gray-600 resize-y h-32 w-full" readonly>{{ $review->SomethingToChangeWebsite }}</textarea>
+                </div>
+
+                <p class="text-lg">Open remarks:</p>
+                <div class="bg-white p-4">
+                    <textarea class="text-gray-600 resize-y h-32 w-full" readonly>{{ $review->AnythingLeft }}</textarea>
+                </div>
+            </div>
         </div>
     </div>
     </div>
