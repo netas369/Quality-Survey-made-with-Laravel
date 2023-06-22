@@ -25,6 +25,8 @@ class DashboardController extends Controller
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
+        $lastSurvey = Survey::orderBy('created_at', 'desc')->get();
+        $lastSurveyDate = $lastSurvey->first()->created_at->format('Y-m-d H:i');
 
         // how many surveys have been completed this month
         $currentMonthSurveyCount = Survey::whereMonth('created_at', Carbon::now()->month)
@@ -62,7 +64,9 @@ class DashboardController extends Controller
             'Stadshaven Scheldekwartier' => Survey::where('WhichHarbour', 'Stadshaven Scheldekwartier')->count(),
         ];
 
-        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating', 'pieChart', 'unreadCount'));
+        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount',
+            'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating', 'pieChart', 'unreadCount',
+            'lastSurveyDate'));
 
     }
     public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -121,7 +125,7 @@ class DashboardController extends Controller
         }
 
         // Retrieve the paginated survey results with applied filters
-        $survey = $query->paginate(20)->appends($filter);
+        $survey = $query->latest()->paginate(20)->appends($filter);
 
         return view('dashboard.reviews', compact('survey'));
     }
