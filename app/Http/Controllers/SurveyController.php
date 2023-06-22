@@ -99,9 +99,6 @@ class SurveyController extends Controller
     public function validateSurveyData(Request $request)
     {
         return $request->validate([
-
-
-
             'Nationality' => 'required|string',
             'AgeOfVisitor' => 'required|integer|min:1|max:500',
             'TypeOfVessel' => 'required|string',
@@ -125,6 +122,12 @@ class SurveyController extends Controller
             'anyAdditionalAmenities' => 'nullable|string',
             'SomethingToChangeWebsite' => 'nullable|string',
             'AnythingLeft' => 'nullable|string',
+        ], [
+            'required' => 'The :attribute field is required.',
+            'integer' => 'The :attribute field must be an integer.',
+            'min' => 'The :attribute field must be at least :min.',
+            'max' => 'The :attribute field must not exceed :max.',
+            'string' => 'The :attribute field must be a string.',
         ]);
     }
 
