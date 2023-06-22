@@ -192,9 +192,9 @@
                                             class="fas fa-inbox fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 6</h2>
-                                    <p class="font-bold text-3xl">Data 6.1 <span class="text-red-500"><i
-                                                class="fas fa-caret-up"></i></span></p>
+                                    <h2 class="font-bold uppercase text-gray-600">Last survey submited</h2>
+                                    <p class="font-bold text-3xl">{{ $lastSurveyDate }} <span class="text-red-500"><i
+                                                class="fas fa-"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +268,16 @@
                                                 lineTension: 0.1
                                             }]
                                         },
-                                        options: {}
+                                        options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true,
+                                                        suggestedMax: 5
+                                                    }
+                                                }]
+                                            }
+                                        }
                                     });
                                 </script>
                             </div>
