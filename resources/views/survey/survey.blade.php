@@ -58,7 +58,10 @@
 
 
         <label for="TypeOfVessel" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion3') }}</label>
-        <input type="text" id="TypeOfVessel" name="TypeOfVessel" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <select id="TypeOfVessel" name="TypeOfVessel" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <option value="Sailboat">Sailboat</option>
+        <option value="Motorboat">Motorboat</option>
+        </select>
 
         <label for="PeopleOnBoard" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion4') }}</label>
         <select id="PeopleOnBoard" name="PeopleOnBoard" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">

@@ -104,8 +104,6 @@
                                 <label for="typeOfVessel" class="mr-2">Type of Vessel:</label>
                                 <select name="typeOfVessel" id="typeOfVessel" class="border border-gray-300 rounded px-2 py-1">
                                     <option value="">All</option>
-                                    <option value="Cruise Ship">Cruise Ship</option>
-                                    <option value="Fishing Boat">Fishing Boat</option>
                                     <option value="Sailboat">Sailboat</option>
                                     <option value="Motorboat">Motorboat</option>
                                 </select>
