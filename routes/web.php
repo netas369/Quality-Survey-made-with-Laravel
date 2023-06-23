@@ -49,10 +49,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             return view('survey.thanks-eng');
         })->name('thanks');
 
-        Route::get('/forgot-password', function () {
-            return view('auth.forgot-password');
-        })->name('password.request');
-
         /**
          * Dashboard Routes
          */

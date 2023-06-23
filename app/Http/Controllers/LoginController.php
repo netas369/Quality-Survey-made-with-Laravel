@@ -37,12 +37,6 @@ class LoginController extends Controller
         }
 
         return redirect()->to('login')->withErrors(trans('auth.failed'));
-
-//        if(!Auth::validate($credentials)):
-//            redirect()->to('login')->withErrors(trans('auth.failed'));
-//        endif;
-
-
     }
 
     /**
