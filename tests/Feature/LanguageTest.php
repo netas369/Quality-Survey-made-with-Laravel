@@ -47,7 +47,7 @@ class LanguageTest extends TestCase
 
         // Assert
         $response->assertStatus(200)
-            ->assertSeeText('Quelle est ta nationalité ?');
+            ->assertSeeText('Quelle est ta nationalité?*');
     }
 
     public function testSurveyPageInGerman()
