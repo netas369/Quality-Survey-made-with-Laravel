@@ -9,3 +9,10 @@ class Dashboard extends Model
 {
     use HasFactory;
 }
+
+public function dashboardPage(): void
+{
+    $response = $this->get('/dashboard');
+
+    $response->assertStatus(200);
+}

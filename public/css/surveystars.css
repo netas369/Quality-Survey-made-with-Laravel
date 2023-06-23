@@ -1,30 +1,26 @@
-/* Style the labels to show the star icons */
-.rating label:before {
-    content: "\2605";
-    margin-right: 5px;
-    font-size: 20px;
-    color: #ccc;
+.rating {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse; /* Reverse the order of stars */
 }
 
-/* Hide the default radio inputs */
 .rating input[type="radio"] {
     display: none;
 }
 
-/* Style the labels of selected inputs to show yellow stars */
-.rating input[type="radio"]:checked + label:before,
-.rating input[type="radio"].selected + label:before,
-.rating input[type="radio"].selected ~ input[type="radio"] + label:before {
-    color: #ffc107;
-}
-
-/* Display the radio inputs and labels horizontally */
-.rating {
-    display: inline-flex;
-    flex-direction: row-reverse;
-}
-
-/* Reverse the order of the labels to match the direction of the radio inputs */
 .rating label {
-    order: 1;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc; /* Replace with your desired empty star color */
+    border-radius: 50%;
+    margin-right: 5px; /* Add some spacing between stars */
+}
+
+.rating input[type="radio"]:checked ~ label {
+    background-color: #fcd34d; /* Replace with your desired filled star color */
+}
+
+.rating input[type="radio"]:checked ~ label:nth-last-child(-n+5) {
+    background-color: #fcd34d; /* Replace with your desired filled star color */
 }
