@@ -26,9 +26,6 @@
                 <a href="#" aria-label="Home">
                     <span class="text-4xl text-white"><i class="em em-grinning"></i></span>
                 </a>
-            </div>
-            <h1 class="mb-4 text-3xl font-bold text-white md:text-6xl lg:text-5xl">Analytics Dashboard</h1>
-        </div>
     </nav>
 </header>
 
@@ -65,6 +62,13 @@
                             </a>
                         </li>
                         <li class="mr-3 flex-1">
+                            <a href="{{ route('export.csv') }}"
+                               class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-download pr-0 md:pr-3"></i><span
+                                    class="pb-1 md:pb-0 text-xs md:text-base text-red-600 md:text-gray-200 block md:inline-block">Download CSV</span>
+                            </a>
+                        </li>
+                        <li class="mr-3 flex-1">
                             <a href="{{ url('/logout') }}"
                                class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                                 <i class="fas fa-sign-out-alt pr-0 md:pr-3"></i><span
@@ -76,6 +80,7 @@
 
 
             </div>
+
         </nav>
         <section>
             <div id="main" class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
@@ -187,9 +192,9 @@
                                             class="fas fa-inbox fa-2x fa-inverse"></i></div>
                                 </div>
                                 <div class="flex-1 text-right md:text-center">
-                                    <h2 class="font-bold uppercase text-gray-600">Data 6</h2>
-                                    <p class="font-bold text-3xl">Data 6.1 <span class="text-red-500"><i
-                                                class="fas fa-caret-up"></i></span></p>
+                                    <h2 class="font-bold uppercase text-gray-600">Last survey submited</h2>
+                                    <p class="font-bold text-3xl">{{ $lastSurveyDate }} <span class="text-red-500"><i
+                                                class="fas fa-"></i></span></p>
                                 </div>
                             </div>
                         </div>
@@ -234,45 +239,6 @@
                                 </script>
                             </div>
                         </div>
-{{--                        <div class="bg-white border-transparent rounded-lg shadow-xl">--}}
-{{--                            <div--}}
-{{--                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">--}}
-{{--                                <h class="font-bold uppercase text-gray-600">Graph</h>--}}
-{{--                            </div>--}}
-{{--                            <div class="p-5">--}}
-{{--                                <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>--}}
-{{--                                <script>--}}
-{{--                                    new Chart(document.getElementById("chartjs-7"), {--}}
-{{--                                        "type": "bar",--}}
-{{--                                        "data": {--}}
-{{--                                            "labels": ["January", "February", "March", "April"],--}}
-{{--                                            "datasets": [{--}}
-{{--                                                "label": "Page Impressions",--}}
-{{--                                                "data": [10, 20, 30, 40],--}}
-{{--                                                "borderColor": "rgb(255, 99, 132)",--}}
-{{--                                                "backgroundColor": "rgba(255, 99, 132, 0.2)"--}}
-{{--                                            }, {--}}
-{{--                                                "label": "Adsense Clicks",--}}
-{{--                                                "data": [5, 15, 10, 30],--}}
-{{--                                                "type": "line",--}}
-{{--                                                "fill": false,--}}
-{{--                                                "borderColor": "rgb(54, 162, 235)"--}}
-{{--                                            }]--}}
-{{--                                        },--}}
-{{--                                        "options": {--}}
-{{--                                            "scales": {--}}
-{{--                                                "yAxes": [{--}}
-{{--                                                    "ticks": {--}}
-{{--                                                        "beginAtZero": true--}}
-{{--                                                    }--}}
-{{--                                                }]--}}
-{{--                                            }--}}
-{{--                                        }--}}
-{{--                                    });--}}
-{{--                                </script>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <!--/Graph Card-->
                     </div>
 
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
@@ -302,7 +268,16 @@
                                                 lineTension: 0.1
                                             }]
                                         },
-                                        options: {}
+                                        options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true,
+                                                        suggestedMax: 5
+                                                    }
+                                                }]
+                                            }
+                                        }
                                     });
                                 </script>
                             </div>
@@ -349,39 +324,6 @@
                         <!--/Graph Card-->
                     </div>
 
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Graph Card-->
-
-                        <!--/Graph Card-->
-                    </div>
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Table Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div
-                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">extra graph</h2>
-                            </div>
-                            <div class="p-5">
-
-
-                            </div>
-                        </div>
-                        <!--/table Card-->
-                    </div>
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                        <!--Advert Card-->
-                        <div class="bg-white border-transparent rounded-lg shadow-xl">
-                            <div
-                                class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                <h2 class="font-bold uppercase text-gray-600">extra</h2>
-                            </div>
-                            <div class="p-5 text-center">
-
-
-                            </div>
-                        </div>
-                        <!--/Advert Card-->
-                    </div>
                 </div>
             </div>
         </section>

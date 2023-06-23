@@ -32,7 +32,9 @@
         <section class="text-center">
             <h2 class="text-3xl font-bold text-white mb-4">Share Your Thoughts</h2>
             <p class="text-lg text-gray-200 mb-8">Take a few minutes to complete our survey and make a difference.</p>
-            <a href="{{ url('/survey') }}" class="inline-block px-8 py-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors duration-300 ease-in-out">Start Survey</a>
+            <a href="{{ url('/survey') }}"
+               class="inline-block px-8 py-4 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition-colors duration-300 ease-in-out">Start
+                Survey</a>
         </section>
 
         <section class="flex flex-wrap justify-center mt-16">

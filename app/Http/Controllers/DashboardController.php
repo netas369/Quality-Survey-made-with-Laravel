@@ -25,6 +25,8 @@ class DashboardController extends Controller
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
+        $lastSurvey = Survey::orderBy('created_at', 'desc')->get();
+        $lastSurveyDate = $lastSurvey->first()->created_at->format('Y-m-d H:i');
 
         // how many surveys have been completed this month
         $currentMonthSurveyCount = Survey::whereMonth('created_at', Carbon::now()->month)
@@ -62,7 +64,9 @@ class DashboardController extends Controller
             'Stadshaven Scheldekwartier' => Survey::where('WhichHarbour', 'Stadshaven Scheldekwartier')->count(),
         ];
 
-        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount', 'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating', 'pieChart', 'unreadCount'));
+        return view('dashboard.index', compact('currentMonthSurveyCount', 'totalSurveyCount',
+            'labels', 'data', 'averageRatings', 'lastMonthRating', 'currentYearRating', 'pieChart', 'unreadCount',
+            'lastSurveyDate'));
 
     }
     public function login(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -75,15 +79,22 @@ class DashboardController extends Controller
         return view('dashboard.settings');
     }
 
-    public function change_password(Request $request) {
-        $request->validate([
-            'password' => 'required|min:8|confirmed',
+    public function change_credentials(Request $request) {
+        $credentials = $request->validate([
+            'username' => 'nullable|min:6|confirmed',
+            'password' => 'nullable|min:8|confirmed',
         ]);
-        $id = Auth::user()->id;
-        $user = User::find($id);
-        $user->password = $request->password;
-        $user->save();
+        $user = Auth::user();
 
+        if ($credentials['username'] != null) {
+            $user->username = $credentials['username'];
+        }
+
+        if ($credentials['password'] != null) {
+            $user->password = $credentials['password'];
+        }
+
+        $user->save();
 
         return redirect('dashboard');
     }
@@ -94,59 +105,46 @@ class DashboardController extends Controller
     public function reviews(Request $request)
     {
         // Retrieve the filter parameters from the request
-        $filter = $request->only(['cleanliness', 'friendly', 'safety', 'recommendation', 'quality']);
-
-        $filter = array_merge([
-            'cleanliness' => null,
-            'friendly' => null,
-            'safety' => null,
-            'recommendation' => null,
-            'quality' => null,
-        ], $filter);
+        $filter = $request->only(['start_date', 'end_date', 'typeOfVessel', 'marina', 'read']);
 
         // Apply the filters to the query
         $query = Survey::query();
 
-        if ($filter['cleanliness']) {
-            $query->where('OverallCleanliness', $filter['cleanliness']);
+        if (isset($filter['start_date']) && isset($filter['end_date'])) {
+            $startDate = $filter['start_date'];
+            $endDate = $filter['end_date'];
+
+            $query->whereBetween('created_at', [$startDate, $endDate]);
         }
 
-        if ($filter['friendly']) {
-            $query->where('StaffFriendlyAndHelpful', $filter['friendly']);
+        if (isset($filter['typeOfVessel']) && $filter['typeOfVessel']) {
+            $vesselTypes = explode(',', $filter['typeOfVessel']);
+            $query->whereIn('typeOfVessel', $vesselTypes);
         }
 
-        if ($filter['safety']) {
-            $query->where('SafetyAtTheHarbour', $filter['safety']);
+        if (isset($filter['marina']) && $filter['marina']) {
+            $marinas = explode(',', $filter['marina']);
+            $query->whereIn('WhichHarbour', $marinas);
         }
 
-        if ($filter['recommendation']) {
-            $query->where('RecommendToOthers', $filter['recommendation']);
-        }
-
-        if ($filter['quality']) {
-            $query->where('QualityForMoney', $filter['quality']);
+        if (isset($filter['read']) && $filter['read']) {
+            $query->where('is_read', $filter['read']);
         }
 
         // Retrieve the paginated survey results with applied filters
-        $survey = $query->paginate(20);
+        $survey = $query->latest()->paginate(20)->appends($filter);
 
-        $bar = new HappinessBar();
-
-        // Fetch specific data using query builder
-        $data = DB::table('surveys')
-            ->select('OverallCleanliness', 'StaffFriendlyAndHelpful', 'SafetyAtTheHarbour', 'RecommendToOthers', 'QualityForMoney')
-            ->get();
-
-        // Calculate the average of the five columns
-        $averageValues = $data->map(function ($row) {
-            return ($row->OverallCleanliness + $row->StaffFriendlyAndHelpful + $row->SafetyAtTheHarbour + $row->RecommendToOthers  + $row->QualityForMoney) / 5;
-        });
-
-        // Calculate the overall average
-        $averageSatisfaction = $averageValues->avg();
-
-        return view('dashboard.reviews', compact('survey', 'bar', 'averageSatisfaction'));
+        return view('dashboard.reviews', compact('survey'));
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -171,7 +169,6 @@ class DashboardController extends Controller
     {
         // Retrieve the id of the Dashboard object
         $survey_id = $survey->id;
-
         // Retrieve the Survey object that corresponds to the given Dashboard id
         $review = Survey::findOrFail($survey_id);
         $review->is_read = true;

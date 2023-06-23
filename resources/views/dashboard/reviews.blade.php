@@ -66,6 +66,12 @@
                             </a>
                         </li>
                         <li class="mr-3 flex-1">
+                            <a href="{{ route('export.csv') }}"
+                               class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-download pr-0 md:pr-3"></i><span
+                                    class="pb-1 md:pb-0 text-xs md:text-base text-red-600 md:text-gray-200 block md:inline-block">Download CSV</span>
+                            </a>
+                        <li class="mr-3 flex-1">
                             <a href="{{ url('/logout') }}"
                                class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                                 <i class="fas fa-sign-out-alt pr-0 md:pr-3"></i><span
@@ -87,59 +93,36 @@
                     <form action="{{ route('dashboard.reviews') }}" method="GET">
                         <div class="flex flex-wrap justify-between mb-4">
                             <div class="flex items-center mr-2 mb-2">
-                                <label for="cleanliness" class="mr-2">Cleanliness:</label>
-                                <select name="cleanliness" id="cleanliness" class="border border-gray-300 rounded px-2 py-1">
-                                    <option value="">All</option>
-                                    <option value="1">1 Star</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="5">5 Stars</option>
-                                </select>
+                                <label for="start_date" class="mr-2">Start Date:</label>
+                                <input type="date" name="start_date" id="start_date" class="border border-gray-300 rounded px-2 py-1">
                             </div>
-                            <!-- Add more filter options here -->
                             <div class="flex items-center mr-2 mb-2">
-                                <label for="friendly" class="mr-2">Friendly:</label>
-                                <select name="friendly" id="friendly" class="border border-gray-300 rounded px-2 py-1">
+                                <label for="end_date" class="mr-2">End Date:</label>
+                                <input type="date" name="end_date" id="end_date" class="border border-gray-300 rounded px-2 py-1">
+                            </div>
+                            <div class="flex items-center mr-2 mb-2">
+                                <label for="typeOfVessel" class="mr-2">Type of Vessel:</label>
+                                <select name="typeOfVessel" id="typeOfVessel" class="border border-gray-300 rounded px-2 py-1">
                                     <option value="">All</option>
-                                    <option value="1">1 Star</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="5">5 Stars</option>
+                                    <option value="Sailboat">Sailboat</option>
+                                    <option value="Motorboat">Motorboat</option>
                                 </select>
                             </div>
                             <div class="flex items-center mr-2 mb-2">
-                                <label for="safety" class="mr-2">Safety:</label>
-                                <select name="safety" id="safety" class="border border-gray-300 rounded px-2 py-1">
+                                <label for="marina" class="mr-2">Marina:</label>
+                                <select name="marina" id="marina" class="border border-gray-300 rounded px-2 py-1">
                                     <option value="">All</option>
-                                    <option value="1">1 Star</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="5">5 Stars</option>
+                                    <option value="V.V.W Schelde">V.V.W Schelde</option>
+                                    <option value="Stadshaven Scheldekwartier">Stadshaven Scheldekwartier</option>
+                                    <!-- Add more marina options here -->
                                 </select>
                             </div>
                             <div class="flex items-center mr-2 mb-2">
-                                <label for="recommendation" class="mr-2">Recommendation:</label>
-                                <select name="recommendation" id="recommendation" class="border border-gray-300 rounded px-2 py-1">
+                                <label for="read" class="mr-2">Read:</label>
+                                <select name="read" id="read" class="border border-gray-300 rounded px-2 py-1">
                                     <option value="">All</option>
-                                    <option value="1">1 Star</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="5">5 Stars</option>
-                                </select>
-                            </div>
-                            <div class="flex items-center mr-2 mb-2">
-                                <label for="quality" class="mr-2">Quality:</label>
-                                <select name="quality" id="quality" class="border border-gray-300 rounded px-2 py-1">
-                                    <option value="">All</option>
-                                    <option value="1">1 Star</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="5">5 Stars</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
                                 </select>
                             </div>
                         </div>
@@ -147,6 +130,9 @@
                             Apply Filters
                         </button>
                     </form>
+
+
+
                 </div>
 
                 <div class="flex justify-center items-center my-4">

@@ -18,6 +18,10 @@
                 <span class="text-red-500">{{ $errors->first('password') }}</span>
             @endif
         </div>
+        <div class="form-group mb-3">
+            <label for="remember">Stay logged in</label>
+            <input type="checkbox" name="remember">
+        </div>
         <button class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Login</button>
     </form>
 @endsection

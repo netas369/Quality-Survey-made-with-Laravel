@@ -1,36 +1,43 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SurveyController;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\WelcomeController;
-
-// Routes for dashboard page
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/login', [DashboardController::class, 'login']);
-Route::get('/reviews', [DashboardController::class, 'reviews'])->name('dashboard.reviews');
-Route::get('/reviews/{survey}', [DashboardController::class, 'show'])->name('dashboard.show');
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
     Route::get('/', 'WelcomeController@index')->name('welcome.index');
-
+    /*
+     * Guest Routes
+    */
     Route::group(['middleware' => ['guest']], function () {
         /**
          * Login Routes
          */
-        Route::get('/login', 'LoginController@show')->name('login');
-        Route::post('/login', 'LoginController@login')->name('login.perform');
+        Route::controller(LoginController::class)->group(function () {
+            Route::get('/login', 'show')->name('login');
+            Route::post('/login', 'login')->name('login.perform');
+        });
 
         /**
          * Survey Routes
          */
-        Route::get('/survey', [SurveyController::class, 'index']);
-        Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
-        Route::post('/survey/submition/{locale?}', [SurveyController::class, 'store']);
+        Route::controller(SurveyController::class)->group(function () {
+            Route::get('/survey', 'index');
+            Route::get('/survey/submition/{locale?}', 'showSurvey');
+            Route::post('/survey/submition/{locale?}', 'store');
+        });
+
+
         Route::get('/thanks/{locale?}', function ($locale = null) {
             if (!in_array($locale, array_keys(config('app.supported_locales')))) {
                 $locale = config('app.locale');
@@ -49,19 +56,25 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 return redirect('login');
             });
         });
+
+        Route::get('/register', function () {
+            abort(403);
+        });
+
     });
 
     Route::group(['middleware' => ['auth']], function () {
+        Route::get('/export-csv', [SurveyController::class, 'exportCSV'])->name('export.csv');
+
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'index');
             Route::get('/settings', 'settings');
+            Route::get('/reviews', 'reviews')->name('dashboard.reviews');
             Route::get('/reviews/{survey}', 'show')->name('dashboard.show');
-            Route::post('/settings', 'change_password')->name('settings');
+            Route::post('/settings', 'change_credentials')->name('settings');
         });
 
         Route::post('/register', 'RegisterController@register')->name('register.perform');
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
-
-

@@ -66,6 +66,12 @@
                             </a>
                         </li>
                         <li class="mr-3 flex-1">
+                            <a href="{{ route('export.csv') }}"
+                               class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                                <i class="fas fa-download pr-0 md:pr-3"></i><span
+                                    class="pb-1 md:pb-0 text-xs md:text-base text-red-600 md:text-gray-200 block md:inline-block">Download CSV</span>
+                            </a>
+                        <li class="mr-3 flex-1">
                             <a href="{{ url('/logout') }}"
                                class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                                 <i class="fas fa-sign-out-alt pr-0 md:pr-3"></i><span
@@ -83,16 +89,28 @@
        <section>
            <form method="post" class="form-password flex flex-col items-center mt-8" action="{{ route('settings') }}">
                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-               <h1 class="text-2xl font-semibold mb-4 text-white">Change password</h1>
+               <h1 class="text-2xl font-semibold mb-4 text-white">Change credentials</h1>
                @include('layouts.partials.messages')
                <div class="mb-4 flex flex-col items-center">
-                   <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password" value="{{ old('password') }}" placeholder="New Password" required>
+                   <input type="text" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="username" value="{{ old('username') }}" placeholder="New Username">
+                   @if ($errors->has('uxername'))
+                       <span class="text-red-500">{{ $errors->first('username') }}</span>
+                   @endif
+               </div>
+               <div class="mb-4 flex flex-col items-center">
+                   <input type="text" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="username_confirmation" value="{{ old('username_confirmation') }}" placeholder="Confirm New Username">
+                   @if ($errors->has('username_confirmation'))
+                       <span class="text-red-500">{{ $errors->first('username_confirmation') }}</span>
+                   @endif
+               </div>
+               <div class="mb-4 flex flex-col items-center">
+                   <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password" value="{{ old('password') }}" placeholder="New Password">
                    @if ($errors->has('password'))
                        <span class="text-red-500">{{ $errors->first('password') }}</span>
                    @endif
                </div>
                <div class="mb-4 flex flex-col items-center">
-                   <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm New Password" required>
+                   <input type="password" class="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm New Password">
                    @if ($errors->has('password_confirmation'))
                        <span class="text-red-500">{{ $errors->first('password_confirmation') }}</span>
                    @endif
