@@ -26,7 +26,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
      * Home Routes
      */
     Route::get('/', 'WelcomeController@index')->name('welcome.index');
-
+//    Route::get('/survey', [SurveyController::class, 'index']);
+//    Route::get('/survey/submition/{locale?}', [SurveyController::class, 'showSurvey']);
+//    Route::post('/survey/submition/{locale?}', [SurveyController::class, 'store']);
     Route::group(['middleware' => ['guest']], function () {
         /**
          * Login Routes
