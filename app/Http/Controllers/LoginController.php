@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -23,15 +24,14 @@ class LoginController extends Controller
      *
      * @param LoginRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function login(LoginRequest $request)
     {
         $credentials = $request->getCredentials();
         if (Auth::attempt($credentials)) {
             $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
-            Auth::login($user, $remember = true);
+            Auth::login($user, $request->get('remember'));
 
             return $this->authenticated($request, $user);
         }
@@ -51,7 +51,7 @@ class LoginController extends Controller
      * @param Request $request
      * @param Auth $user
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     protected function authenticated(Request $request, $user)
     {

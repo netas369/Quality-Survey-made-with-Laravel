@@ -22,7 +22,7 @@
                 <li><a class="text-white hover:text-gray-200" href="{{ url('/') }}">Home</a></li>
                 <li><a class="text-white hover:text-gray-200" href="{{ url('/survey') }}">Survey</a></li>
                 @guest
-                    <li><a class="text-white hover:text-gray-200" href="{{ url('/login') }}">Dashboard</a></li>
+                    <li><a class="text-white hover:text-gray-200" href="{{ url('/login') }}">Login</a></li>
                 @endguest
                 @auth
                     <li><a class="text-white hover:text-gray-200" href="{{ url('/dashboard') }}">Dashboard</a></li>

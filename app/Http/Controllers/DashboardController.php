@@ -79,15 +79,22 @@ class DashboardController extends Controller
         return view('dashboard.settings');
     }
 
-    public function change_password(Request $request) {
-        $request->validate([
-            'password' => 'required|min:8|confirmed',
+    public function change_credentials(Request $request) {
+        $credentials = $request->validate([
+            'username' => 'nullable|min:6|confirmed',
+            'password' => 'nullable|min:8|confirmed',
         ]);
-        $id = Auth::user()->id;
-        $user = User::find($id);
-        $user->password = $request->password;
-        $user->save();
+        $user = Auth::user();
 
+        if ($credentials['username'] != null) {
+            $user->username = $credentials['username'];
+        }
+
+        if ($credentials['password'] != null) {
+            $user->password = $credentials['password'];
+        }
+
+        $user->save();
 
         return redirect('dashboard');
     }

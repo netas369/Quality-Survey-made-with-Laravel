@@ -19,10 +19,6 @@ class SurveyController extends Controller
 
     }
 
-    public function edit() {
-        return view('survey.edit');
-    }
-
     public function showSurvey($locale = null)
     {
         if (!in_array($locale, array_keys(config('app.supported_locales')))) {
