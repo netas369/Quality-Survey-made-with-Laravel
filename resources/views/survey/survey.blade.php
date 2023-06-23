@@ -61,8 +61,8 @@
 
         <label for="TypeOfVessel" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion3') }}</label>
         <select id="TypeOfVessel" name="TypeOfVessel" required class="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-        <option value="Sailboat">Sailboat</option>
-        <option value="Motorboat">Motorboat</option>
+            <option value="Sailboat" @if(old('TypeOfVessel') == 'Sailboat') selected @endif>Sailboat</option>
+            <option value="Motorboat" @if(old('TypeOfVessel') == 'Motorboat') selected @endif>Motorboat</option>
         </select>
 
         <label for="PeopleOnBoard" class="block mt-4 mb-2 text-lg font-medium text-gray-800">{{ trans('messages.demoquestion4') }}</label>
