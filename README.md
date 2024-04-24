@@ -13,9 +13,11 @@ Template project for the VVW Schelde
 ## Authors
 
 * **Dawid Czuba** - *Startup Project* - [dajzio](https://github.com/dajzio)
-* **Kevin Mwangi** - *Startup Project* - [kagiri100](https://github.com/kagiri100)
 * **Netas Neverauskas** - *Startup Project* - [netas369](https://github.com/netas369)
 * **Oleksandr Dementiev** - *Startup Project* - [deme0006](https://github.com/deme0006)
-* **Samuel Chukwu** - *Startup Project* - [psalm1st](https://github.com/psalm1st)
 * **Tim Flinkerbush** - *Startup Project* - [tangobyte](https://github.com/tangobyte)
 * **Xander Smakman** - *Startup Project* - [smak0001](https://github.com/smak0001)
+
+### To run the application
+#### 1. Composer Install && Npm Install
+#### 2. 
